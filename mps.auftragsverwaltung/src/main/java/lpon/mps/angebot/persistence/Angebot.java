@@ -1,39 +1,44 @@
-package lpon.mps.artikel.persistence;
+package lpon.mps.angebot.persistence;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import lpon.mps.artikel.persistence.Artikel;
+import lpon.mps.kunde.persistence.Kunde;
 
 @Entity
-public class Artikel {
+public class Angebot {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
 	
-	@ManyToMany
-	private List<Artikel> baugruppe;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Kunde kunde;
 	
-	@Column(nullable = false, unique = true)
-	private String bezeichnung;
+	@ManyToMany(fetch=FetchType.EAGER)
+	private List<Artikel> positionen;
 
-	public List<Artikel> getBaugruppe() {
-		return baugruppe;
+	public Kunde getKunde() {
+		return kunde;
 	}
 
-	public void setBaugruppe(List<Artikel> baugruppe) {
-		this.baugruppe = baugruppe;
+	public void setKunde(Kunde kunde) {
+		this.kunde = kunde;
 	}
 
-	public String getBezeichnung() {
-		return bezeichnung;
+	public List<Artikel> getPositionen() {
+		return positionen;
 	}
 
-	public void setBezeichnung(String bezeichnung) {
-		this.bezeichnung = bezeichnung;
+	public void setPositionen(List<Artikel> positionen) {
+		this.positionen = positionen;
 	}
 
 	public Long getId() {
@@ -42,7 +47,8 @@ public class Artikel {
 
 	@Override
 	public String toString() {
-		return "Artikel: " + bezeichnung;
+		return "Angebot [id=" + id + ", kunde=" + kunde + ", positionen="
+				+ positionen + "]";
 	}
 
 	@Override
@@ -61,7 +67,7 @@ public class Artikel {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Artikel other = (Artikel) obj;
+		Angebot other = (Angebot) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
