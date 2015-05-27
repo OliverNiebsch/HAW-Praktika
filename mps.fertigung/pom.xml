@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.springframework.samples</groupId>
   <artifactId>mps.fertigung</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
@@ -27,7 +26,22 @@
 	</properties>
 	
 	<dependencies>
-		
 
+
+	<dependency>
+		<groupId>lpon.mps</groupId>
+		<artifactId>mps.stammdatenadapter</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
+	<dependency>
+		<groupId>lpon.mps</groupId>
+		<artifactId>mps.auftragsverwaltung</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
 	</dependencies>	
+	<parent>
+		<groupId>lpon.mps</groupId>
+		<artifactId>mps.config</artifactId>
+		<version>1.0</version>
+	</parent>
 </project>
