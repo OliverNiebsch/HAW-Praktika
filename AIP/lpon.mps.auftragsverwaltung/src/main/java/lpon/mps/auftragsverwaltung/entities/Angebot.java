@@ -1,13 +1,12 @@
 package lpon.mps.auftragsverwaltung.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 import lpon.mps.stammdatenadapter.entities.Artikel;
 import lpon.mps.stammdatenadapter.entities.Kunde;
@@ -20,33 +19,36 @@ public class Angebot {
 	
 	public Angebot(Kunde kunde, List<Artikel> positionen) {
 		super();
-		this.kunde = kunde;
-		this.positionen = positionen;
+		this.kundeId = kunde.getId();
+		
+		this.positionen = new ArrayList<Long>();
+		for (Artikel a : positionen) {
+			this.positionen.add(a.getId());
+		}
 	}
 
 	@Id
 	@GeneratedValue
 	private Long id;
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Kunde kunde;
+	private Long kundeId;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	private List<Artikel> positionen;
+	@ElementCollection
+	private List<Long> positionen;
 
-	public Kunde getKunde() {
-		return kunde;
+	public Long getKunde() {
+		return kundeId;
 	}
 
-	public void setKunde(Kunde kunde) {
-		this.kunde = kunde;
+	public void setKunde(Long kundeId) {
+		this.kundeId = kundeId;
 	}
 
-	public List<Artikel> getPositionen() {
+	public List<Long> getPositionen() {
 		return positionen;
 	}
 
-	public void setPositionen(List<Artikel> positionen) {
+	public void setPositionen(List<Long> positionen) {
 		this.positionen = positionen;
 	}
 
@@ -56,7 +58,7 @@ public class Angebot {
 
 	@Override
 	public String toString() {
-		return "Angebot [id=" + id + ", kunde=" + kunde + ", positionen="
+		return "Angebot [id=" + id + ", kunde=" + kundeId + ", positionen="
 				+ positionen + "]";
 	}
 

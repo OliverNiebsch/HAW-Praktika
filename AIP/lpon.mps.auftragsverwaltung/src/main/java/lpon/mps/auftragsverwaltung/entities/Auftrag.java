@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Auftrag {
@@ -19,7 +20,7 @@ public class Auftrag {
 	@GeneratedValue
 	private Long id;
 
-	@Column(nullable = false)
+	@OneToOne
 	private Angebot angebot;
 	
 	@Column(nullable = false)
