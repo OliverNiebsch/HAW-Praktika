@@ -7,14 +7,19 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import lpon.mps.stammdatenadapter.entities.Artikel;
+import lpon.mps.stammdatenadapter.repositories.ArtikelRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ArtikelServiceImpl implements ArtikelService {
 
 	protected EntityManager entityManager;
-	 
+	
+	@Autowired
+	protected ArtikelRepository artikelRepository;
+	
     @PersistenceContext 
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;

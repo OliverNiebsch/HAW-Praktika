@@ -18,7 +18,7 @@ import org.springframework.util.Assert;
 @ContextConfiguration(classes=lpon.mps.stammdatenadapter.ArtikelTest.ContextConfiguration.class)
 public class ArtikelTest {
 
-	@ComponentScan(basePackages = "lpon.mps.stammdatenadapter.services")
+	@ComponentScan(basePackages = "lpon.mps.stammdatenadapter")
 	@Configuration
 	static class ContextConfiguration {}
 	
