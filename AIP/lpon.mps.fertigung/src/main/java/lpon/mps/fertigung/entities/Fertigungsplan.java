@@ -14,6 +14,8 @@ import lpon.mps.stammdatenadapter.entities.Artikel;
 
 @Entity
 public class Fertigungsplan {
+	public Fertigungsplan() {}
+	
 	public Fertigungsplan(List<Artikel> artikel) {
 		artikelFertigungsStatus = new HashMap<Long, Boolean>();
 		for (Artikel a : artikel) {
@@ -30,6 +32,11 @@ public class Fertigungsplan {
 
 	public Long getId() {
 		return id;
+	}
+	
+	public void signalGefertigtesTeil(Artikel a) {
+		if (artikelFertigungsStatus.containsKey(a.getId()))
+			artikelFertigungsStatus.put(a.getId(), true);			
 	}
 
 	@Override

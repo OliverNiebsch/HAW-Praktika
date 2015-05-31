@@ -15,6 +15,15 @@ import lpon.mps.stammdatenadapter.entities.Kunde;
 
 @Entity
 public class Angebot {
+	
+	public Angebot() {}
+	
+	public Angebot(Kunde kunde, List<Artikel> positionen) {
+		super();
+		this.kunde = kunde;
+		this.positionen = positionen;
+	}
+
 	@Id
 	@GeneratedValue
 	private Long id;

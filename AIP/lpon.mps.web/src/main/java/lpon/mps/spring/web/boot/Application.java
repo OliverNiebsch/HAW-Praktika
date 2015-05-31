@@ -31,6 +31,6 @@ public class Application {
     	// Through this you can test if beans are available and 
     	// what result they return.
     	ArtikelService us = ctx.getBean(ArtikelService.class);
-  		System.out.println("users with 's': "+us.getUsers("s"));
+  		System.out.println("users with 's': "+us.getArtikel("s"));
     }
 }

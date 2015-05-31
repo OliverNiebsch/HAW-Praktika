@@ -65,7 +65,7 @@ public class MultiApplication {
 				StartupInitializerWeb.class // the data population
 			)) {
 			ArtikelService us = ctx.getBean(ArtikelService.class);
-	  		System.out.println("users with 'm': "+us.getUsers("m"));
+	  		System.out.println("users with 'm': "+us.getArtikel("m"));
 	  		String s = ctx.getEnvironment().getProperty("javax.persistence.schema-generation.database.action");
 			System.out.println(s);
 		}
@@ -87,7 +87,7 @@ public class MultiApplication {
 	    	// Through this you can test if beans are available and 
 	    	// what result they return.
 	    	ArtikelService us = ctx.getBean(ArtikelService.class);
-	  		System.out.println("users with 'm': "+us.getUsers("m"));
+	  		System.out.println("users with 'm': "+us.getArtikel("m"));
 	  		// see that this configuration does not drop our database
 	  		String s = ctx.getEnvironment().getProperty("javax.persistence.schema-generation.database.action");
 			System.out.println(s);

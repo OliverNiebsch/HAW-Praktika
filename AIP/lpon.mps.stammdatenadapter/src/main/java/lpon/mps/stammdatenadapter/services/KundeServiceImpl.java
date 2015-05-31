@@ -13,7 +13,7 @@ public class KundeServiceImpl implements KundeService {
 	private KundeRepository kundeRepository;
 
 	@Override
-	public Kunde getTopic(long id) {
+	public Kunde getKunde(long id) {
 		return kundeRepository.findOne(id);
 	}
 

@@ -16,6 +16,14 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 public class Artikel {
+	
+	public Artikel() { }
+	
+	public Artikel(String bezeichnung, List<Artikel> baugruppe) {
+		super();
+		this.bezeichnung = bezeichnung;
+		this.baugruppe = baugruppe;
+	}
 
 	@Id
 	@GeneratedValue

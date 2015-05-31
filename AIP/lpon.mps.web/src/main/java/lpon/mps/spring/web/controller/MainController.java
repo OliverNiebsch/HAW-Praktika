@@ -35,7 +35,7 @@ public class MainController {
             method=RequestMethod.GET, 
             produces=MediaType.APPLICATION_JSON_VALUE)
     public List<Map<String,? extends Object>> getUsers(@RequestParam(required = false, value = "search") String needle) {
-        return mapper.apply(userService.getUsers(needle)); // our object have name, id, label
+        return mapper.apply(userService.getArtikel(needle)); // our object have name, id, label
     }
     
 
@@ -43,7 +43,7 @@ public class MainController {
             method=RequestMethod.GET, 
             produces=MediaType.APPLICATION_JSON_VALUE)
     public Artikel getUser(@PathVariable("id") Long id) {
-        return userService.getUserById(id); // our object have name, id, label
+        return userService.getArtikelById(id); // our object have name, id, label
     }
     
 

@@ -1,5 +1,7 @@
 package lpon.mps.ppsadapter.services;
 
-public interface PPSAdapterService {
+import lpon.mps.stammdatenadapter.entities.Artikel;
 
+public interface PPSAdapterService {
+	public void bauteilFertigen(Artikel bauteil);
 }

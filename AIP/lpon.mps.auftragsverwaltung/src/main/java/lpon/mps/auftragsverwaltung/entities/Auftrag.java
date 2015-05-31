@@ -9,6 +9,12 @@ import javax.persistence.Id;
 public class Auftrag {
 	public Auftrag(){}
 	
+	public Auftrag(Angebot angebot) {
+		super();
+		this.angebot = angebot;
+		this.state = AuftragState.ANGELEGT;
+	}
+
 	@Id
 	@GeneratedValue
 	private Long id;

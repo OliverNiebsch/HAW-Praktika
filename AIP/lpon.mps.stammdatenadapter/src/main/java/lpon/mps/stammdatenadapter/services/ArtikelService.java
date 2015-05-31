@@ -5,9 +5,9 @@ import java.util.List;
 import lpon.mps.stammdatenadapter.entities.Artikel;
 
 public interface ArtikelService {
-	public List<Artikel> getUsers(String needle);
+	public List<Artikel> getArtikel(String needle);
 
-	void saveUser(Artikel u);
+	void saveArtikel(Artikel a);
 
-	public Artikel getUserById(long id);
+	public Artikel getArtikelById(long id);
 }

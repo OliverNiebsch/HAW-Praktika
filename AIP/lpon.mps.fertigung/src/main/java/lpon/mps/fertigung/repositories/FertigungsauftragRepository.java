@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
  * DAO for the Todo Entity.
  * Spring data implements all method of the interfaces automatically through proxies.
  */
-public interface TodoRepository extends 
+public interface FertigungsauftragRepository extends 
 	PagingAndSortingRepository<Fertigungsauftrag, Long> { 
 	@Query(
             "Select t FROM Todo t WHERE LOWER(t.title) LIKE LOWER(CONCAT('%', :searchTerm, '%')) " +

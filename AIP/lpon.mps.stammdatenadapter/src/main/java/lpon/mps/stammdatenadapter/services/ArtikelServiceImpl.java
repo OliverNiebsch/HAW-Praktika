@@ -7,18 +7,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import lpon.mps.stammdatenadapter.entities.Artikel;
-import lpon.mps.stammdatenadapter.repositories.ArtikelRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ArtikelServiceImpl implements ArtikelService {
 
 	protected EntityManager entityManager;
-	
-	@Autowired
-	protected ArtikelRepository userRepository;
 	 
     @PersistenceContext 
     public void setEntityManager(EntityManager entityManager) {
@@ -26,12 +21,12 @@ public class ArtikelServiceImpl implements ArtikelService {
     }
 	
 	@Override
-	public void saveUser(Artikel u) {
-		entityManager.persist(u);
+	public void saveArtikel(Artikel a) {
+		entityManager.persist(a);
 	}
 
 	@Override
-	public List<Artikel> getUsers(String search) {
+	public List<Artikel> getArtikel(String search) {
     	Query query;
     	if(search!=null) {
     		query = entityManager.createQuery("SELECT a FROM Artikel AS a WHERE a.bezeichnung LIKE ?1");
@@ -45,7 +40,7 @@ public class ArtikelServiceImpl implements ArtikelService {
 	}
 
 	@Override
-	public Artikel getUserById(long id) {
+	public Artikel getArtikelById(long id) {
 		return entityManager.find(Artikel.class, id);
 	}
 

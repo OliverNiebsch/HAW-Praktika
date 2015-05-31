@@ -8,5 +8,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * DAO for the Todo Entity.
  * Spring data implements all methods of the interfaces automatically through proxies.
  */
-public interface TopicRepository extends PagingAndSortingRepository<Fertigungsplan, Long> {
+public interface FertigungsplanRepository extends PagingAndSortingRepository<Fertigungsplan, Long> {
 }

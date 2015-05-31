@@ -1,5 +1,6 @@
 package lpon.mps.auftragsverwaltung.services;
 
+import lpon.mps.auftragsverwaltung.entities.Angebot;
 import lpon.mps.auftragsverwaltung.entities.Auftrag;
 import lpon.mps.auftragsverwaltung.repositories.AuftragRepository;
 
@@ -20,5 +21,11 @@ public class AuftragServiceImpl implements AuftragService {
 	@Override
 	public void save(Auftrag t) {
 		auftragRepository.save(t);
+	}
+
+	@Override
+	public Auftrag createAuftrag(Angebot a) {
+		Auftrag auftrag = new Auftrag(a);
+		return auftragRepository.save(auftrag);
 	}
 }

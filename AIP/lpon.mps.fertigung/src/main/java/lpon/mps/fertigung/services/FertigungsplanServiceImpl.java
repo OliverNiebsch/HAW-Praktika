@@ -1,7 +1,7 @@
 package lpon.mps.fertigung.services;
 
 import lpon.mps.fertigung.entities.Fertigungsplan;
-import lpon.mps.fertigung.repositories.TopicRepository;
+import lpon.mps.fertigung.repositories.FertigungsplanRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 public class FertigungsplanServiceImpl implements FertigungsplanService {
 
 	@Autowired
-	private TopicRepository fertigungsplanRepository;
+	private FertigungsplanRepository fertigungsplanRepository;
 
 	@Override
-	public Fertigungsplan getTopic(long id) {
+	public Fertigungsplan getFertigungsplan(long id) {
 		return fertigungsplanRepository.findOne(id);
 	}
 
