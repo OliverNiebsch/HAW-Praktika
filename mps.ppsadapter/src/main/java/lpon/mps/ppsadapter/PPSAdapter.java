@@ -1,6 +1,6 @@
 package lpon.mps.ppsadapter;
 
-import lpon.mps.artikel.persistence.Artikel;
+import lpon.mps.stammdatenadapter.entities.Artikel;
 
 public class PPSAdapter {
 	public void bauteilfertigen(Artikel bauteil) {

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import lpon.mps.artikel.persistence.Artikel;
+import lpon.mps.stammdatenadapter.entities.Artikel;
 
 @Entity
 public class Fertigungsplan {

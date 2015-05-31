@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=""> <!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+    	<title>LPON MPS Test</title>
+    	<meta name="author" content="Oliver" />
+    	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	</head>
+  	<body>
+  	<div id="list">
+  	</div>
+  	<script type="text/javascript">
+  	
+  	function showArtikelList(query){
+  		if(query) query = "?search="+query;
+  		else query = "";
+  		$.getJSON("/artikel"+query, function( data ) {
+			var items = [];
+			data.forEach(function( val ) {
+			    items.push( "<li id='" + val.id + "'><a href='#' data-trg='"+val.id+"'>" + val.bezeichnung + "</a></li>" );
+			});
+			 
+			$( "<ul/>", {
+			   "class": "my-new-list",
+			    html: items.join( "" )
+			}).appendTo( "#list" );
+		});
+  	}
+  	
+  	$(document).ready(function(e) {
+		showArtikelList("");
+  	});
+  	</script>
+  	</body>
+</html>

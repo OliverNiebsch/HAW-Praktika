@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import lpon.mps.auftrag.persistence.Auftrag;
+import lpon.mps.auftragsverwaltung.entities.Auftrag;
 import lpon.mps.fertigungsplan.Fertigungsplan;
 
 @Entity
