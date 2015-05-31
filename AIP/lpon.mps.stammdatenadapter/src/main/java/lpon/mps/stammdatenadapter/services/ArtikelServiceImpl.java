@@ -26,8 +26,8 @@ public class ArtikelServiceImpl implements ArtikelService {
     }
 	
 	@Override
-	public void saveArtikel(Artikel a) {
-		entityManager.persist(a);
+	public Artikel saveArtikel(Artikel a) {
+		return artikelRepository.save(a);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class ArtikelServiceImpl implements ArtikelService {
 
 	@Override
 	public Artikel getArtikelById(long id) {
-		return entityManager.find(Artikel.class, id);
+		return artikelRepository.findOne(id);
 	}
 
 }

@@ -1,6 +1,7 @@
 package lpon.mps.stammdatenadapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import lpon.mps.stammdatenadapter.entities.Artikel;
 import lpon.mps.stammdatenadapter.services.ArtikelService;
@@ -26,15 +27,15 @@ public class ArtikelTest {
 	private ArtikelService artikelService;
 	
 	@Test
-	public void createArtikel() {
+	public void createAndFindArtikel() {
 		Artikel a1 = new Artikel("Schraube", null);
 		Assert.isNull(a1.getId());
-		artikelService.saveArtikel(a1);
+		a1 = artikelService.saveArtikel(a1);
 		Assert.notNull(a1.getId());
 		
 		Artikel a2 = new Artikel("Mutter", null);
 		Assert.isNull(a2.getId());
-		artikelService.saveArtikel(a2);
+		a2 = artikelService.saveArtikel(a2);
 		Assert.notNull(a2.getId());
 		
 		ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
@@ -43,7 +44,24 @@ public class ArtikelTest {
 		
 		Artikel a3 = new Artikel("Rasenmäher", artikelListe);
 		Assert.isNull(a3.getId());
-		artikelService.saveArtikel(a3);
+		a3 = artikelService.saveArtikel(a3);
 		Assert.notNull(a3.getId());
+		
+		// search
+		Artikel founded = artikelService.getArtikelById(a2.getId());
+		Assert.notNull(founded);
+		Assert.isTrue(a2.equals(founded));
+		
+		founded = artikelService.getArtikelById(a3.getId());
+		Assert.notNull(founded);
+		Assert.isTrue(a3.equals(founded));
+		Assert.isTrue(a3.getBaugruppe().contains(a1));
+		
+		List<Artikel> foundedItems = artikelService.getArtikel("er"); // Mutter und Rasenmäher
+		Assert.notNull(foundedItems);
+		Assert.notEmpty(foundedItems);
+		Assert.isTrue(foundedItems.size() == 2);
+		Assert.isTrue(foundedItems.contains(a2) && foundedItems.contains(a3));
+		Assert.isTrue(!foundedItems.contains(a1));
 	}
 }
