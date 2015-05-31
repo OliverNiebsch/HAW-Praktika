@@ -16,10 +16,10 @@ import lpon.mps.stammdatenadapter.entities.Artikel;
 public class Fertigungsplan {
 	public Fertigungsplan() {}
 	
-	public Fertigungsplan(List<Artikel> artikel) {
+	public Fertigungsplan(List<Long> artikel) {
 		artikelFertigungsStatus = new HashMap<Long, Boolean>();
-		for (Artikel a : artikel) {
-			artikelFertigungsStatus.put(a.getId(), false);
+		for (Long a : artikel) {
+			artikelFertigungsStatus.put(a, false);
 		}
 	}
 	
