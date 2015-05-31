@@ -8,5 +8,5 @@ public interface AuftragService {
 	
 	public Auftrag createAuftrag(Angebot a);
 	
-	public void save(Auftrag t);
+	public Auftrag save(Auftrag t);
 }

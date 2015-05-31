@@ -19,8 +19,8 @@ public class AuftragServiceImpl implements AuftragService {
 	}
 
 	@Override
-	public void save(Auftrag t) {
-		auftragRepository.save(t);
+	public Auftrag save(Auftrag t) {
+		return auftragRepository.save(t);
 	}
 
 	@Override
