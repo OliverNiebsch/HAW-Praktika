@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,7 +27,7 @@ public class Fertigungsplan {
 	@GeneratedValue
 	private Long id;
 
-	@Column(nullable = false)
+	@ElementCollection
 	private Map<Long, Boolean> artikelFertigungsStatus;
 
 	public Long getId() {

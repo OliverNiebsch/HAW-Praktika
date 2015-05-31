@@ -9,5 +9,5 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @ComponentScan(basePackages = "lpon.mps.auftragsverwaltung")
-public class AppConfiguration {
+public class AuftragsverwaltungConfiguration {
 }

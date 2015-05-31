@@ -3,7 +3,7 @@ package lpon.mps.spring.web.boot;
 import java.sql.SQLException;
 
 import lpon.mps.spring.web.controller.MainController;
-import lpon.mps.stammdatenadapter.config.AppConfiguration;
+import lpon.mps.stammdatenadapter.config.StammdatenConfiguration;
 import lpon.mps.stammdatenadapter.services.ArtikelService;
 
 import org.springframework.boot.SpringApplication;
@@ -23,7 +23,7 @@ public class Application {
     	ConfigurableApplicationContext ctx = SpringApplication.run(
     			new Object[]{
     					Application.class, // the application
-    					AppConfiguration.class, // the configuration of this application services and entities (see spring.services)
+    					StammdatenConfiguration.class, // the configuration of this application services and entities (see spring.services)
     					StartupInitializerWeb.class, // the data population
     					MainController.class // the main controller to supply the rest interface to the outside world
     			}, args); 

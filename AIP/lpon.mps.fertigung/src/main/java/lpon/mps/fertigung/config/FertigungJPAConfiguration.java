@@ -1,4 +1,4 @@
-package lpon.mps.auftragsverwaltung.config;
+package lpon.mps.fertigung.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import lpon.mps.auftragsverwaltung.entities.Angebot;
+import lpon.mps.fertigung.entities.Fertigungsplan;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,10 +24,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories("lpon.mps.auftragsverwaltung.repositories")
+@EnableJpaRepositories("lpon.mps.fertigung.repositories")
 @EnableTransactionManagement // similiar to <tx:annotation-driven/>
-@ComponentScan(basePackages = "lpon.mps.auftragsverwaltung.entities")
-public class JPAConfiguration {
+@ComponentScan(basePackages = "lpon.mps.fertigung.entities")
+public class FertigungJPAConfiguration {
 	private static final String JAVAX_JDBC = "javax.persistence.jdbc.";
 	
 	public static final String[] PROPERTIES_TO_COPY = {
@@ -53,7 +53,7 @@ public class JPAConfiguration {
 	}
 	
 	protected LocalContainerEntityManagerFactoryBean entityManagerFactory(Map<String, Object> jpaProperties) {
-		String[] packagesToScan = new String[]{Angebot.class.getPackage().getName()};
+		String[] packagesToScan = new String[]{Fertigungsplan.class.getPackage().getName()};
 		AbstractJpaVendorAdapter jpaVendor = new HibernateJpaVendorAdapter();
 		
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
