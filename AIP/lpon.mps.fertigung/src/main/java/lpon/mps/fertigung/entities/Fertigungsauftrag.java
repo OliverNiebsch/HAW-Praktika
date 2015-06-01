@@ -12,7 +12,7 @@ public class Fertigungsauftrag {
 	public Fertigungsauftrag() {}
 
 	public Fertigungsauftrag(Auftrag auftrag) {
-		this.auftragId = auftrag.getId();
+		this.auftrag = auftrag;
 		fertigungsplan = new Fertigungsplan(auftrag.getAngebot()
 				.getPositionen());
 	}
@@ -21,7 +21,8 @@ public class Fertigungsauftrag {
 	@GeneratedValue
 	private Long id;
 
-	private Long auftragId;
+	@OneToOne
+	private Auftrag auftrag;
 
 	@OneToOne
 	private Fertigungsplan fertigungsplan;
@@ -30,8 +31,8 @@ public class Fertigungsauftrag {
 		return id;
 	}
 
-	public Long getAuftrag() {
-		return auftragId;
+	public Auftrag getAuftrag() {
+		return auftrag;
 	}
 
 	public Fertigungsplan getFertigungsplan() {
@@ -56,6 +57,6 @@ public class Fertigungsauftrag {
 
 	@Override
 	public String toString() {
-		return "Fertigungsauftrag [id=" + id + ", auftrag=" + auftragId + "]";
+		return "Fertigungsauftrag [id=" + id + ", auftrag=" + auftrag + "]";
 	};
 }
