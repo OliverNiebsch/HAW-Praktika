@@ -1,8 +1,16 @@
 package lpon.mps.auftragsverwaltung;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lpon.mps.auftragsverwaltung.entities.Angebot;
+import lpon.mps.auftragsverwaltung.entities.Auftrag;
 import lpon.mps.auftragsverwaltung.services.AngebotService;
 import lpon.mps.auftragsverwaltung.services.AuftragService;
+import lpon.mps.stammdatenadapter.entities.Artikel;
+import lpon.mps.stammdatenadapter.entities.Kunde;
+import lpon.mps.stammdatenadapter.repositories.KundeRepository;
+import lpon.mps.stammdatenadapter.services.ArtikelService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,62 +19,63 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.Assert;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes=lpon.mps.auftragsverwaltung.AuftragTest.ContextConfiguration.class)
 public class AuftragTest {
-
-	@ComponentScan(basePackages = "lpon.mps.auftragsverwaltung")
+	// TODO: Mocking einbauen, sodass nur Komponenten aus dem lpon.mps.auftragsverwaltungs Package verwendet werden 
+	
+	
+	@ComponentScan(basePackages = {"lpon.mps.stammdatenadapter", "lpon.mps.auftragsverwaltung"})
 	@Configuration
 	static class ContextConfiguration {}
+	
+	@Autowired
+	private KundeRepository kundenRepo;
+	
+	@Autowired
+	private ArtikelService artikelService;
 	
 	@Autowired
 	private AuftragService auftragService;
 	@Autowired
 	private AngebotService angebotService;
 	
+	private Angebot ang1;
+	
+	@Test
+	public void createAndFindAngebot() {
+		Kunde k1 = new Kunde();
+		kundenRepo.save(k1);
+		
+		Artikel a1 = new Artikel("Artikel1", null);
+		artikelService.saveArtikel(a1);
+		
+		List<Artikel> artikelListe = new ArrayList<Artikel>();
+		artikelListe.add(a1);
+		
+		ang1 = new Angebot(k1, artikelListe);
+		ang1 = angebotService.saveAngebot(ang1);
+		
+		Assert.notNull(ang1.getId());
+		Angebot founded = angebotService.getAngebot(ang1.getId());
+		Assert.notNull(founded);
+		Assert.isTrue(ang1.equals(founded));
+		
+		Assert.isNull(angebotService.getAngebot(ang1.getId() * 10));
+	}
+	
 	@Test
 	public void createAndFindAuftrag() {
-		//Angebot ang1 = new Angebot();
+		Auftrag auf1 = auftragService.createAuftrag(ang1);
+		Assert.notNull(auf1);
+		Assert.notNull(auf1.getId());
 		
-		//angebotService.getAngebot(1);
+		Auftrag founded = auftragService.getAuftrag(auf1.getId());
+		Assert.notNull(founded);
+		Assert.isTrue(auf1.equals(founded));
 		
-		
-//		
-//		Artikel a1 = new Artikel("Schraube", null);
-//		Assert.isNull(a1.getId());
-//		a1 = artikelService.saveArtikel(a1);
-//		Assert.notNull(a1.getId());
-//		
-//		Artikel a2 = new Artikel("Mutter", null);
-//		Assert.isNull(a2.getId());
-//		a2 = artikelService.saveArtikel(a2);
-//		Assert.notNull(a2.getId());
-//		
-//		ArrayList<Artikel> artikelListe = new ArrayList<Artikel>();
-//		artikelListe.add(a1);
-//		artikelListe.add(a2);
-//		
-//		Artikel a3 = new Artikel("Rasenmäher", artikelListe);
-//		Assert.isNull(a3.getId());
-//		a3 = artikelService.saveArtikel(a3);
-//		Assert.notNull(a3.getId());
-//		
-//		// search
-//		Artikel founded = artikelService.getArtikelById(a2.getId());
-//		Assert.notNull(founded);
-//		Assert.isTrue(a2.equals(founded));
-//		
-//		founded = artikelService.getArtikelById(a3.getId());
-//		Assert.notNull(founded);
-//		Assert.isTrue(a3.equals(founded));
-//		Assert.isTrue(a3.getBaugruppe().contains(a1));
-//		
-//		List<Artikel> foundedItems = artikelService.getArtikel("er"); // Mutter und Rasenmäher
-//		Assert.notNull(foundedItems);
-//		Assert.notEmpty(foundedItems);
-//		Assert.isTrue(foundedItems.size() == 2);
-//		Assert.isTrue(foundedItems.contains(a2) && foundedItems.contains(a3));
-//		Assert.isTrue(!foundedItems.contains(a1));
+		Assert.isNull(auftragService.getAuftrag(10));
 	}
 }

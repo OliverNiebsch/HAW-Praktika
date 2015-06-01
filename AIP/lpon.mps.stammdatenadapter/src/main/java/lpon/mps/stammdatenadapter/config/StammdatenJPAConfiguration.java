@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import lpon.mps.stammdatenadapter.entities.Kunde;
+import lpon.mps.stammdatenadapter.entities.Artikel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -53,7 +53,7 @@ public class StammdatenJPAConfiguration {
 	}
 	
 	protected LocalContainerEntityManagerFactoryBean entityManagerFactory(Map<String, Object> jpaProperties) {
-		String[] packagesToScan = new String[]{Kunde.class.getPackage().getName()};
+		String[] packagesToScan = new String[]{Artikel.class.getPackage().getName()};
 		AbstractJpaVendorAdapter jpaVendor = new HibernateJpaVendorAdapter();
 		
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();

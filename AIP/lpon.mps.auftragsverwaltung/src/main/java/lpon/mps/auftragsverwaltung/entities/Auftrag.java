@@ -42,7 +42,7 @@ public class Auftrag {
 		this.state = state;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 

@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import lpon.mps.auftragsverwaltung.entities.Angebot;
+import lpon.mps.stammdatenadapter.entities.Artikel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,9 +25,9 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories("lpon.mps.auftragsverwaltung.repositories")
+@EnableJpaRepositories({"lpon.mps.stammdatenadapter.repositories","lpon.mps.auftragsverwaltung.repositories"}) // TODO: So richtig?
 @EnableTransactionManagement // similiar to <tx:annotation-driven/>
-@ComponentScan(basePackages = "lpon.mps.auftragsverwaltung.entities")
+@ComponentScan(basePackages = {"lpon.mps.stammdatenadapter.entities","lpon.mps.auftragsverwaltung.entities"}) // TODO: So richtig?
 public class AuftragsverwaltungJPAConfiguration {
 	private static final String JAVAX_JDBC = "javax.persistence.jdbc.";
 	
@@ -53,7 +54,7 @@ public class AuftragsverwaltungJPAConfiguration {
 	}
 	
 	protected LocalContainerEntityManagerFactoryBean entityManagerFactory(Map<String, Object> jpaProperties) {
-		String[] packagesToScan = new String[]{Angebot.class.getPackage().getName()};
+		String[] packagesToScan = new String[]{Artikel.class.getPackage().getName(), Angebot.class.getPackage().getName()}; // TODO: SO richtig?
 		AbstractJpaVendorAdapter jpaVendor = new HibernateJpaVendorAdapter();
 		
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();

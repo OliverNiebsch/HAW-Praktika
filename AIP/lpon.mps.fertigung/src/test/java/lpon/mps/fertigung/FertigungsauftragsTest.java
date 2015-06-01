@@ -1,12 +1,15 @@
 package lpon.mps.fertigung;
 
 
+import java.util.ArrayList;
+
 import lpon.mps.auftragsverwaltung.entities.Angebot;
 import lpon.mps.auftragsverwaltung.entities.Auftrag;
 import lpon.mps.auftragsverwaltung.services.AngebotService;
 import lpon.mps.auftragsverwaltung.services.AuftragService;
 import lpon.mps.fertigung.entities.Fertigungsauftrag;
 import lpon.mps.fertigung.services.FertigungsauftragService;
+import lpon.mps.stammdatenadapter.entities.Artikel;
 import lpon.mps.stammdatenadapter.entities.Kunde;
 import lpon.mps.stammdatenadapter.repositories.KundeRepository;
 
@@ -44,7 +47,7 @@ public class FertigungsauftragsTest {
 		Kunde k = new Kunde();
 		k = kundenRepo.save(k);
 		
-		Angebot angebot = new Angebot(k, null);
+		Angebot angebot = new Angebot(k, new ArrayList<Artikel>());
 		angebot = angebotService.saveAngebot(angebot);
 		
 		Auftrag auftrag = auftragService.createAuftrag(angebot);

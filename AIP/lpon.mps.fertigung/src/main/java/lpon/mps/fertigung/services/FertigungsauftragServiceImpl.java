@@ -8,6 +8,7 @@ import lpon.mps.auftragsverwaltung.entities.Auftrag;
 import lpon.mps.fertigung.entities.Fertigungsauftrag;
 import lpon.mps.fertigung.entities.Fertigungsplan;
 import lpon.mps.fertigung.repositories.FertigungsauftragRepository;
+import lpon.mps.fertigung.repositories.FertigungsplanRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,9 @@ import org.springframework.stereotype.Service;
 public class FertigungsauftragServiceImpl implements FertigungsauftragService {
 
 	protected EntityManager entityManager;
+	
+	@Autowired
+	private FertigungsplanRepository planRepo;
 	
 	@Autowired
 	private FertigungsauftragRepository fertigungsauftragRepository;
@@ -38,6 +42,8 @@ public class FertigungsauftragServiceImpl implements FertigungsauftragService {
 	@Override
 	public Fertigungsauftrag createFertigungsauftrag(Auftrag a) {
 		Fertigungsauftrag fertA = new Fertigungsauftrag(a);
+		
+		planRepo.save(fertA.getFertigungsplan());
 		return fertigungsauftragRepository.save(fertA);
 	}
 
