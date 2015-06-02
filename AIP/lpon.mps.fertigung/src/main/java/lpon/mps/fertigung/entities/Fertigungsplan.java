@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -27,16 +28,18 @@ public class Fertigungsplan {
 	@GeneratedValue
 	private Long id;
 
-	@ElementCollection
+	@ElementCollection(fetch=FetchType.EAGER)
 	private Map<Long, Boolean> artikelFertigungsStatus;
 
 	public Long getId() {
 		return id;
 	}
 	
-	public void signalGefertigtesTeil(Artikel a) {
+	public boolean signalGefertigtesTeil(Artikel a) {
 		if (artikelFertigungsStatus.containsKey(a.getId()))
-			artikelFertigungsStatus.put(a.getId(), true);			
+			artikelFertigungsStatus.put(a.getId(), true);	
+		
+		return !artikelFertigungsStatus.containsValue(false);
 	}
 
 	@Override

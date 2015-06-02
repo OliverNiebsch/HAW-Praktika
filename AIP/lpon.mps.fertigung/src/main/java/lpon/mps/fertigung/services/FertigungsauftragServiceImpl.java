@@ -1,14 +1,18 @@
 package lpon.mps.fertigung.services;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import lpon.mps.auftragsverwaltung.entities.Auftrag;
+import lpon.mps.auftragsverwaltung.services.AuftragService;
 import lpon.mps.fertigung.entities.Fertigungsauftrag;
 import lpon.mps.fertigung.entities.Fertigungsplan;
 import lpon.mps.fertigung.repositories.FertigungsauftragRepository;
 import lpon.mps.fertigung.repositories.FertigungsplanRepository;
+import lpon.mps.stammdatenadapter.entities.Artikel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +24,12 @@ public class FertigungsauftragServiceImpl implements FertigungsauftragService {
 	
 	@Autowired
 	private FertigungsplanRepository planRepo;
+	
+	@Autowired
+	private AuftragService auftragService;
+	
+	@Autowired
+	private FertigungsplanService fertigungsplanService;
 	
 	@Autowired
 	private FertigungsauftragRepository fertigungsauftragRepository;
@@ -35,8 +45,8 @@ public class FertigungsauftragServiceImpl implements FertigungsauftragService {
 	}
 
 	@Override
-	public void save(Fertigungsauftrag t) {
-		fertigungsauftragRepository.save(t);
+	public Fertigungsauftrag save(Fertigungsauftrag f) {
+		return fertigungsauftragRepository.save(f);
 	}
 
 	@Override
@@ -50,8 +60,26 @@ public class FertigungsauftragServiceImpl implements FertigungsauftragService {
 	@Override
 	public Fertigungsauftrag getFertigungsauftragForFertigungsplan(
 			Fertigungsplan plan) {
-		Query query = entityManager.createQuery("SELECT a FROM Artikel AS a WHERE a.fertigungsplan=?1");
+		Query query = entityManager.createQuery("SELECT f FROM Fertigungsauftrag AS f WHERE f.fertigungsplan=?1");
 		query.setParameter(1, plan);
-		return null;
+		
+		return (Fertigungsauftrag)query.getResultList().get(0);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public void bauteilGefertigt(Artikel bauteil) {
+		Query query = entityManager.createQuery("SELECT f FROM Fertigungsauftrag AS f WHERE :element MEMBER OF f.auftrag.angebot.positionen");
+		query.setParameter("element", bauteil);
+		
+		List<Fertigungsauftrag> fertAuftList = (List<Fertigungsauftrag>) query.getResultList();
+		
+		for (Fertigungsauftrag fertA : fertAuftList) {
+			fertA.signalGefertigtesTeil(bauteil);
+			
+			auftragService.save(fertA.getAuftrag());
+			fertigungsplanService.save(fertA.getFertigungsplan());
+			save(fertA);
+		}
 	}
 }

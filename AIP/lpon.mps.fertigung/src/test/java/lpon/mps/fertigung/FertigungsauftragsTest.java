@@ -12,6 +12,7 @@ import lpon.mps.fertigung.services.FertigungsauftragService;
 import lpon.mps.stammdatenadapter.entities.Artikel;
 import lpon.mps.stammdatenadapter.entities.Kunde;
 import lpon.mps.stammdatenadapter.repositories.KundeRepository;
+import lpon.mps.stammdatenadapter.services.ArtikelService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +35,9 @@ public class FertigungsauftragsTest {
 	private KundeRepository kundenRepo;
 	
 	@Autowired
+	private ArtikelService artikelService;
+	
+	@Autowired
 	private AngebotService angebotService;
 	
 	@Autowired
@@ -47,14 +51,34 @@ public class FertigungsauftragsTest {
 		Kunde k = new Kunde();
 		k = kundenRepo.save(k);
 		
-		Angebot angebot = new Angebot(k, new ArrayList<Artikel>());
+		Artikel a1 = new Artikel("Artikel1", null);
+		a1 = artikelService.saveArtikel(a1);
+		ArrayList<Artikel> artListe = new ArrayList<Artikel>();
+		artListe.add(a1);
+		
+		Angebot angebot = new Angebot(k, artListe);
 		angebot = angebotService.saveAngebot(angebot);
 		
 		Auftrag auftrag = auftragService.createAuftrag(angebot);
 		
 		Fertigungsauftrag fertAuftr = fertigungsauftragService.createFertigungsauftrag(auftrag);
-		
 		Assert.notNull(fertAuftr);
-		System.out.println(fertAuftr);
+		
+		Fertigungsauftrag founded =  fertigungsauftragService.getFertigungsauftrag(fertAuftr.getId());
+		Assert.notNull(founded);
+		Assert.isTrue(fertAuftr.equals(founded));
+		
+		founded =  fertigungsauftragService.getFertigungsauftragForFertigungsplan(fertAuftr.getFertigungsplan());
+		Assert.notNull(founded);
+		Assert.isTrue(fertAuftr.equals(founded));
+		
+		System.out.println(founded.getAuftrag().getState());
+		
+		fertigungsauftragService.bauteilGefertigt(a1);		
+		founded =  fertigungsauftragService.getFertigungsauftrag(fertAuftr.getId());
+		System.out.println(founded.getAuftrag().getState());
+		
+		Assert.notNull(founded);
+		Assert.isTrue(!(fertAuftr.getAuftrag().getState() == founded.getAuftrag().getState()));
 	}
 }

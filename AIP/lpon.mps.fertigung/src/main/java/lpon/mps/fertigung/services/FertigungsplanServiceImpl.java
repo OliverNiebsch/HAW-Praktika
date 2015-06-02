@@ -17,4 +17,9 @@ public class FertigungsplanServiceImpl implements FertigungsplanService {
 		return fertigungsplanRepository.findOne(id);
 	}
 
+	@Override
+	public Fertigungsplan save(Fertigungsplan f) {
+		return fertigungsplanRepository.save(f);
+	}
+
 }

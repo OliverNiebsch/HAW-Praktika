@@ -1,11 +1,14 @@
 package lpon.mps.fertigung.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import lpon.mps.auftragsverwaltung.entities.Auftrag;
+import lpon.mps.auftragsverwaltung.entities.AuftragState;
+import lpon.mps.stammdatenadapter.entities.Artikel;
 
 @Entity
 public class Fertigungsauftrag {
@@ -21,10 +24,10 @@ public class Fertigungsauftrag {
 	@GeneratedValue
 	private Long id;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Auftrag auftrag;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Fertigungsplan fertigungsplan;
 
 	public Long getId() {
@@ -37,6 +40,17 @@ public class Fertigungsauftrag {
 
 	public Fertigungsplan getFertigungsplan() {
 		return fertigungsplan;
+	}
+	
+	public boolean signalGefertigtesTeil(Artikel a) {
+		boolean all = fertigungsplan.signalGefertigtesTeil(a);
+		
+		if (all) {
+			// alle Bauteile fertig gefertigt
+			auftrag.setState(AuftragState.GEFERTIGT);
+		}
+		
+		return all;
 	}
 
 	@Override
