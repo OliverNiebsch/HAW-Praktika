@@ -1,39 +1,30 @@
 package lpon.mware_lib;
 
 public abstract class AccessorClass {
-//	public static Object NARROW_CAST(String packageName, String className, Object rawRef) {
-//		Object narrowObj = null;
-//		
-//		switch (packageName) {
-//		case "accessor_one":
-//			switch (className) {
-//			case "ClassOneImplBase":
-//				
-//				break;
-//
-//			case "ClassTwoBaseImpl":
-//				break;
-//			}
-//			break;
-//
-//		case "accessor_two":
-//			switch (className) {
-//			case "ClassOneImplBase":
-//				
-//				break;
-//			}
-//			break;
-//		}
-//		
-//		return narrowObj;
-//	}
+	private String id, host;
+	private int port;
 	
 	protected AccessorClass(Object rawObjRef) {
-		// TODO: implementieren
+		if (rawObjRef != null) {
+			if (!(rawObjRef instanceof String[])) {
+				throw new RuntimeException("Raw data are wrong!");
+			}
+			
+			String[] data = (String[])rawObjRef;
+			if (data.length != 3) {
+				throw new RuntimeException("Wrong number of Strings in raw data!");
+			}
+			
+			id = data[0];
+			host = data[1];
+			port = Integer.parseInt(data[2]);
+		}
 	}
 	
 	protected Object remoteCall(String methodName, Object[] params) throws Exception {
-		// TODO: implementieren
-		return null;
+		CommunicationModule comMod = new CommunicationModule();
+		Object result = comMod.callMethod(new MessageCall(id, methodName, params), host, port);
+		
+		return result;
 	}
 }
