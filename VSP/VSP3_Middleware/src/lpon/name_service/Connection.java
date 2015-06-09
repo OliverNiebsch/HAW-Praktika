@@ -13,48 +13,17 @@ public class Connection extends Thread {
 	private Socket listeningSocket;
 	private InputStreamReader reader = null;  //new InputStreamReader(socket.getInputStream());
 	private OutputStreamWriter writer = null; //new OutputStreamWriter(socket.getOutputStream());
-	private LookUpTable lookUpTable = null;
 	private boolean closeConnection = false;
 	
 	private static final String CRLF = "\n";
 	
-	public Connection(Socket listeningSocket, LookUpTable lookUpTable) {
+	public Connection(Socket listeningSocket) {
 		super();
 		this.listeningSocket = listeningSocket;
-		this.lookUpTable = lookUpTable;
 	}
 	
 	/*
-	private void startSocket(int port) throws IOException {
-		try {
-			serverSocket = new ServerSocket(port);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		while (!isShuttingDown) {
-
-			cleanUpClientThreads();
-
-			if (connectedClientThreads.size() < MAX_CLIENT_CON) {
-				Socket socket = serverSocket.accept(); // ex con
-				System.out.println("New Nameservice Connection established.");
-				Connection connection = new Connection(socket, lookUpTable);
-				connection.start();
-				connectedClientThreads.add(connection);
-			} else {
-				try {
-					System.out.println("Too many open connections. Sleeping for 1000ms");
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-			}
-
-		}
-		closeClientConnections();
-	}
+	
 	*/
 	
 	private void writeLine(String line) {
@@ -126,7 +95,7 @@ public class Connection extends Thread {
 				String myHost = ary[0];
 				int myPort = Integer.parseInt(ary[1]);
 				String name = ary[2];
-				lookUpTable.rebind(name, myHost, myPort);
+				LookUpTable.rebind(name, myHost, myPort);
 				result = "rebind_reply ok"; 	
 			}
 			else{
@@ -135,7 +104,7 @@ public class Connection extends Thread {
 			}
 			break;
 		case "resolve":
-			ResolveObject resObj = lookUpTable.resolve(value);
+			ResolveObject resObj = LookUpTable.resolve(value);
 			String myHost = resObj.getHostname();
 			String myPort = resObj.getPort() + "";
 			String name = resObj.getId();
