@@ -23,8 +23,14 @@ public abstract class AccessorClass {
 	
 	protected Object remoteCall(String methodName, Object[] params) throws Exception {
 		CommunicationModule comMod = new CommunicationModule();
-		Object result = comMod.callMethod(new MessageCall(id, methodName, params), host, port);
+		MessageReply msgResult = comMod.callMethod(new MessageCall(id, methodName, params), host, port);
 		
-		return result;
+//		ObjectBroker.logger.print("Called Method %s on Object %s -> Result of Type %s: %s", methodName, id, result.getClass().toString(), result.toString());
+		
+		if (msgResult.isException) {
+			throw (Exception)msgResult.result;
+		} else {
+			return msgResult.result;
+		}
 	}
 }

@@ -22,8 +22,11 @@ public abstract class ClassTwoImplBase extends AccessorClass {
 			public double methodTwo() throws SomeException112 {
 				try {
 					return (Double)super.remoteCall("methodTwo", new Object[0]);
-				} catch (Exception e) {
+				} catch (SomeException112 e) {
 					throw (SomeException112)e;
+				} catch (Exception e) {
+					e.printStackTrace();
+					return 0.0;
 				}
 			}
 			

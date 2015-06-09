@@ -22,9 +22,13 @@ public abstract class ClassOneImplBase extends AccessorClass {
 			public String methodOne(String param1, int param2) throws SomeException112 {
 				try {
 					return (String)super.remoteCall("methodOne", new Object[] {param1, param2});
-				} catch (Exception e) {
+				} catch (SomeException112 e) {
 					throw (SomeException112)e;
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
+				
+				return null;
 			}
 		};
 	}
