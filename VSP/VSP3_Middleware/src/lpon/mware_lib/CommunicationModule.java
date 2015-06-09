@@ -7,7 +7,7 @@ public class CommunicationModule {
 	 * @param objectID
 	 * @param MethodName
 	 */
-	public Object callMethod(String objectID, String MethodName, String[] arguments, String host, int port) {
+	public MessageReply callMethod(MessageCall messageCall, String host, int port) {
 		// TODO - implement CommunicationModule.callMethod
 		throw new UnsupportedOperationException();
 	}

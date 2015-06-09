@@ -9,8 +9,7 @@ public class NameService {
 	 * @param name
 	 */
 	public void rebind(Object servant, String name) {
-		// TODO - implement NameService.rebind
-		throw new UnsupportedOperationException();
+		new CommunicationModule().rebindObject(servant, name);
 	}
 
 	/**
@@ -18,8 +17,7 @@ public class NameService {
 	 * @param name
 	 */
 	public Object resolve(String name) {
-		// TODO - implement NameService.resolve
-		throw new UnsupportedOperationException();
+		return new CommunicationModule().resolveID(name);
 	}
 
 }
