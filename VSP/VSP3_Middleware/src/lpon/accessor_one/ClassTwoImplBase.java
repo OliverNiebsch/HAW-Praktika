@@ -3,6 +3,9 @@ package lpon.accessor_one;
 import lpon.mware_lib.AccessorClass;
 
 public abstract class ClassTwoImplBase extends AccessorClass {
+	public ClassTwoImplBase() {
+		super(null);
+	}
 	
 	protected ClassTwoImplBase(Object rawObjRef) {
 		super(rawObjRef);

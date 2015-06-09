@@ -4,6 +4,10 @@ import lpon.mware_lib.AccessorClass;
 
 
 public abstract class ClassOneImplBase extends AccessorClass {
+	public ClassOneImplBase() {
+		super(null);
+	}
+	
 	public ClassOneImplBase(Object rawObjRef) {
 		super(rawObjRef);
 	}
