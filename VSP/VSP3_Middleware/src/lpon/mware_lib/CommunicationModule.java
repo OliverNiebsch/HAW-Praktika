@@ -1,14 +1,18 @@
 package lpon.mware_lib;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class CommunicationModule {
 	private static int nsPort;
 	private static String nsHost;
+	private static final String CRLF = "\n";
 
 	public static void init(String nsHost, int nsPort) {
 		CommunicationModule.nsPort = nsPort;
@@ -20,7 +24,8 @@ public class CommunicationModule {
 	 * @param objectID
 	 * @param MethodName
 	 */
-	public MessageReply callMethod(MessageCall messageCall, String host, int port) {
+	public MessageReply callMethod(MessageCall messageCall, String host,
+			int port) {
 		Socket con = null;
 		try {
 			con = new Socket(host, port);
@@ -60,8 +65,41 @@ public class CommunicationModule {
 	 * @param name
 	 */
 	public void rebindObject(Object servant, String name, String host, int port) {
-		// TODO - implement CommunicationModule.rebindObject
-		throw new UnsupportedOperationException();
+		Socket con = null;
+
+		try {
+			con = new Socket(nsHost, nsPort);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
+
+			String rebindMessage = "rebind" + "," + host + "," + port + "," + name;
+			writeLine(rebindMessage, writer);// SWITCH COMMANDS
+			
+			String replyMessage = reader.readLine();
+			ObjectBroker.logger.print(replyMessage);
+			
+			if(!replyMessage.contains(",ok")){
+				ObjectBroker.logger.print("UNGÜLTIGES OBJECT - Konnte nicht zum Namenservice hinzugefügt werden!!!!!!! FAILED");	
+			}else{
+				ReferenceModule.addObject(name, servant);				
+			}
+			reader.close();
+			writer.close();
+			con.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void writeLine(String line, OutputStreamWriter writer) {
+		try {
+			System.out.println(line);
+			writer.write(line + CRLF);
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -69,8 +107,49 @@ public class CommunicationModule {
 	 * @param id
 	 */
 	public Object resolveID(String id) {
-		// TODO - implement CommunicationModule.resolveID
-		throw new UnsupportedOperationException();
+		Object returnvalue = null;
+		Socket con = null;
+
+		try {
+			con = new Socket(nsHost, nsPort);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
+
+			String resolveMessage = "resolve" + "," + id;
+			writeLine(resolveMessage, writer);// SWITCH COMMANDS
+			
+			String replyMessage = reader.readLine();
+			ObjectBroker.logger.print(replyMessage);
+			
+			returnvalue = (Object)ResolveMessageToAry(replyMessage);
+			reader.close();
+			writer.close();
+			con.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if(null == returnvalue){
+			ObjectBroker.logger.print("ObjectID konnte nicht korrekt aufgelöst werden: ");
+			throw new RuntimeException("Ungültige Object ID übergeben");
+		}
+		
+		return returnvalue;
+	}
+	
+	private String[] ResolveMessageToAry(String Message){
+		String[] ary = Message.split(",");
+		if(ary.length != 4){
+			return null;
+		}
+		else{
+			String[] returnary = new String[3];
+			returnary[0] = ary[1];
+			returnary[1] = ary[2];
+			returnary[2] = ary[3];
+			return returnary;
+		}
 	}
 
 }
