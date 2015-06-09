@@ -12,6 +12,8 @@ public class AccessorOneClassTwo extends ClassTwoImplBase {
 		if (param1 < 0)
 			throw new SomeException110("Double ist negativ: " + Double.toString(param1));
 		
+		lastValue = param1;
+		
 		return (int)param1;
 	}
 

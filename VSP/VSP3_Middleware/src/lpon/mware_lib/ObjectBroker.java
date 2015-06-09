@@ -17,6 +17,7 @@ public class ObjectBroker {
 	
 	private static ObjectBroker instance = null;
 	private static Thread listeningThread;
+	private static ServerSocket serverSocket;
 
 	private NameService nameService;
 	
@@ -60,6 +61,11 @@ public class ObjectBroker {
 
 	public void shutDown() {
 		listeningThread.interrupt();
+		try {
+			serverSocket.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		instance = null;
 	}
 	
@@ -72,7 +78,7 @@ public class ObjectBroker {
 				ArrayList<Connection> connections = new ArrayList<Connection>();
 				
 				try {
-					ServerSocket serverSocket = new ServerSocket(port);
+					serverSocket = new ServerSocket(port);
 
 					while (!isInterrupted()) {
 						if (connections.size() < 100) {

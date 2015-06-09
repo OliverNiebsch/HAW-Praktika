@@ -3,6 +3,7 @@ package lpon.mware_lib;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.Socket;
 
@@ -37,11 +38,11 @@ public class Connection extends Thread {
 			}
 		}
 		
-//		try {
+		try {
 			result = m.invoke(obj, msg.params);
-//		} catch (NoSuchMethodException | NullPointerException e) {
-//			e.printStackTrace();
-//		}
+		} catch (InvocationTargetException e) {
+			throw (Exception)e.getCause();
+		}
 		
 		return result;
 	}
