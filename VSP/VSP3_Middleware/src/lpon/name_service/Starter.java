@@ -23,6 +23,9 @@ public class Starter {
 			port = Integer.parseInt(args[0]);
 			System.out.println("Starting Nameserver on Port: " + port);
 		}
+		else{
+			System.out.println("Starting Nameserver on Default Port: " + port);
+		}
 
 		startSocket(port);
 
