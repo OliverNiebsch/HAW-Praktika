@@ -17,7 +17,7 @@ public class Starter {
 
 	public static void main(String[] args) throws IOException {
 
-		int port = 1337;
+		int port = 13037;
 
 		if (args.length > 0) {
 			port = Integer.parseInt(args[0]);

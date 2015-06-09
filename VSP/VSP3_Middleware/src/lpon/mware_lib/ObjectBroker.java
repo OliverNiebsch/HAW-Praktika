@@ -1,14 +1,16 @@
 package lpon.mware_lib;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import lpon.Logger;
 
 public class ObjectBroker {
-	private static String host = null;
+	private static String host;
 	private static int port = 13030;
 	
 	public static Logger logger = new Logger();
@@ -27,9 +29,20 @@ public class ObjectBroker {
 		logger.log = debug;
 		if (instance == null) {
 			listeningThread = startSocket(port);
+			logger.print("ListeningSocket gestartet");
+			
+			try {
+				host = InetAddress.getLocalHost().getHostName();
+				logger.print("Host gesetzt auf %s und Port auf %d", host, port);
+			} catch (UnknownHostException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 			instance = new ObjectBroker();
 			
 			CommunicationModule.init(serviceHost, listenPort);
+			logger.print("CommunicationModule initialisiert");
 		} else {
 			CommunicationModule.init(serviceHost, listenPort);
 		}
@@ -60,7 +73,6 @@ public class ObjectBroker {
 				
 				try {
 					ServerSocket serverSocket = new ServerSocket(port);
-					host = serverSocket.getInetAddress().getHostName();
 
 					while (!isInterrupted()) {
 						if (connections.size() < 100) {

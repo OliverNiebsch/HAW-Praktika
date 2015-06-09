@@ -68,7 +68,7 @@ public class Connection extends Thread {
 		else{
 			int firstSpace = inputMessage.indexOf(",");
 			
-			commandType = inputMessage.substring(0, firstSpace-1);
+			commandType = inputMessage.substring(0, firstSpace);
 			value = inputMessage.substring(firstSpace+1);
 		}
 		
@@ -84,12 +84,12 @@ public class Connection extends Thread {
 			//TODO rebind myHost, myPort, name
 			String[] ary = value.split(",");
 			
-			if(ary.length != 3){
+			if(ary.length == 3){
 				String myHost = ary[0];
 				int myPort = Integer.parseInt(ary[1]);
 				String name = ary[2];
 				LookUpTable.rebind(name, myHost, myPort);
-				result = "rebind_reply ok"; 	
+				result = "rebind_reply,ok"; 	
 			}
 			else{
 				result = "rebind_reply failed: RECEIVED:" + inputMessage;
@@ -101,7 +101,7 @@ public class Connection extends Thread {
 			String myHost = resObj.getHostname();
 			String myPort = resObj.getPort() + "";
 			String name = resObj.getId();
-			result = "resolve_reply " + name + "," + myHost + "," + myPort;
+			result = "resolve_reply," + name + "," + myHost + "," + myPort;
 			break;
 			
 		default:
