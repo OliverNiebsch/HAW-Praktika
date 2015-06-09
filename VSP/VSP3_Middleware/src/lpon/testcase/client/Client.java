@@ -2,6 +2,7 @@ package lpon.testcase.client;
 
 import lpon.accessor_one.ClassOneImplBase;
 import lpon.accessor_one.ClassTwoImplBase;
+import lpon.accessor_one.SomeException110;
 import lpon.accessor_one.SomeException112;
 import lpon.mware_lib.NameService;
 import lpon.mware_lib.ObjectBroker;
@@ -26,11 +27,31 @@ public class Client {
 		
 		
 		try {
-			bla.methodOne("egal", 5);
+			String return11 = bla.methodOne("egal", 5);
+			System.out.println("11: Returned: " + return11);
 		} catch (SomeException112 e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			int return12 = bla2.methodOne(4);
+			System.out.println("12: Returned: " + return12);
+		} catch (SomeException110 e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		try {
+			Double return21 = bla2.methodTwo();
+			System.out.println("21: Returned: " + return21);
+		} catch (SomeException112 e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
 		
 		middleWare.shutDown();
 	}
