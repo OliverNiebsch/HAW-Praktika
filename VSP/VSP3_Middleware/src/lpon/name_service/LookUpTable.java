@@ -2,7 +2,7 @@ package lpon.name_service;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-public class LookUpTable {
+public abstract class LookUpTable {
 	private static ConcurrentHashMap<String, ResolveObject> objects = new ConcurrentHashMap<String, ResolveObject>();
 	
 	public static void rebind(String id, String host, int port) {

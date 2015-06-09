@@ -14,8 +14,6 @@ public class Starter {
 	private static final List<Connection> connectedClientThreads = new ArrayList<Connection>();
 	private static boolean isShuttingDown = false;
 	
-	private static LookUpTable lookUpTable = new LookUpTable();
-	
 //	private InputStreamReader reader = null;/
 //	private OutputStreamWriter writer = null;//
 
@@ -49,7 +47,7 @@ public class Starter {
 			if (connectedClientThreads.size() < MAX_CLIENT_CON) {
 				Socket socket = serverSocket.accept(); // ex con
 				System.out.println("New Nameservice Connection established.");
-				Connection connection = new Connection(socket, lookUpTable);
+				Connection connection = new Connection(socket);
 				connection.start();
 				connectedClientThreads.add(connection);
 			} else {
@@ -63,7 +61,6 @@ public class Starter {
 
 		}
 		closeClientConnections();
-
 	}
 
 	private static void cleanUpClientThreads() {
