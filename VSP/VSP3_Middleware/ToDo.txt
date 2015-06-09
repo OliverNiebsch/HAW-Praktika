@@ -1,0 +1,5 @@
+- Log-Ausgaben bei Testcase
+- Test Cases erweitern (alle Exceptions einmal + null als Resturnval)
+- Referenze auf Doku
+- Doku aktualisieren
+- Nebenläufigkeit testen?
