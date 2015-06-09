@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.net.Socket;
 
 /**
- * Behandelt Methodenaufrufe von au√üen
+ * Behandelt Methodenaufrufe von aussen
  */
 public class Connection extends Thread {
 	
@@ -21,19 +21,27 @@ public class Connection extends Thread {
 	private Object callMethod(MessageCall msg) throws Exception {
 		Object result = null;
 		
-		Class<?>[] paramTypes = new Class[msg.params.length];
-		for (int i = 0; i < msg.params.length; i++) {
-			paramTypes[i] = msg.params[i].getClass();
-		}
-		
+//		Class<?>[] paramTypes = new Class[msg.params.length];
+//		for (int i = 0; i < msg.params.length; i++) {
+//			paramTypes[i] = msg.params[i].getClass();
+//		}
+//		
 		Object obj = ReferenceModule.getObject(msg.name);
+//		Method m = obj.getClass().getDeclaredMethod(msg.methodname, paramTypes);
 		
-		try {
-			Method m = obj.getClass().getDeclaredMethod(msg.methodname, paramTypes);
-			result = m.invoke(obj, msg.params);
-		} catch (NoSuchMethodException | NullPointerException e) {
-			e.printStackTrace();
+		Method m = null;
+		for (Method method : obj.getClass().getMethods()) {
+			if (method.getName().equals(msg.methodname)) {
+				// Methode gefunden (keine ‹berlagerungen erlaubt)
+				m = method;
+			}
 		}
+		
+//		try {
+			result = m.invoke(obj, msg.params);
+//		} catch (NoSuchMethodException | NullPointerException e) {
+//			e.printStackTrace();
+//		}
 		
 		return result;
 	}
