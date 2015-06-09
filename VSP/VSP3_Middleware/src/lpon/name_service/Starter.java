@@ -1,8 +1,6 @@
 package lpon.name_service;
 
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -13,11 +11,10 @@ public class Starter {
 	private static final int MAX_CLIENT_CON = 100;
 	private static final List<Connection> connectedClientThreads = new ArrayList<Connection>();
 	private static boolean isShuttingDown = false;
-	
-//	private InputStreamReader reader = null;/
-//	private OutputStreamWriter writer = null;//
 
-	
+	// private InputStreamReader reader = null;/
+	// private OutputStreamWriter writer = null;//
+
 	public static void main(String[] args) throws IOException {
 
 		int port = 1337;
@@ -52,7 +49,8 @@ public class Starter {
 				connectedClientThreads.add(connection);
 			} else {
 				try {
-					System.out.println("Too many open connections. Sleeping for 1000ms");
+					System.out
+							.println("Too many open connections. Sleeping for 1000ms");
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();

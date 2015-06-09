@@ -1,19 +1,16 @@
 package lpon.name_service;
 
-import java.awt.image.LookupTable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Connection extends Thread {
 	private Socket listeningSocket;
-	private InputStreamReader reader = null;  //new InputStreamReader(socket.getInputStream());
-	private OutputStreamWriter writer = null; //new OutputStreamWriter(socket.getOutputStream());
-	private boolean closeConnection = false;
+//	private InputStreamReader reader = null;  //new InputStreamReader(socket.getInputStream());
+//	private OutputStreamWriter writer = null; //new OutputStreamWriter(socket.getOutputStream());
+//	private boolean closeConnection = false;
 	
 	private static final String CRLF = "\n";
 	
@@ -26,7 +23,7 @@ public class Connection extends Thread {
 	
 	*/
 	
-	private void writeLine(String line) {
+	private void writeLine(String line, OutputStreamWriter writer) {
 		try {
 			System.out.println(line);
 			writer.write(line + CRLF);
@@ -43,20 +40,16 @@ public class Connection extends Thread {
 
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(listeningSocket.getInputStream()));
+			OutputStreamWriter writer = new OutputStreamWriter(listeningSocket.getOutputStream());
+//			while(!closeConnection){...}
 			
+			String inputMessage = reader.readLine();
+			writeLine(handleInputMessage(inputMessage), writer);//SWITCH COMMANDS
 			
-			writer = new OutputStreamWriter(listeningSocket.getOutputStream());
+			reader.close();
+			writer.close();
+			listeningSocket.close();
 			
-			while(!closeConnection){
-				//TODO do stuff
-				String inputMessage = reader.readLine();
-				writeLine((handleInputMessage(inputMessage)));//SWITCH COMMANDS
-				
-			}
-			//reader.close();
-			//SOCKET:close
-			// in.close();
-			// out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
