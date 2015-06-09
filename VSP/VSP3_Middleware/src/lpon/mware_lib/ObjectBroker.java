@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
@@ -100,9 +101,14 @@ public class ObjectBroker {
 					
 					serverSocket.close();
 					
+				} catch (SocketException e) {
+					if (!isInterrupted())
+						e.printStackTrace();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				
+				
 				
 				for (Connection c : connections) {
 					c.interrupt();
