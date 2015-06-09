@@ -1,6 +1,6 @@
 package lpon.accessor_two;
 
-import lpon.mware_lib.accessor.AccessorClass;
+import lpon.mware_lib.AccessorClass;
 
 
 public abstract class ClassOneImplBase extends AccessorClass {

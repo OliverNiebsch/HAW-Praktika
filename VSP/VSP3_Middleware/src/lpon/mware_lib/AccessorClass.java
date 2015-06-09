@@ -1,4 +1,4 @@
-package lpon.mware_lib.accessor;
+package lpon.mware_lib;
 
 public abstract class AccessorClass {
 //	public static Object NARROW_CAST(String packageName, String className, Object rawRef) {

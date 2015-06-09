@@ -3,6 +3,7 @@ package lpon.mware_lib;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Method;
 import java.net.Socket;
 
 /**
@@ -18,12 +19,27 @@ public class Connection extends Thread {
 	}
 	
 	private Object callMethod(MessageCall msg) throws Exception {
-		return null;
+		Object result = null;
+		
+		Class<?>[] paramTypes = new Class[msg.params.length];
+		for (int i = 0; i < msg.params.length; i++) {
+			paramTypes[i] = msg.params[i].getClass();
+		}
+		
+		Object obj = ReferenceModule.getObject(msg.name);
+		
+		try {
+			Method m = obj.getClass().getDeclaredMethod(msg.methodname, paramTypes);
+			result = m.invoke(obj, msg.params);
+		} catch (NoSuchMethodException | NullPointerException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		super.run();
 
 		try {
@@ -33,19 +49,20 @@ public class Connection extends Thread {
 			MessageCall msg = (MessageCall)reader.readObject();
 			MessageReply reply = null;
 			try {
-				callMethod(msg);
+				Object result = callMethod(msg);
+				reply = new MessageReply(false, result);
 			} catch (Exception e) {
-				
+				reply = new MessageReply(true, e);
 			}
 				
 			writer.writeObject(reply);
+			
 			reader.close();
 			writer.close();
 			listeningSocket.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

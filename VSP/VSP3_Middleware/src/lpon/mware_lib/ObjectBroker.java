@@ -5,9 +5,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import lpon.Logger;
+
 public class ObjectBroker {
 	private static String host = null;
 	private static int port = 13030;
+	
+	public static Logger logger = new Logger();
 	
 	private static ObjectBroker instance = null;
 	private static Thread listeningThread;
@@ -15,18 +19,17 @@ public class ObjectBroker {
 	private NameService nameService;
 	
 	/**
-	 * 
 	 * @param serviceHost
 	 * @param listenPort
 	 * @param debug
 	 */
 	public static ObjectBroker init(String serviceHost, int listenPort, boolean debug) {		
+		logger.log = debug;
 		if (instance == null) {
-			instance = new ObjectBroker();
 			listeningThread = startSocket(port);
+			instance = new ObjectBroker();
 			
 			CommunicationModule.init(serviceHost, listenPort);
-			// TODO: Logger
 		} else {
 			CommunicationModule.init(serviceHost, listenPort);
 		}
