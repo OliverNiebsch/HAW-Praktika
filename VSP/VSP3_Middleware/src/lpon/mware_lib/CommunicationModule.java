@@ -1,7 +1,14 @@
 package lpon.mware_lib;
 
 public class CommunicationModule {
-
+	private static int nsPort;
+	private static String nsHost;
+	
+	public static void init(String nsHost, int nsPort){
+		CommunicationModule.nsPort = nsPort;
+		CommunicationModule.nsHost = nsHost;
+	}
+	
 	/**
 	 * 
 	 * @param objectID
