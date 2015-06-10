@@ -12,7 +12,7 @@ public class AccessorTwoClassOne extends ClassOneImplBase {
 		double d = 0.0;
 		try {
 			d = Double.parseDouble(param1);
-		} catch(NumberFormatException e) {
+		} catch(NumberFormatException | NullPointerException e) {
 			throw new SomeException112("String " + param1 + " ist kein Double Wert");
 		}
 		
@@ -25,7 +25,7 @@ public class AccessorTwoClassOne extends ClassOneImplBase {
 		double d = 0.0;
 		try {
 			d = Double.parseDouble(param1);
-		} catch(NumberFormatException e) {
+		} catch(NumberFormatException | NullPointerException e) {
 			throw new SomeException112("String " + param1 + " ist kein Double Wert");
 		}
 		

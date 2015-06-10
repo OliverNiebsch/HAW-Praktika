@@ -22,7 +22,10 @@ public class AccessorOneClassTwo extends ClassTwoImplBase {
 		if (lastValue == null)
 			throw new SomeException112("Kein Double Wert vorhanden");
 		
-		return lastValue;
+		double ret = lastValue;
+		lastValue = null;
+		
+		return ret;
 	}
 
 }

@@ -10,6 +10,9 @@ public class AccessorOneClassOne extends ClassOneImplBase {
 			throw new SomeException112("Integer ist negativ: " + param2);
 		}
 		
+		if (param1 == null)
+			return "Nur Zahl: " + param2;
+		
 		return param1 + " Zahl: " + param2;
 	}
 
