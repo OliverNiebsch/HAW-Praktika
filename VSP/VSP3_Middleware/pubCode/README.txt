@@ -1,6 +1,28 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#                           __                             #
+#                          /\ \                            #
+#    _ __    __     __     \_\ \    ___ ___      __        #
+#   /\`'__\/'__`\ /'__`\   /'_` \ /' __` __`\  /'__`\      #
+#   \ \ \//\  __//\ \ \.\_/\ \ \ \/\ \/\ \/\ \/\  __/      #
+#    \ \_\\ \____\ \__/.\_\ \___,_\ \_\ \_\ \_\ \____\     #
+#     \/_/ \/____/\/__/\/_/\/__,_ /\/_/\/_/\/_/\/____/     #
+ ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___ 
+(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)
 
+ 1. Starten des Namensservers:
+ 
+    java name_service/Starter <port>
+------------------------------------------------------------
 
+ Anschließend können die Testanwendungen ausgeführt werden. 
 
-java name_service/Starter 13037
-java testcase/lpon_server/Server lab33 13037
-java testcase/lpon_client/Client lab33 13037
+------------------------------------------------------------
+ 2. Starten der mitgelieferten Testanwendung:
+ 2.1) Server:
+    java testcase/lpon_server/Server <host> <port> 
+
+ 2.2) Client:
+    java testcase/lpon_client/Client <host> <port>
+ 
+ ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___  ___ 
+(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)(___)
