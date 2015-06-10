@@ -12,7 +12,7 @@ import lpon.Logger;
 
 public class ObjectBroker {
 	private static String host;
-	private static int port = 13030;
+	private static int port = 0;
 	
 	public static Logger logger = new Logger();
 	
@@ -80,6 +80,7 @@ public class ObjectBroker {
 				
 				try {
 					serverSocket = new ServerSocket(port);
+					ObjectBroker.port = serverSocket.getLocalPort();
 
 					while (!isInterrupted()) {
 						if (connections.size() < 100) {

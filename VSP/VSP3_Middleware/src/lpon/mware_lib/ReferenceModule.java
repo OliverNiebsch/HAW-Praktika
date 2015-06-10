@@ -1,9 +1,9 @@
 package lpon.mware_lib;
 
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public abstract class ReferenceModule {
-	private static HashMap<String, Object> objects = new HashMap<String, Object>();
+	private static ConcurrentHashMap<String, Object> objects = new ConcurrentHashMap<String, Object>();
 	
 	protected static void addObject(String id, Object obj) {
 		objects.put(id, obj);

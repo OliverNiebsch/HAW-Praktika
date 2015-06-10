@@ -40,6 +40,9 @@ public class Client {
 		test4();
 		test5();
 		
+		
+		
+		
 		middleWare.shutDown();
 	}
 	
