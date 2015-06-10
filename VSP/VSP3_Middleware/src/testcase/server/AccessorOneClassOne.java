@@ -1,0 +1,19 @@
+package testcase.server;
+
+import accessor_one.ClassOneImplBase;
+import accessor_one.SomeException112;
+
+public class AccessorOneClassOne extends ClassOneImplBase {
+	@Override
+	public String methodOne(String param1, int param2) throws SomeException112 {
+		if (param2 < 0) {
+			throw new SomeException112("Integer ist negativ: " + param2);
+		}
+		
+		if (param1 == null)
+			return null;
+		
+		return param1 + " Zahl: " + param2;
+	}
+
+}
