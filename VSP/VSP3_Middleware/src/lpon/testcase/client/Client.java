@@ -25,7 +25,7 @@ public class Client {
 		middleWare = ObjectBroker.init("lab33", 13037, true);
 		ns = middleWare.getNameService();
 		
-		viktor = ns.resolve("viktor1"); //ClassOneImplBase
+		viktor = ns.resolve("viktor"); //ClassOneImplBase
 		oliver = ns.resolve("oliver"); //ClassTwoImplBase
 		lars = ns.resolve("lars"); //ClassOneImplBase2 (2.package)
 		
