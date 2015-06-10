@@ -9,6 +9,8 @@ import mware_lib.NameService;
 import mware_lib.ObjectBroker;
 
 public class Client {
+	private static final String host = "lab33";
+	private static final int port = 13037;
 
 	private static ObjectBroker middleWare;
 	private static NameService ns;
@@ -20,9 +22,19 @@ public class Client {
 	private static accessor_two.ClassOneImplBase accTwoClassOne;
 	
 	public static void main(String[] args) {
+		String ns_host;
+		int ns_port;
+		
+		if (args.length != 2) {
+			ns_host = args[0];
+			ns_port = Integer.parseInt(args[1]);
+		} else {
+			ns_host = host;
+			ns_port = port;
+		}
 		
 		//Fixture SETUP
-		middleWare = ObjectBroker.init("lab33", 13037, true);
+		middleWare = ObjectBroker.init(ns_host, ns_port, true);
 		ns = middleWare.getNameService();
 		
 		viktor = ns.resolve("viktor"); //ClassOneImplBase
