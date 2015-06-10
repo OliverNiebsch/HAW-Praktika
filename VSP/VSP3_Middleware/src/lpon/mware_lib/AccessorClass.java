@@ -23,13 +23,15 @@ public abstract class AccessorClass {
 	
 	protected Object remoteCall(String methodName, Object[] params) throws Exception {
 		CommunicationModule comMod = new CommunicationModule();
+		
+		// Sequenz-Diagramm 3 - Ref 2
 		MessageReply msgResult = comMod.callMethod(new MessageCall(id, methodName, params), host, port);
 		
-//		ObjectBroker.logger.print("Called Method %s on Object %s -> Result of Type %s: %s", methodName, id, result.getClass().toString(), result.toString());
-		
 		if (msgResult.isException) {
+			// Sequenz-Diagramm 3 - Ref 3
 			throw (Exception)msgResult.result;
 		} else {
+			// Sequenz-Diagramm 3 - Ref 2.1.4
 			return msgResult.result;
 		}
 	}

@@ -84,7 +84,9 @@ public class ObjectBroker {
 
 					while (!isInterrupted()) {
 						if (connections.size() < 100) {
-							Socket socket = serverSocket.accept(); // ex con
+							
+							// Sequenz-Diagramm 3 - Ref 2.1 TCP Connection annehmen
+							Socket socket = serverSocket.accept();
 							System.out.println("New Connection established.");
 							Connection connection = new Connection(socket);
 							connection.start();

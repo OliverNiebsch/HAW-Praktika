@@ -24,6 +24,7 @@ public class CommunicationModule {
 	 * @param objectID
 	 * @param MethodName
 	 */
+	// Sequenz-Diagramm 3 - Ref 2
 	public MessageReply callMethod(MessageCall messageCall, String host,
 			int port) {
 		Socket con = null;
@@ -33,6 +34,8 @@ public class CommunicationModule {
 					con.getOutputStream());
 			ObjectInputStream reader = new ObjectInputStream(
 					con.getInputStream());
+			
+			// Sequenz-Diagramm 3 - Ref 2.1
 			writer.writeObject(messageCall);
 			writer.flush();
 

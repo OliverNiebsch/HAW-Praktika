@@ -22,23 +22,18 @@ public class Connection extends Thread {
 	private Object callMethod(MessageCall msg) throws Exception {
 		Object result = null;
 		
-//		Class<?>[] paramTypes = new Class[msg.params.length];
-//		for (int i = 0; i < msg.params.length; i++) {
-//			paramTypes[i] = msg.params[i].getClass();
-//		}
-//		
+		// Sequenz-Diagramm 3 - Ref 2.1.1
 		Object obj = ReferenceModule.getObject(msg.name);
-//		Method m = obj.getClass().getDeclaredMethod(msg.methodname, paramTypes);
 		
 		Method m = null;
 		for (Method method : obj.getClass().getMethods()) {
 			if (method.getName().equals(msg.methodname)) {
-				// Methode gefunden (keine Überlagerungen erlaubt)
 				m = method;
 			}
 		}
 		
 		try {
+			// Sequenz-Diagramm 3 - Ref 2.1.2
 			result = m.invoke(obj, msg.params);
 		} catch (InvocationTargetException e) {
 			throw (Exception)e.getCause();
@@ -55,15 +50,19 @@ public class Connection extends Thread {
 			ObjectInputStream reader = new ObjectInputStream(listeningSocket.getInputStream());
 			ObjectOutputStream writer = new ObjectOutputStream(listeningSocket.getOutputStream());
 			
+			// Sequenz-Diagramm 3 - Ref 2.1 Object lesen
 			MessageCall msg = (MessageCall)reader.readObject();
 			MessageReply reply = null;
 			try {
 				Object result = callMethod(msg);
+				
+				// Sequenz-Diagramm 3 - Ref 2.1.3 MessageReply-Objekt erstellen
 				reply = new MessageReply(false, result);
 			} catch (Exception e) {
 				reply = new MessageReply(true, e);
 			}
 				
+			// Sequenz-Diagramm 3 - Ref 2.1.3 MessageReply-Objekt versenden
 			writer.writeObject(reply);
 			
 			reader.close();
