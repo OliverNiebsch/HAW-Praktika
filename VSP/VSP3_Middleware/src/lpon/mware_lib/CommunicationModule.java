@@ -46,7 +46,7 @@ public class CommunicationModule {
 			if (!(rawReply instanceof MessageReply)) {
 				// Communication der Middleware mit sich selbst ist nicht
 				// correct.
-				throw new RuntimeException("Ungültiges Reply Object erhalten");
+				throw new RuntimeException("Ungueltiges Reply Object erhalten");
 			}
 			MessageReply messageReply = (MessageReply) rawReply;
 			con.close();
@@ -69,19 +69,25 @@ public class CommunicationModule {
 
 		try {
 			con = new Socket(nsHost, nsPort);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					con.getInputStream()));
+			OutputStreamWriter writer = new OutputStreamWriter(
+					con.getOutputStream());
 
-			String rebindMessage = "rebind" + "," + host + "," + port + "," + name;
+			String rebindMessage = "rebind" + "," + host + "," + port + ","
+					+ name;
 			writeLine(rebindMessage, writer);// SWITCH COMMANDS
-			
+
 			String replyMessage = reader.readLine();
-			ObjectBroker.logger.print(replyMessage);
-			
-			if(!replyMessage.contains(",ok")){
-				ObjectBroker.logger.print("UNGÜLTIGES OBJECT - Konnte nicht zum Namenservice hinzugefügt werden!!!!!!! FAILED");	
-			}else{
-				ReferenceModule.addObject(name, servant);				
+			if (!(null == replyMessage)) {// Socket closed
+				ObjectBroker.logger.print(replyMessage);
+
+				if (!replyMessage.contains(",ok")) {
+					ObjectBroker.logger
+							.print("UNGUELTIGES OBJECT - Konnte nicht zum Namenservice hinzugefuegt werden!!!!!!! FAILED");
+				} else {
+					ReferenceModule.addObject(name, servant);
+				}
 			}
 			reader.close();
 			writer.close();
@@ -112,16 +118,18 @@ public class CommunicationModule {
 
 		try {
 			con = new Socket(nsHost, nsPort);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-			OutputStreamWriter writer = new OutputStreamWriter(con.getOutputStream());
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					con.getInputStream()));
+			OutputStreamWriter writer = new OutputStreamWriter(
+					con.getOutputStream());
 
 			String resolveMessage = "resolve" + "," + id;
 			writeLine(resolveMessage, writer);// SWITCH COMMANDS
-			
+
 			String replyMessage = reader.readLine();
 			ObjectBroker.logger.print(replyMessage);
-			
-			returnvalue = (Object)ResolveMessageToAry(replyMessage);
+
+			returnvalue = (Object) ResolveMessageToAry(replyMessage);
 			reader.close();
 			writer.close();
 			con.close();
@@ -129,21 +137,21 @@ public class CommunicationModule {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		if(null == returnvalue){
-			ObjectBroker.logger.print("ObjectID konnte nicht korrekt aufgelöst werden: ");
-			throw new RuntimeException("Ungültige Object ID übergeben");
+
+		if (null == returnvalue) {
+			ObjectBroker.logger
+					.print("ObjectID konnte nicht korrekt aufgeloest werden: ");
+			throw new RuntimeException("Ungueltige Object ID uebergeben");
 		}
-		
+
 		return returnvalue;
 	}
-	
-	private String[] ResolveMessageToAry(String Message){
+
+	private String[] ResolveMessageToAry(String Message) {
 		String[] ary = Message.split(",");
-		if(ary.length != 4){
+		if (ary.length != 4) {
 			return null;
-		}
-		else{
+		} else {
 			String[] returnary = new String[3];
 			returnary[0] = ary[1];
 			returnary[1] = ary[2];

@@ -71,7 +71,7 @@ public class ObjectBroker {
 	}
 	
 	
-	private static Thread startSocket(int port) {
+	private static Thread startSocket(final int port) {
 		Thread t = new Thread() {
 			
 			@Override
