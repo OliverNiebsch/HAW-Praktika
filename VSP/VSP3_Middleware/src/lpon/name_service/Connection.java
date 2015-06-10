@@ -86,27 +86,26 @@ public class Connection extends Thread {
 		case "BAD_COMMAND":
 			result = "UnknownCommand received: " + inputMessage;
 			break;
-		case "rebind":
-			// TODO rebind myHost, myPort, name
+		case "rebind": //REBIND Reference: 1.3
 			String[] ary = value.split(",");
 
 			if (ary.length == 3) {
 				String myHost = ary[0];
 				int myPort = Integer.parseInt(ary[1]);
 				String name = ary[2];
-				LookUpTable.rebind(name, myHost, myPort);
-				result = "rebind_reply,ok";
+				LookUpTable.rebind(name, myHost, myPort); //REF 1.3.1
+				result = "rebind_reply,ok"; //REF 1.3.2
 			} else {
 				result = "rebind_reply failed: RECEIVED:" + inputMessage;
 
 			}
 			break;
-		case "resolve":
-			ResolveObject resObj = LookUpTable.resolve(value);
+		case "resolve": //REF 1.2. // RESOLVE
+			ResolveObject resObj = LookUpTable.resolve(value); //1.2.1
 			String myHost = resObj.getHostname();
 			String myPort = resObj.getPort() + "";
 			String name = resObj.getId();
-			result = "resolve_reply," + name + "," + myHost + "," + myPort;
+			result = "resolve_reply," + name + "," + myHost + "," + myPort; //1.2.2
 			break;
 
 		default:
@@ -115,7 +114,7 @@ public class Connection extends Thread {
 			// break;
 		}
 
-		return result;
+		return result; //
 	}
 
 	public void closeConnection() {
