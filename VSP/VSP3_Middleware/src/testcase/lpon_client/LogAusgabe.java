@@ -1,4 +1,4 @@
-package testcase.client;
+package testcase.lpon_client;
 
 public abstract class LogAusgabe {
 

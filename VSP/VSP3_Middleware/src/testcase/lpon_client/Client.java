@@ -1,4 +1,4 @@
-package testcase.client;
+package testcase.lpon_client;
 
 import accessor_one.ClassOneImplBase;
 import accessor_one.ClassTwoImplBase;

@@ -1,4 +1,4 @@
-package testcase.server;
+package testcase.lpon_server;
 
 import accessor_one.ClassOneImplBase;
 import accessor_one.SomeException112;

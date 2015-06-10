@@ -1,4 +1,4 @@
-package testcase.server;
+package testcase.lpon_server;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
