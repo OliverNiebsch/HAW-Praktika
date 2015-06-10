@@ -9,7 +9,6 @@ import static testcase.pgvw_client.werkzeug.printError;
 import static testcase.pgvw_client.werkzeug.printResult;
 import mware_lib.NameService;
 import mware_lib.ObjectBroker;
-import mware_lib.util.PropUtil;
 
 import org.junit.After;
 import org.junit.Before;
@@ -29,7 +28,7 @@ public class Accessor_One_ClientUnitTest {
 
 	@Before
 	public void setUp() {
-		ob = ObjectBroker.init(PropUtil.getProp("nameserverHost"), PropUtil.getIntProp("nameserverPort"), false);
+		ob = ObjectBroker.init("lab33", 13037, false);
 		
 		ns = ob.getNameService();
 

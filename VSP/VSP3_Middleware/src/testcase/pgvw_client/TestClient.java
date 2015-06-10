@@ -6,8 +6,8 @@ import accessor_one.ClassOneImplBase;
 
 public class TestClient {
 
-	private static final int DEFAULT_NAMESERVER_PORT = 9988;
-	private static final String DEFAULT_NAMESERVER_HOST = "127.0.0.1";
+	private static final int DEFAULT_NAMESERVER_PORT = 13037;
+	private static final String DEFAULT_NAMESERVER_HOST = "lab33";
 	private NameService ns;
 
 	public TestClient(String nameserverHost, int nameserverPort) {
@@ -51,7 +51,7 @@ public class TestClient {
 		// Abbildung 3 Punkt 6
 		Object refObject = ns.resolve("accessor_one:ClassOneImplBase");
 		// Abbildung 3 Punkt 6.2
-		ClassOneImplBase prox = ClassOneImplBase.narrowCast(refObject);
+		final ClassOneImplBase prox = ClassOneImplBase.narrowCast(refObject);
 		for (int i = 0; i < threadcount; i++) {
 			threads[i] = new Thread(new Runnable() {
 

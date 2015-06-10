@@ -103,7 +103,7 @@ public class CommunicationModule {
 
 	private void writeLine(String line, OutputStreamWriter writer) {
 		try {
-			System.out.println(line);
+			ObjectBroker.logger.print(line);
 			writer.write(line + CRLF);
 			writer.flush();
 		} catch (IOException e) {
@@ -132,7 +132,7 @@ public class CommunicationModule {
 			String replyMessage = reader.readLine();
 			ObjectBroker.logger.print(replyMessage);
 
-			returnvalue = (Object) ResolveMessageToAry(replyMessage);
+			returnvalue = ResolveMessageToAry(replyMessage);
 			reader.close();
 			writer.close();
 			con.close();

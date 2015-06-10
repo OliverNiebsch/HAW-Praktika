@@ -1,0 +1,91 @@
+resolve,accessor_one:ClassOneImplBase
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase ('accessor_one:ClassOneImplBase')
+methodOne
+param 1 = java.lang.String : Hallo Ein Test
+param 2 = java.lang.Integer : 15
+accessor_one.SomeException112 with message 'param1 keine Zahl'
+--------------------------------------------------------------
+resolve,accessor_one:ClassOneImplBase
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase ('accessor_one:ClassOneImplBase')
+methodOne
+param 1 = java.lang.String : 15
+param 2 = java.lang.Integer : 15
+Return value = 30
+--------------------------------------------------------------
+resolve,accessor_one:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase ('accessor_one:ClassTwoImplBase')
+methodOne
+param 1 = java.lang.Integer : -5
+accessor_one.SomeException110 with message 'Zu klein'
+--------------------------------------------------------------
+resolve,accessor_one:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase ('accessor_one:ClassTwoImplBase')
+methodOne
+param 1 = java.lang.Integer : 50
+Return value = 50
+--------------------------------------------------------------
+resolve,accessor_one:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase ('accessor_one:ClassTwoImplBase')
+methodTwo
+param 1 = java.lang.Integer : -5
+accessor_one.SomeException112 with message 'Erste Ausf�hrung f�hrt zu Fehler!'
+--------------------------------------------------------------
+resolve,accessor_one:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase ('accessor_one:ClassTwoImplBase')
+methodTwo
+Return value = 999.9999
+--------------------------------------------------------------
+resolve,accessor_two:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase ('accessor_two:ClassTwoImplBase')
+methodOne
+param 1 = java.lang.String : Hallo Ein Test
+param 2 = java.lang.Integer : 15
+accessor_two.SomeException112 with message 'param1 keine Zahl'
+--------------------------------------------------------------
+resolve,accessor_two:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase ('accessor_two:ClassTwoImplBase')
+methodOne
+param1 = null
+param 2 = java.lang.Integer : 15
+accessor_two.SomeException112 with message 'param1==null'
+--------------------------------------------------------------
+resolve,accessor_two:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase ('accessor_two:ClassTwoImplBase')
+methodOne
+param 1 = java.lang.String : 15
+param 2 = java.lang.Double : 15.0
+Return value = 30.0
+--------------------------------------------------------------
+resolve,accessor_two:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase ('accessor_two:ClassTwoImplBase')
+methodTwo
+param 1 = java.lang.String : Hallo Ein Test
+param 2 = java.lang.Integer : 15
+accessor_two.SomeException304 with message 'param1 keine Zahl'
+--------------------------------------------------------------
+resolve,accessor_two:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase ('accessor_two:ClassTwoImplBase')
+methodTwo
+param1 = null
+param 2 = java.lang.Integer : 15
+accessor_two.SomeException112 with message 'param1==null'
+--------------------------------------------------------------
+resolve,accessor_two:ClassTwoImplBase
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase ('accessor_two:ClassTwoImplBase')
+methodTwo
+param 1 = java.lang.String : 15
+param 2 = java.lang.Double : 15.0
+Return value = 225.0
+--------------------------------------------------------------

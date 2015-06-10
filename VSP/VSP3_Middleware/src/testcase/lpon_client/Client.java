@@ -25,7 +25,7 @@ public class Client {
 		String ns_host;
 		int ns_port;
 		
-		if (args.length != 2) {
+		if (args.length == 2) {
 			ns_host = args[0];
 			ns_port = Integer.parseInt(args[1]);
 		} else {

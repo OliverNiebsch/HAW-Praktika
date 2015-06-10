@@ -1,0 +1,53 @@
+(abn678@lab21)~/git/HAW-Praktika/VSP/VSP3_Middleware/bin>java test3/Client2 lab33 13037
+resolve_reply,zumsel1,lab21,53919
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase ('zumsel1')
+methodOne
+param1 = "null"
+param2 = 12
+accessor_one.SomeException112 with message 'you must be joking! - 12'
+--------------------------------------------------------------
+resolve_reply,zumsel2,lab21,53919
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase ('zumsel2')
+methodOne
+param1 = 1.0
+Return value = 170
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase ('zumsel2')
+methodTwo
+Return value = 120.0
+--------------------------------------------------------------
+resolve_reply,zumsel3,lab21,53919
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase ('zumsel3')
+methodOne
+param1 = "moinsen!"
+param2 = 17.1
+accessor_two.SomeException112 with message 'Cod 'n' rice twice - moinsen!'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase ('zumsel3')
+methodTwo
+param1 = "hej alle!"
+param2 = 3.5
+accessor_two.SomeException304 with message 'Cod 'n' rice twice - hej alle!'
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase ('zumsel2') methodTwo Return value = 120.0 (#0)
+accessor_one.ClassTwoImplBase ('zumsel2') methodTwo Return value = 120.0 (#1)
+accessor_one.ClassTwoImplBase ('zumsel2') methodTwo Return value = 120.0 (#2)
+accessor_one.ClassTwoImplBase ('zumsel2') methodOne (thread 1) param1 = 1.0 Return value = 170
+accessor_one.ClassTwoImplBase ('zumsel2') methodTwo Return value = 120.0 (#3)
+accessor_one.ClassTwoImplBase ('zumsel2') methodTwo Return value = 120.0 (#4)
+----------------------------------------------------------------------------
+error: Unknown name
+Name Service threw java.lang.RuntimeException with message 'Ungueltige Object ID uebergeben' for null.
+
+Calling shutDown()...
+Done.
+Thread main running=true class:java.lang.Thread
+Thread Finalizer running=true class:java.lang.ref.Finalizer$FinalizerThread
+Thread Reference Handler running=true class:java.lang.ref.Reference$ReferenceHandler
+Thread Signal Dispatcher running=true class:java.lang.Thread
+(abn678@lab21)~/git/HAW-Praktika/VSP/VSP3_Middleware/bin>

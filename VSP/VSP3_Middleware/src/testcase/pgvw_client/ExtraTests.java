@@ -1,16 +1,12 @@
 package testcase.pgvw_client;
 
-import static org.junit.Assert.*;
-import static test.client.werkzeug.printResult;
+import static org.junit.Assert.assertNotNull;
 import mware_lib.NameService;
 import mware_lib.ObjectBroker;
-import mware_lib.util.PropUtil;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import accessor_two.ClassOneImplBase;
 
 public class ExtraTests {
 	
@@ -19,7 +15,7 @@ public class ExtraTests {
 
 	@Before
 	public void setUp() {
-		ob = ObjectBroker.init(PropUtil.getProp("nameserverHost"), PropUtil.getIntProp("nameserverPort"), false);
+		ob = ObjectBroker.init("lab33", 13037, false);
 		ns = ob.getNameService();
 
 	}
