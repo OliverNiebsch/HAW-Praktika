@@ -10,64 +10,93 @@ import lpon.mware_lib.ObjectBroker;
 
 public class Client {
 
+	private static ObjectBroker middleWare;
+	private static NameService ns;
+	private static Object viktor;
+	private static Object oliver;
+	private static Object lars;
+	private static ClassOneImplBase accOneClassOne;
+	private static ClassTwoImplBase accOneClassTwo;
+	private static lpon.accessor_two.ClassOneImplBase accTwoClassOne;
+	
 	public static void main(String[] args) {
 		
-		ObjectBroker middleWare = ObjectBroker.init("141.22.31.178", 13037, true);
+		//Fixture SETUP
+		middleWare = ObjectBroker.init("141.22.31.178", 13037, true);
+		ns = middleWare.getNameService();
 		
-		NameService ns = middleWare.getNameService();
+		viktor = ns.resolve("viktor"); //ClassOneImplBase
+		oliver = ns.resolve("oliver"); //ClassTwoImplBase
+		lars = ns.resolve("lars"); //ClassOneImplBase2 (2.package)
 		
-		Object viktor = ns.resolve("viktor"); //ClassOneImplBase
-		Object oliver = ns.resolve("oliver"); //ClassTwoImplBase
-		Object lars = ns.resolve("lars"); //ClassOneImplBase2 (2.package)
-		
-		ClassOneImplBase bla = ClassOneImplBase.narrowCast(viktor);
-		ClassTwoImplBase bla2 = ClassTwoImplBase.narrowCast(oliver);
-		lpon.accessor_two.ClassOneImplBase bla3 = lpon.accessor_two.ClassOneImplBase.narrowCast(lars);
+		accOneClassOne = ClassOneImplBase.narrowCast(viktor);
+		accOneClassTwo = ClassTwoImplBase.narrowCast(oliver);
+		accTwoClassOne = lpon.accessor_two.ClassOneImplBase.narrowCast(lars);
 		
 		
-		try {
-			String return11 = bla.methodOne("egal", 5);
-			System.out.println("11: Returned: " + return11);
-		} catch (SomeException112 e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			int return12 = bla2.methodOne(4);
-			System.out.println("12: Returned: " + return12);
-		} catch (SomeException110 e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
-		try {
-			Double return21 = bla2.methodTwo();
-			System.out.println("21: Returned: " + return21);
-		} catch (SomeException112 e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			Double return31 = bla3.methodOne("TEST", 3.4);
-			System.out.println("31: Returned: " + return31);
-		} catch (lpon.accessor_two.SomeException112 e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			Double return32 = bla3.methodTwo("12", -3.4);
-			System.out.println("32: Returned: " + return32);
-		} catch (lpon.accessor_two.SomeException112 e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SomeException304 e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		test1();
+		test2();
+		test3();
+		test4();
+		test5();
 		
 		middleWare.shutDown();
 	}
+	
+	private static void test1(){
+		String para1 = "egal";
+		int para2 = 5;
+		
+		try {			
+			String accOneClassOneMethodOne_return = accOneClassOne.methodOne(para1, para2);
+			LogAusgabe.printResult(accOneClassOne.getClass().getName(), "viktor", "methodOne", para1, para2, accOneClassOneMethodOne_return);
+		} catch (SomeException112 e) {
+			LogAusgabe.printError(accOneClassOne.getClass().getName(), "viktor", "methodOne", para1, para2, e.getClass().getName(), e.getMessage());
+		}
+	}
+	
+	private static void test2(){
+		double para1 = 4;
+		try {
+			int accOneClassTwoMethodOne_return = accOneClassTwo.methodOne(para1);
+			LogAusgabe.printResult(accOneClassTwo.getClass().getName(), "oliver", "methodOne", para1, accOneClassTwoMethodOne_return);
+		} catch (SomeException110 e) {
+			LogAusgabe.printError(accOneClassTwo.getClass().getName(), "oliver", "methodOne", para1, e.getClass().getName(), e.getMessage());
+		}
+	}
+	
+	private static void test3(){
+		try {
+			double accOneClassTwoMethodTwo_return = accOneClassTwo.methodTwo();
+			LogAusgabe.printResult(accOneClassTwo.getClass().getName(), "oliver", "methodTwo", accOneClassTwoMethodTwo_return);
+		} catch (SomeException112 e) {
+			LogAusgabe.printError(accOneClassTwo.getClass().getName(), "oliver", "methodTwo", e.getClass().getName(), e.getMessage());
+		}
+	}
+	
+	private static void test4(){
+		String para1 = "TEST";
+		double para2 = 3.4;
+		try {
+			double accTwoClassOneMethodOne_return = accTwoClassOne.methodOne("TEST", 3.4);
+			LogAusgabe.printResult(accTwoClassOne.getClass().getName(), "lars", "methodOne", para1, para2, accTwoClassOneMethodOne_return);
+			
+		} catch (lpon.accessor_two.SomeException112 e) {
+			LogAusgabe.printError(accTwoClassOne.getClass().getName(), "lars", "methodOne", para1, para2, e.getClass().getName(), e.getMessage());
+		}
+	}
+	
+	private static void test5(){
+		String para1 = "12";
+		double para2 = -3.4;
+		try {
+			double accTwoClassOneMethodTwo_return = accTwoClassOne.methodTwo("12", -3.4);
+			LogAusgabe.printResult(accTwoClassOne.getClass().getName(), "lars", "methodTwo", para1, para2, accTwoClassOneMethodTwo_return);
+		} catch (lpon.accessor_two.SomeException112 e) {
+			LogAusgabe.printError(accTwoClassOne.getClass().getName(), "lars", "methodTwo", para1, para2, e.getClass().getName(), e.getMessage());
+		} catch (SomeException304 e) {
+			LogAusgabe.printError(accTwoClassOne.getClass().getName(), "lars", "methodTwo", para1, para2, e.getClass().getName(), e.getMessage());
+		}
+	}
+	
 }
