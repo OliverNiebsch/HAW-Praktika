@@ -11,7 +11,7 @@ public class AccessorOneClassOne extends ClassOneImplBase {
 		}
 		
 		if (param1 == null)
-			return "Nur Zahl: " + param2;
+			return null;
 		
 		return param1 + " Zahl: " + param2;
 	}
