@@ -1,16 +1,10 @@
 Produkt pro Stadt
 ######################
-MATCH (k:KundeNode)-[rel]->(p:ProduktNode)
-WHERE k = k
-RETURN p.produktName, k.stadt, sum(rel.anzahl)
-ORDER BY p.produktName, k.stadt;
+MATCH (k:KundeNode)-[rel]->(p:ProduktNode) WHERE k = k RETURN p.produktName, k.stadt, sum(rel.anzahl) ORDER BY p.produktName, k.stadt;
 
 ###
 Produkt A kauften auch Produkte [LIST]
 ###
-MATCH (k:KundeNode)-[rel]->(p:ProduktNode), (k:KundeNode)-[rel2]->(p2:ProduktNode)
-WHERE k = k
-RETURN p.produktName, collect(p2.produktName)
-ORDER BY p.produktName;
+MATCH (k:KundeNode)-[rel]->(p:ProduktNode), (k:KundeNode)-[rel2]->(p2:ProduktNode) WHERE k = k RETURN p.produktName, collect(p2.produktName) ORDER BY p.produktName;
 
 

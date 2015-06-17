@@ -1,6 +1,5 @@
 package lpon.mps.neo4j.dto;
 
-import java.util.List;
 
 public interface ProductSalesData {
 
