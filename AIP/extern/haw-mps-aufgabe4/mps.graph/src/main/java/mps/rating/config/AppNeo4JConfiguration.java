@@ -26,16 +26,18 @@ public class AppNeo4JConfiguration extends Neo4jConfiguration {
 		super.setBasePackage(BASE_PKG+".nodes");
 	}
 
-	@Bean(destroyMethod = "shutdown")
-	public GraphDatabaseService graphDatabaseService() {
-		return new GraphDatabaseFactory().newEmbeddedDatabase("target/mps.db");
-	}
+//	@Bean(destroyMethod = "shutdown")
+//	public GraphDatabaseService graphDatabaseService() {
+//		return new GraphDatabaseFactory().newEmbeddedDatabase("target/mps.db");
+//	}
 	
-	// in case the database should be external 
-//    @Bean
-//    public GraphDatabaseService graphDatabaseService() {
-//        return new SpringRestGraphDatabase("http://localhost:7474/db/data/");
-//    }
+//	 in case the database should be external 
+    @Bean
+    public GraphDatabaseService graphDatabaseService() {
+        return new SpringRestGraphDatabase("http://localhost:7474/db/data/");
+        
+        
+    }
 	
 
     @Autowired
