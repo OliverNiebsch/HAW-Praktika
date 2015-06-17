@@ -1,42 +1,16 @@
-
-
-----
-
-# Wie oft A in Region B
+Produkt pro Stadt
 ######################
 MATCH (k:KundeNode)-[rel]->(p:ProduktNode)
 WHERE k = k
 RETURN p.produktName, k.stadt, sum(rel.anzahl)
 ORDER BY p.produktName, k.stadt;
 
-
-
 ###
-
-
-Alle die a gekauft haben haben auch count(b) gekauft
-
-
-
-#################################
-###################################
-old
-MATCH (a)-[r]->(b)
-WHERE a.produktName = "Produkt 6"
-return (a);
-
-
----
-MATCH (a)-[r]->(b) WHERE labels(a) = labels(a) return (a);
-
-
----
-
-MATCH (kunde1:KundeNode)-[rel]->(kunde2:KundeNode)
-WHERE kunde1.kundenName = 'Kunde 1'
-RETURN kunde1;
-
---
-MATCH (k:KundeNode)-[rel]->(p:ProduktNode)
+Produkt A kauften auch Produkte [LIST]
+###
+MATCH (k:KundeNode)-[rel]->(p:ProduktNode), (k:KundeNode)-[rel2]->(p2:ProduktNode)
 WHERE k = k
-RETURN p.produktName, count(k.stadt);
+RETURN p.produktName, collect(p2.produktName)
+ORDER BY p.produktName;
+
+
