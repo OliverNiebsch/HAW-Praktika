@@ -1,4 +1,4 @@
-package lpon.mps.auftragsverwaltung.config;
+package lpon.mps.config.config;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,12 +6,10 @@ import java.util.Map;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import lpon.mps.auftragsverwaltung.entities.Angebot;
-import lpon.mps.stammdatenadapter.entities.Artikel;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -25,11 +23,15 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories({"lpon.mps.stammdatenadapter.repositories","lpon.mps.auftragsverwaltung.repositories"}) // TODO: So richtig?
+@EnableJpaRepositories(
+		basePackages={AppConfiguration.PKG_PREFIX+".*.repositories"}, // all Repositories need to be in repositories and need to end with Repository
+		includeFilters={@Filter(type=FilterType.REGEX,pattern="[\\w\\.]*Repository")})
 @EnableTransactionManagement // similiar to <tx:annotation-driven/>
-@ComponentScan(basePackages = {"lpon.mps.stammdatenadapter.entities","lpon.mps.auftragsverwaltung.entities"}) // TODO: So richtig?
-public class AuftragsverwaltungJPAConfiguration {
-	private static final String JAVAX_JDBC = "javax.persistence.jdbc.";
+public class JPAConfiguration {
+	
+	private static final String ENTITY_BASE	= AppConfiguration.PKG_PREFIX+".*.entities"; // entities need to be in entities
+	
+	private static final String JAVAX_JDBC 	= "javax.persistence.jdbc.";
 	
 	public static final String[] PROPERTIES_TO_COPY = {
 		"javax.persistence.schema-generation.database.action",
@@ -50,11 +52,12 @@ public class AuftragsverwaltungJPAConfiguration {
 			String v = environment.getProperty(p);
 			if(v!=null) jpaProperties.put(p,v);
 		}
+		jpaProperties.put("hibernate.show_sql",Boolean.TRUE);
 		return entityManagerFactory(jpaProperties);
 	}
 	
 	protected LocalContainerEntityManagerFactoryBean entityManagerFactory(Map<String, Object> jpaProperties) {
-		String[] packagesToScan = new String[]{Artikel.class.getPackage().getName(), Angebot.class.getPackage().getName()}; // TODO: SO richtig?
+		String[] packagesToScan = new String[]{ENTITY_BASE};
 		AbstractJpaVendorAdapter jpaVendor = new HibernateJpaVendorAdapter();
 		
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();

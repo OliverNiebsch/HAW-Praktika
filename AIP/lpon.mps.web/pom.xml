@@ -4,10 +4,10 @@
 	<artifactId>lpon.mps.spring.web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<parent>
-		<artifactId>lpon.mps.config</artifactId>
+		<artifactId>lpon.mps.parent</artifactId>
 		<version>1.0</version>
 		<groupId>lpon.mps</groupId>
-		<relativePath>../lpon.mps.config/pom.xml</relativePath>
+		<relativePath>../lpon.mps.parent/pom.xml</relativePath>
 	</parent>
 	<dependencies>
 		<dependency>
@@ -51,6 +51,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>lpon.mps</groupId>
+			<artifactId>lpon.mps.config</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

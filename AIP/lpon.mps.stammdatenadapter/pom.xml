@@ -5,9 +5,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<parent>
 		<groupId>lpon.mps</groupId>
-		<artifactId>lpon.mps.config</artifactId>
+		<artifactId>lpon.mps.parent</artifactId>
 		<version>1.0</version>
-		<relativePath>../lpon.mps.config/pom.xml</relativePath>
+		<relativePath>../lpon.mps.parent/pom.xml</relativePath>
 	</parent>
 
 	<dependencies>
@@ -74,6 +74,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>lpon.mps</groupId>
+			<artifactId>lpon.mps.config</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

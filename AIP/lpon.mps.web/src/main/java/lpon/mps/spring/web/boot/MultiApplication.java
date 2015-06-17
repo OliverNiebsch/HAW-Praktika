@@ -2,8 +2,8 @@ package lpon.mps.spring.web.boot;
 
 import java.sql.SQLException;
 
+import lpon.mps.config.config.AppConfiguration;
 import lpon.mps.spring.web.controller.MainController;
-import lpon.mps.stammdatenadapter.config.StammdatenConfiguration;
 import lpon.mps.stammdatenadapter.services.ArtikelService;
 
 import org.h2.tools.Server;
@@ -61,7 +61,7 @@ public class MultiApplication {
 		// populate data with configuration application.properties
 		try(ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(
 				DatabaseSetupConfiguration.class, // the application
-				StammdatenConfiguration.class, // the configuration of this application services and entities (see spring.services)
+				AppConfiguration.class, // the configuration of this application services and entities (see spring.services)
 				StartupInitializerWeb.class // the data population
 			)) {
 			ArtikelService us = ctx.getBean(ArtikelService.class);
@@ -80,7 +80,7 @@ public class MultiApplication {
 	    	ConfigurableApplicationContext ctx = SpringApplication.run(
 	    			new Object[]{
 	    					config, // the application
-	    					StammdatenConfiguration.class, // the configuration of this application services and entities (see spring.services)
+	    					AppConfiguration.class, // the configuration of this application services and entities (see spring.services)
 	    					MainController.class // the main controller to supply the rest interface to the outside world
 	    			}, new String[0]); 
 	  	        

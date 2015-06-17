@@ -4,9 +4,9 @@
 	<artifactId>lpon.mps.auftragsverwaltung</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<parent>
-		<artifactId>lpon.mps.config</artifactId>
+		<artifactId>lpon.mps.parent</artifactId>
 		<version>1.0</version>
-		<relativePath>../lpon.mps.config/pom.xml</relativePath>
+		<relativePath>../lpon.mps.parent/pom.xml</relativePath>
 		<groupId>lpon.mps</groupId>
 	</parent>
 
@@ -78,6 +78,11 @@
 		<dependency>
 			<groupId>lpon.mps</groupId>
 			<artifactId>lpon.mps.stammdatenadapter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>lpon.mps</groupId>
+			<artifactId>lpon.mps.config</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
