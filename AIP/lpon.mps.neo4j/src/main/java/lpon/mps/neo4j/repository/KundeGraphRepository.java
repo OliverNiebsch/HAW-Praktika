@@ -5,7 +5,6 @@ import java.util.List;
 
 import lpon.mps.neo4j.dto.ProductKaufteAuchProductData;
 import lpon.mps.neo4j.dto.ProductSalesData;
-import lpon.mps.neo4j.nodes.AuftragsPositionRelation;
 import lpon.mps.neo4j.nodes.KundeNode;
 
 import org.springframework.data.neo4j.annotation.Query;

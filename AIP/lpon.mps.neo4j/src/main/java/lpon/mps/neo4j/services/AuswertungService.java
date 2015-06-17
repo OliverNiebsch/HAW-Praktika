@@ -2,7 +2,6 @@ package lpon.mps.neo4j.services;
 
 import lpon.mps.neo4j.dto.ProductKaufteAuchProductData;
 import lpon.mps.neo4j.dto.ProductSalesData;
-import lpon.mps.neo4j.dto.SalesData;
 import lpon.mps.neo4j.nodes.KundeNode;
 import lpon.mps.neo4j.nodes.ProduktNode;
 
