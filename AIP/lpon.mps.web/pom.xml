@@ -62,5 +62,10 @@
 			<artifactId>lpon.mps.auftragsverwaltung</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>lpon.mps</groupId>
+			<artifactId>lpon.mps.neo4j</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
