@@ -1,11 +1,12 @@
 package lpon.mps.neo4j.repository;
 
 import java.util.Collection;
+import java.util.List;
 
-import mps.rating.dto.SalesData;
-import mps.rating.graph.nodes.AuftragsPositionRelation;
-import mps.rating.graph.nodes.KundeNode;
-import mps.rating.graph.nodes.ProduktNode;
+import lpon.mps.neo4j.dto.ProductKaufteAuchProductData;
+import lpon.mps.neo4j.dto.ProductSalesData;
+import lpon.mps.neo4j.nodes.AuftragsPositionRelation;
+import lpon.mps.neo4j.nodes.KundeNode;
 
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.annotation.QueryResult;
@@ -18,42 +19,69 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 	// TODO: Replace with @Param("stadt") when Spring Data Neo4j supports names vs. positional arguments
 	Collection<KundeNode> findByStadt(@Param("0") String stadt);
 	
-	
-
-	@Query("MATCH (kunde:KundeNode{stadt:{0}}), kunde-[bestellung:"+AuftragsPositionRelation.RELATIONSHIP_TYPE+"]->(produkt) RETURN produkt, SUM(bestellung.anzahl)")
-	Iterable<SalesDataImpl> showProductSalesByCity(String stadt);
+	@Query("MATCH (k:KundeNode)-[rel]->(p:ProduktNode) WHERE k = k RETURN p.produktName, k.stadt, sum(rel.anzahl) ORDER BY p.produktName, k.stadt;")
+	Iterable<ProductSalesDataImpl> showProductSalesWithCity();
 	
 	@QueryResult
-	public class SalesDataImpl implements SalesData {
-		@ResultColumn("produkt")
-		private ProduktNode produkt;
+	public class ProductSalesDataImpl implements ProductSalesData{
+		@ResultColumn("p.produktName")
+		private String produkt;
 
-		@ResultColumn("SUM(bestellung.anzahl)")
-		private Integer count;
-
-		public ProduktNode getProdukt() {
+		@ResultColumn("k.stadt")
+		private String stadt;
+		
+		@ResultColumn("sum(rel.anzahl)")
+		private Integer anzahl;
+		
+		@Override
+		public String getProduktName() {
 			return produkt;
 		}
 
-		public void setProdukt(ProduktNode produkt) {
-			this.produkt = produkt;
-		}
-
-		public void setCount(Integer count) {
-			this.count = count;
-		}
-
-		public Integer getCount() {
-			return count;
+		@Override
+		public String getStadt() {
+			return stadt;
 		}
 
 		@Override
-		public String toString() {
-			return "SalesData [produkt=" + getProdukt() + ", count=" + count + "]";
+		public Integer getAnzahl() {
+			return anzahl;
 		}
 		
-		
+		@Override
+		public String toString() {
+			return "SalesData [produkt=" + getProduktName() + ", Stadt=" + getStadt()+ ", anzahl=" + getAnzahl() + "]";
+		}
 	}
 
 	public KundeNode findByDbid(Long id);
+
+	@Query("MATCH (k:KundeNode)-[rel]->(p:ProduktNode), (k:KundeNode)-[rel2]->(p2:ProduktNode) WHERE k = k RETURN p.produktName, collect(p2.produktName) ORDER BY p.produktName;")
+	Iterable<ProductKaufteAuchProductData> showProduktKauftenAuchProdukt();
+	
+	@QueryResult
+	public class ProductKaufteAuchProductDataImpl implements ProductKaufteAuchProductData{
+
+		@ResultColumn("p.produktName")
+		private String produktName;
+		
+		@ResultColumn("collect(p2.produktName)")
+		private List<String> referencedProducts;
+		
+		@Override
+		public String getProduktName() {
+			return produktName;
+		}
+
+		@Override
+		public List<String> getAuchGekaufteProdukte() {
+			return referencedProducts;
+		}
+		
+		@Override
+		public String toString() {
+			return "ProductKaufteAuchProductDataImpl [produkt=" + getProduktName() + ", getAuchGekaufteProdukte=" + getAuchGekaufteProdukte() + "]";
+		}		
+	}
+	
 }

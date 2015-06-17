@@ -1,6 +1,6 @@
 package lpon.mps.neo4j.repository;
 
-import mps.rating.graph.nodes.ProduktNode;
+import lpon.mps.neo4j.nodes.ProduktNode;
 
 import org.springframework.data.neo4j.repository.GraphRepository;
 
