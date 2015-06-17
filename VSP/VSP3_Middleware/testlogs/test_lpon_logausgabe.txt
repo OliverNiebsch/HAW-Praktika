@@ -1,0 +1,96 @@
+ListeningSocket gestartet
+Host gesetzt auf lab21 und Port auf 55353
+CommunicationModule initialisiert
+resolve,viktor
+resolve_reply,viktor,lab33,35360
+resolve,oliver
+resolve_reply,oliver,lab33,35360
+resolve,lars
+resolve_reply,lars,lab33,35360
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase$1 ('viktor')
+methodOne
+param1 = "egal"
+param2 = 5
+Return value = 'egal Zahl: 5'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase$1 ('viktor')
+methodOne
+param1 = "egal"
+param2 = -5
+accessor_one.SomeException112 with message 'Integer ist negativ: -5'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_one.ClassOneImplBase$1 ('viktor')
+methodOne
+param1 = null
+param2 = 4
+Return value = 'null'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase$1 ('oliver')
+methodOne
+param1 = 4.0
+Return value = 4
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase$1 ('oliver')
+methodOne
+param1 = -4.0
+accessor_one.SomeException110 with message 'Double ist negativ: -4.0'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_one.ClassTwoImplBase$1 ('oliver')
+methodTwo
+Return value = 4.0
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase$1 ('lars')
+methodOne
+param1 = "1.0"
+param2 = 3.4
+Return value = 4.4
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase$1 ('lars')
+methodOne
+param1 = "EXCEPTION1"
+param2 = 3.4
+accessor_two.SomeException112 with message 'String EXCEPTION1 ist kein Double Wert'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase$1 ('lars')
+methodOne
+param1 = null
+param2 = 3.2
+accessor_two.SomeException112 with message 'String null ist kein Double Wert'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase$1 ('lars')
+methodTwo
+param1 = "3.1"
+param2 = 3.4
+Return value = 0.911764705882353
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase$1 ('lars')
+methodTwo
+param1 = null
+param2 = 3.1
+accessor_two.SomeException112 with message 'String null ist kein Double Wert'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase$1 ('lars')
+methodTwo
+param1 = "EXCEPTION1"
+param2 = 3.4
+accessor_two.SomeException112 with message 'String EXCEPTION1 ist kein Double Wert'
+--------------------------------------------------------------
+--------------------------------------------------------------
+accessor_two.ClassOneImplBase$1 ('lars')
+methodTwo
+param1 = "1.0"
+param2 = -3.4
+accessor_two.SomeException304 with message 'Double Wert ist negativ: -3.4'
+--------------------------------------------------------------

@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
  *
  */
 @Configuration
-@ComponentScan(basePackages = "lpon.mps.fertigung")
+@ComponentScan(basePackages = {"lpon.mps.fertigung", "lpon.mps.*.services"})
 public class FertigungConfiguration {
 }

@@ -1,0 +1,10 @@
+.error {
+    font-weight: bold;
+    color: #b10202;
+    display: inline-block;
+}
+
+.hide {
+    display: none;
+    visibility: hidden;
+}

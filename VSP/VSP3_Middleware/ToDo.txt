@@ -1,0 +1,4 @@
+- Referenze auf Doku
+- Doku aktualisieren(?)
+- Readme schreiben
+- Nebenläufigkeit testen?

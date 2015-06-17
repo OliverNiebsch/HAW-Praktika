@@ -27,7 +27,7 @@ import org.springframework.util.Assert;
 @ContextConfiguration(classes=lpon.mps.fertigung.FertigungsauftragsTest.ContextConfiguration.class)
 public class FertigungsauftragsTest {
 
-	@ComponentScan(basePackages = {"lpon.mps.stammdatenadapter","lpon.mps.auftragsverwaltung","lpon.mps.fertigung"})
+	@ComponentScan(basePackages = {/*"lpon.mps.stammdatenadapter","lpon.mps.auftragsverwaltung",*/"lpon.mps.fertigung"})
 	@Configuration
 	static class ContextConfiguration {}
 	
