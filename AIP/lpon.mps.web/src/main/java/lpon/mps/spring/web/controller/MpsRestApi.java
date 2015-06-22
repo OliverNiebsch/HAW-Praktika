@@ -12,6 +12,7 @@ import lpon.mps.neo4j.nodes.ProduktNode;
 import lpon.mps.neo4j.services.AuswertungService;
 import lpon.mps.stammdatenadapter.entities.Artikel;
 import lpon.mps.stammdatenadapter.entities.Kunde;
+import lpon.mps.stammdatenadapter.services.KundeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -32,6 +33,9 @@ public class MpsRestApi {
 
 	@Autowired
 	private AuftragService auftragService;
+	
+	@Autowired
+	private KundeService kundeService;
 
 	@RequestMapping(value = "/angebot", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Angebot> getAngebote() {
@@ -72,5 +76,12 @@ public class MpsRestApi {
 	@RequestMapping(value = "/auftrag/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public Auftrag getAuftrag(@PathVariable("id") Long id) {
 		return auftragService.getAuftrag(id);
+	}
+	
+	@RequestMapping(value = "/auftrag", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Auftrag> getAuftraegeFuerKunde(@RequestParam(value="kunde", required=true) Long kundeId) {
+		Kunde k = kundeService.getKunde(kundeId);
+		
+		return auftragService.getAuftraegeFuerKunde(k);
 	}
 }
