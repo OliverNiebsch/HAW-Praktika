@@ -26,7 +26,7 @@ import org.springframework.context.annotation.PropertySource;
 public class Application {
 	private static final String dispatcher = "http://localhost:8085";
 	
-	private int port = 8080;
+	private int port = 8081;
 	public void setPort(int port) {this.port = port;}
 	public int getPort(){return this.port;}
 
@@ -35,6 +35,38 @@ public class Application {
 	public EmbeddedServletContainerFactory servletContainer() {
 		System.out.println("Starting server at port: "+port);
 		return new JettyEmbeddedServletContainerFactory(getPort());
+	}
+	
+	private class AliveThread extends Thread {
+		private String port;
+		
+		public AliveThread(String port) {
+			this.port = port;
+		}
+		
+		@Override
+		public void run() {
+			try {
+				while(!isInterrupted()) {
+					Scanner response = new Scanner(new URL(dispatcher + "/imalive?port=" + port).openStream());
+					
+					System.out.println("Sending Dispatcher \"I'm alive\". Getting:");
+					while (response.hasNextLine()) {
+						System.out.println(response.nextLine());
+					}
+					
+					response.close();
+					
+					Thread.sleep(10000);
+				}
+			} catch (InterruptedException e) {
+				// TODO: handle exception
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
     public static void main(String[] args) throws SQLException {
@@ -51,32 +83,10 @@ public class Application {
     	// what result they return.
     	ArtikelService us = ctx.getBean(ArtikelService.class);
   		System.out.println("users with 's': "+us.getArtikel("s"));
-  		
-  		// I'm alive sender
-  		new Thread() {
-			@Override
-			public void run() {
-				try {
-					while(!isInterrupted()) {
-						Scanner response = new Scanner(new URL(dispatcher + "/imalive").openStream());
-						
-						System.out.println("Sending Dispatcher \"I'm alive\". Getting:");
-						while (response.hasNextLine()) {
-							System.out.println(response.nextLine());
-						}
-						
-						response.close();
-						
-						Thread.sleep(10000);
-					}
-				} catch (InterruptedException e) {
-					// TODO: handle exception
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}.start();
+    }
+    
+    public Application() {
+    	// I'm alive sender
+    	new AliveThread(new Integer(port).toString()).start();
     }
 }

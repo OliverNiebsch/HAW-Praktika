@@ -27,6 +27,7 @@ public class MpsDispatcherApi {
 		}
 
 		public void refreshLastAlive() {
+			System.out.println(host + ":" + port + " is alive!");
 			this.lastAlive = new Date().getTime();
 		}
 
@@ -71,12 +72,12 @@ public class MpsDispatcherApi {
 	}
 	
 	@RequestMapping(value = "/imalive", method = RequestMethod.GET)
-	public void imAliveMsg(HttpServletRequest request, HttpServletResponse response) {
+	public void imAliveMsg(@RequestParam(value="port", required=true) String port, HttpServletRequest request, HttpServletResponse response) {
 		String host = request.getRemoteHost();
 		
-		if (server1.getHost().equals(host)) {
+		if (server1.getHost().equals(host) && server1.getPort().equals(port)) {
 			server1.refreshLastAlive();
-		} else if (server2.getHost().equals(host)) {
+		} else if (server2.getHost().equals(host) && server2.getPort().equals(port)) {
 			server2.refreshLastAlive();
 		}		
 	}

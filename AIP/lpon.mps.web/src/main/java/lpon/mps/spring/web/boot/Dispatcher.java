@@ -2,10 +2,7 @@ package lpon.mps.spring.web.boot;
 
 import java.sql.SQLException;
 
-import lpon.mps.config.config.AppConfiguration;
 import lpon.mps.spring.web.controller.MpsDispatcherApi;
-import lpon.mps.spring.web.controller.MpsRestApi;
-import lpon.mps.stammdatenadapter.services.ArtikelService;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
