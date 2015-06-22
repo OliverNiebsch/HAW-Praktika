@@ -8,3 +8,20 @@
     display: none;
     visibility: hidden;
 }
+
+.button2 {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid black;
+    background-color: beige;
+}
+
+.button a {
+    text-decoration: none;
+    color: black;
+}
+
+tr.marked td {
+    background-color: lightgreen;
+}

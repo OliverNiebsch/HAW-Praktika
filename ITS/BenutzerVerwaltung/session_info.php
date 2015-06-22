@@ -16,4 +16,8 @@ function getLoggedInUser()
     return $_SESSION['user'];
 }
 
+function getLoggedInUserId() {
+    return $_SESSION['user_id'];
+}
+
 ?>
