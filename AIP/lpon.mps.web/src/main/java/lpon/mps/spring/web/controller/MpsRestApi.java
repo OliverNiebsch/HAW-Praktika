@@ -1,6 +1,7 @@
 package lpon.mps.spring.web.controller;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import lpon.mps.auftragsverwaltung.entities.Angebot;
@@ -107,14 +108,19 @@ public class MpsRestApi {
 		Iterable<? extends ProductKaufteAuchProductData> data = auswertungsService.showProductKaufteAuchProduct();
 		String res = "";
 		
-		for (ProductKaufteAuchProductData pkp : data) {			
+		Iterator<? extends ProductKaufteAuchProductData> it = data.iterator();
+		
+		while (it.hasNext()) {
+//		for (ProductKaufteAuchProductData pkp : data) {
+			ProductKaufteAuchProductData pkp = it.next();
 			res += String.format(",{'ProduktName':%s, 'Auch gekauft':[%s]}", pkp.getProduktName(), join(pkp.getReferencedProducts()));
+//			res += String.format(",{'ProduktName':%s, 'Auch gekauft':%s}", pkp.getProduktName(), pkp.getReferencedProducts());
 		}
 		
 		return "[" + res.substring(1) + "]";
 	}
 	
-	private String join(List<String> list) {
+	private String join(Iterable<String> list) {
 		String res = "";
 		for (String s : list) {
 			res += "," + s;

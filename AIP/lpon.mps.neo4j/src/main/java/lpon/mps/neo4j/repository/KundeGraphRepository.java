@@ -1,7 +1,6 @@
 package lpon.mps.neo4j.repository;
 
 import java.util.Collection;
-import java.util.List;
 
 import lpon.mps.neo4j.dto.ProductKaufteAuchProductData;
 import lpon.mps.neo4j.dto.ProductSalesData;
@@ -77,14 +76,17 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 		private String produktName;
 		
 		@ResultColumn("collect(p2.produktName)")
-		private List<String> referencedProducts;
+		private Iterable<String> referencedProducts;
+		
+//		@ResultColumn("collect(p2.produktName)")
+//		private String referencedProducts;
 		
 		@Override
 		public String getProduktName() {
 			return produktName;
 		}
 
-		public void setReferencedProducts(List<String> referencedProducts) {
+		public void setReferencedProducts(Iterable<String> referencedProducts) {
 			this.referencedProducts = referencedProducts;
 		}
 
@@ -93,7 +95,7 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 		}
 
 		@Override
-		public List<String> getReferencedProducts() {
+		public Iterable<String> getReferencedProducts() {
 			return referencedProducts;
 		}
 		
