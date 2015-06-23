@@ -5,5 +5,5 @@ import java.util.List;
 public interface ProductKaufteAuchProductData {
 
 	String getProduktName();
-	List<String> getAuchGekaufteProdukte();	
+	List<String> getReferencedProducts();	
 }

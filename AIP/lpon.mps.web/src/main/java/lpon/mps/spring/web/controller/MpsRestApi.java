@@ -7,6 +7,8 @@ import lpon.mps.auftragsverwaltung.entities.Angebot;
 import lpon.mps.auftragsverwaltung.entities.Auftrag;
 import lpon.mps.auftragsverwaltung.services.AngebotService;
 import lpon.mps.auftragsverwaltung.services.AuftragService;
+import lpon.mps.neo4j.dto.ProductKaufteAuchProductData;
+import lpon.mps.neo4j.dto.ProductSalesData;
 import lpon.mps.neo4j.nodes.KundeNode;
 import lpon.mps.neo4j.nodes.ProduktNode;
 import lpon.mps.neo4j.services.AuswertungService;
@@ -36,6 +38,9 @@ public class MpsRestApi {
 	
 	@Autowired
 	private KundeService kundeService;
+	
+	@Autowired
+	private AuswertungService auswertungsService;
 
 	@RequestMapping(value = "/angebot", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Angebot> getAngebote() {
@@ -83,5 +88,38 @@ public class MpsRestApi {
 		Kunde k = kundeService.getKunde(kundeId);
 		
 		return auftragService.getAuftraegeFuerKunde(k);
+	}
+	
+	@RequestMapping(value = "/dashboard/produkt_region", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<ProductSalesData> getProdukteNachRegionen() {
+		Iterable<? extends ProductSalesData> data = auswertungsService.showProductSalesWithCity();
+		List<ProductSalesData> result = new ArrayList<ProductSalesData>();
+		
+		for (ProductSalesData psd : data) {
+			result.add(psd);
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/dashboard/produkt_kombi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public String getProdukteZusammenGekauft() {
+		Iterable<? extends ProductKaufteAuchProductData> data = auswertungsService.showProductKaufteAuchProduct();
+		String res = "";
+		
+		for (ProductKaufteAuchProductData pkp : data) {			
+			res += String.format(",{'ProduktName':%s, 'Auch gekauft':[%s]}", pkp.getProduktName(), join(pkp.getReferencedProducts()));
+		}
+		
+		return "[" + res.substring(1) + "]";
+	}
+	
+	private String join(List<String> list) {
+		String res = "";
+		for (String s : list) {
+			res += "," + s;
+		}
+		
+		return res.substring(1);
 	}
 }

@@ -13,23 +13,15 @@
     	<script type="text/javascript" src="backbone-min.js"></script>
     	<script type="text/javascript" src="pretty-json-min.js"></script>
     	<script type="text/javascript">
-    		function doRequest(type, url, data) {
-    			$.ajax({type: type,
-					url: "http://127.0.0.1:8080/" + url,
-					data: data,
+    		function doRequest(url, resultObj) {
+    			$.ajax({type: "GET",
+					url: "http://127.0.0.1:8080/dashboard/" + url,
+					data: "",
 					contentType: 'application/x-www-form-urlencoded',
-					crossDomain: true,
-					headers : {
-						'access-control-allow-origin': '*',
-						'access-control-allow-credentials': true
-					},
-					statusCode: {
-						301: function() {console.log('301');}
-					},
 					success: function(result) {
 	    				var obj = result;
 	    				var node = new PrettyJSON.view.Node({
-	    					  el:$('#result'),
+	    					  el:$('#' + resultObj),
 	    					  data:obj
 	    					});
 					},
@@ -37,31 +29,20 @@
 						console.log(status);
 					}});
     		}
-    	
-    		function createAuftrag() {
-    			var angebot = $("#angebot").val();
-    			doRequest("POST", "auftrag", "angebot=" + angebot);
-    		}
-    		
-    		function findAuftraege() {
-    			var kunde = $("#kunde").val();
-    			doRequest("GET", "auftrag?kunde=" + kunde, "");
-    		}
     	</script>
 	</head>
   	<body>
-  	<div id="createAuftrag">
-  		<span>Angebots-Nr:</span>
-  		<input type="text" id="angebot" />
-  		<button onclick="createAuftrag()">Auftrag anlegen</button>
+  	<div>
+  		<h2>Produkte nach Regionen:</h2>
+  		<div id="regionProduct"></div>
   	</div>
-  	<div id="getKundenAuftraege">
-  		<span>Kunden-Nr:</span>
-  		<input type="text" id="kunde" />
-  		<button onclick="findAuftraege()">Auftr&auml;ge suchen</button>
+  	<div>
+  		<h2>Zusammen gekaufte Produkte:</h2>
+  		<div id="productCombi"></div>
   	</div>
-  	<div id="result">
-  	</div>
-  	
+  	<script type="text/javascript">
+  		doRequest("produkt_region", "regionProduct");
+		doRequest("produkt_kombi", "productCombi");
+	</script>
   	</body>
 </html>

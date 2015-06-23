@@ -44,7 +44,7 @@ public class MpsDispatcherApi {
 	private boolean first = true;
 	
 	private void redirect(HttpServletResponse response, String newUrl) {
-		response.setStatus(307);
+		response.setStatus(301);
         response.setHeader("Location", newUrl);
         response.setHeader("Connection", "close");
 	}

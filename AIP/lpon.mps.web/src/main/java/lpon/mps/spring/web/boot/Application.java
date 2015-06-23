@@ -26,7 +26,7 @@ import org.springframework.context.annotation.PropertySource;
 public class Application {
 	private static final String dispatcher = "http://localhost:8085";
 	
-	private int port = 8081;
+	private int port = 8080;
 	public void setPort(int port) {this.port = port;}
 	public int getPort(){return this.port;}
 

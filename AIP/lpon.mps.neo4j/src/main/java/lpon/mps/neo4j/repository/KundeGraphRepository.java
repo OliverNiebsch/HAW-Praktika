@@ -33,7 +33,7 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 		private Integer anzahl;
 		
 		@Override
-		public String getProduktName() {
+		public String getProdukt() {
 			return produkt;
 		}
 
@@ -47,9 +47,21 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 			return anzahl;
 		}
 		
+		public void setProdukt(String produkt) {
+			this.produkt = produkt;
+		}
+
+		public void setStadt(String stadt) {
+			this.stadt = stadt;
+		}
+
+		public void setAnzahl(Integer anzahl) {
+			this.anzahl = anzahl;
+		}
+
 		@Override
 		public String toString() {
-			return "SalesData [produkt=" + getProduktName() + ", Stadt=" + getStadt()+ ", anzahl=" + getAnzahl() + "]";
+			return "SalesData [produkt=" + getProdukt() + ", Stadt=" + getStadt()+ ", anzahl=" + getAnzahl() + "]";
 		}
 	}
 
@@ -72,14 +84,22 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 			return produktName;
 		}
 
+		public void setReferencedProducts(List<String> referencedProducts) {
+			this.referencedProducts = referencedProducts;
+		}
+
+		public void setProduktName(String produktName) {
+			this.produktName = produktName;
+		}
+
 		@Override
-		public List<String> getAuchGekaufteProdukte() {
+		public List<String> getReferencedProducts() {
 			return referencedProducts;
 		}
 		
 		@Override
 		public String toString() {
-			return "ProductKaufteAuchProductDataImpl [produkt=" + getProduktName() + ", getAuchGekaufteProdukte=" + getAuchGekaufteProdukte() + "]";
+			return "ProductKaufteAuchProductDataImpl [produkt=" + getProduktName() + ", getAuchGekaufteProdukte=" + getReferencedProducts() + "]";
 		}		
 	}
 	
