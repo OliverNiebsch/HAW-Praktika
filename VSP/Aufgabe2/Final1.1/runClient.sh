@@ -1,0 +1,1 @@
+erl -name nameservice -setcookie vsp

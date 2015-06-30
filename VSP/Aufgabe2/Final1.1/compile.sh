@@ -1,0 +1,1 @@
+erl -noshell -compile werkzeug koordinator starter ggt

@@ -1,0 +1,1 @@
+erl -name koordinator -setcookie vsp -run koordinator spawnStart

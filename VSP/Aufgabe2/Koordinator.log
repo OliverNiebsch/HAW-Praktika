@@ -1,0 +1,1900 @@
+bind Koordinator done.
+bind Koordinator done.
+bind Koordinator done.
+bind Koordinator done.
+bind Koordinator done.
+bind Koordinator done.
+bind Koordinator done.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2851' says hello.
+'2871' says hello.
+'2861' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2861' says hello.
+'2841' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2851' says hello.
+'2841' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2851' says hello.
+'2841' says hello.
+'2811' says hello.
+'2831' says hello.
+'2821' says hello.
+'2821' send neighbours: '2871' and '2821'
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2851' says hello.
+'2871' says hello.
+'2831' says hello.
+'2861' says hello.
+'2821' says hello.
+'2811' says hello.
+'2841' says hello.
+'2841' send neighbours: '2841' and '2861'
+'2861' send neighbours: '2821' and '2811'
+'2811' send neighbours: '2861' and '2891'
+'2891' send neighbours: '2811' and '2871'
+'2871' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2871' and '2851'
+'2851' send neighbours: '2881' and '2831'
+'2831' send neighbours: '2851' and '2841'
+'2841' send neighbours: '2831' and '2821'
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2851' says hello.
+'2871' says hello.
+'2861' says hello.
+'2841' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2861' and '2831'
+'2831' send neighbours: '2811' and '2841'
+'2841' send neighbours: '2831' and '2821'
+'2821' send neighbours: '2841' and '2891'
+'2891' send neighbours: '2821' and '2871'
+'2871' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2871' and '2851'
+'2851' send neighbours: '2881' and '2861'
+'2861' send neighbours: '2851' and '2811'
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2841' says hello.
+'2831' says hello.
+'2811' says hello.
+'2821' says hello.
+'2821' send neighbours: '2861' and '2831'
+'2831' send neighbours: '2821' and '2841'
+'2841' send neighbours: '2831' and '2811'
+'2811' send neighbours: '2841' and '2891'
+'2891' send neighbours: '2811' and '2851'
+'2851' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2851' and '2871'
+'2871' send neighbours: '2881' and '2861'
+'2861' send neighbours: '2871' and '2821'
+'2821' send initial Mi: 311542
+'2831' send initial Mi: 6479550
+'2841' send initial Mi: 143325
+'2811' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2851' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2861' send initial Mi: 17374697340
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2831' says hello.
+'2851' says hello.
+'2821' says hello.
+'2811' says hello.
+'2841' says hello.
+'2841' send neighbours: '2831' and '2821'
+'2821' send neighbours: '2841' and '2851'
+'2851' send neighbours: '2821' and '2811'
+'2811' send neighbours: '2851' and '2891'
+'2891' send neighbours: '2811' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2831'
+'2831' send neighbours: '2871' and '2841'
+'2841' send initial Mi: 311542
+'2821' send initial Mi: 6479550
+'2851' send initial Mi: 143325
+'2811' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2831' send initial Mi: 17374697340
+'2851' send initial Y: 2772
+'2811' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2831' send initial Y: 3156303150
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2841' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2851' says hello.
+'2841' says hello.
+'2831' says hello.
+'2811' says hello.
+'2821' says hello.
+'2821' send neighbours: '2851' and '2831'
+'2831' send neighbours: '2821' and '2841'
+'2841' send neighbours: '2831' and '2811'
+'2811' send neighbours: '2841' and '2891'
+'2891' send neighbours: '2811' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2851'
+'2851' send neighbours: '2871' and '2821'
+'2821' send initial Mi: 311542
+'2831' send initial Mi: 6479550
+'2841' send initial Mi: 143325
+'2811' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2851' send initial Mi: 17374697340
+'2841' send initial Y: 2772
+'2811' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2851' send initial Y: 3156303150
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2841' says hello.
+'2861' says hello.
+'2861' send neighbours: '2831' and '2811'
+'2811' send neighbours: '2861' and '2821'
+'2821' send neighbours: '2811' and '2841'
+'2841' send neighbours: '2821' and '2891'
+'2891' send neighbours: '2841' and '2851'
+'2851' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2851' and '2871'
+'2871' send neighbours: '2881' and '2831'
+'2831' send neighbours: '2871' and '2861'
+'2861' send initial Mi: 311542
+'2811' send initial Mi: 6479550
+'2821' send initial Mi: 143325
+'2841' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2851' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2831' send initial Mi: 17374697340
+'2821' send initial Y: 2772
+'2841' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2851' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2831' send initial Y: 3156303150
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2841' says hello.
+'2851' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2841' and '2831'
+'2831' send neighbours: '2811' and '2851'
+'2851' send neighbours: '2831' and '2821'
+'2821' send neighbours: '2851' and '2891'
+'2891' send neighbours: '2821' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2841'
+'2841' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2831' send initial Mi: 6479550
+'2851' send initial Mi: 143325
+'2821' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2841' send initial Mi: 17374697340
+'2851' send initial Y: 2772
+'2821' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2841' send initial Y: 3156303150
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2861' and '2841'
+'2841' send neighbours: '2811' and '2831'
+'2831' send neighbours: '2841' and '2821'
+'2821' send neighbours: '2831' and '2891'
+'2891' send neighbours: '2821' and '2851'
+'2851' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2851' and '2871'
+'2871' send neighbours: '2881' and '2861'
+'2861' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2841' send initial Mi: 6479550
+'2831' send initial Mi: 143325
+'2821' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2851' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2861' send initial Mi: 17374697340
+'2831' send initial Y: 2772
+'2821' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2851' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2861' send initial Y: 3156303150
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2841' says hello.
+'2851' says hello.
+'2821' says hello.
+'2831' says hello.
+'2811' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2871' says hello.
+'2881' says hello.
+'2861' says hello.
+'2851' says hello.
+'2841' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2851' and '2831'
+'2831' send neighbours: '2811' and '2841'
+'2841' send neighbours: '2831' and '2821'
+'2821' send neighbours: '2841' and '2891'
+'2891' send neighbours: '2821' and '2861'
+'2861' send neighbours: '2891' and '2871'
+'2871' send neighbours: '2861' and '2881'
+'2881' send neighbours: '2871' and '2851'
+'2851' send neighbours: '2881' and '2811'
+'2811' send initial Mi: 311542
+'2831' send initial Mi: 6479550
+'2841' send initial Mi: 143325
+'2821' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2871' send initial Mi: 124950
+'2881' send initial Mi: 7651644
+'2851' send initial Mi: 17374697340
+'2841' send initial Y: 2772
+'2821' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2871' send initial Y: 26036010
+'2881' send initial Y: 765765
+'2851' send initial Y: 3156303150
+'2841' sent new Mi: 1953 at "19.05 16:29:03,508|"
+'2891' sent new Mi: 16562 at "19.05 16:29:03,509|"
+'2881' sent new Mi: 759759 at "19.05 16:29:03,509|"
+'2851' sent new Mi: 1593181590 at "19.05 16:29:03,509|"
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2851' says hello.
+'2841' says hello.
+'2831' says hello.
+'2811' says hello.
+'2821' says hello.
+'2821' send neighbours: '2851' and '2831'
+'2831' send neighbours: '2821' and '2841'
+'2841' send neighbours: '2831' and '2811'
+'2811' send neighbours: '2841' and '2891'
+'2891' send neighbours: '2811' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2851'
+'2851' send neighbours: '2871' and '2821'
+'2821' send initial Mi: 311542
+'2831' send initial Mi: 6479550
+'2841' send initial Mi: 143325
+'2811' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2851' send initial Mi: 17374697340
+'2841' send initial Y: 2772
+'2811' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2851' send initial Y: 3156303150
+'2871' sent new Mi: 759759 at "19.05 16:37:40,818|"
+'2841' sent new Mi: 1953 at "19.05 16:37:40,818|"
+'2891' sent new Mi: 16562 at "19.05 16:37:40,818|"
+'2851' sent new Mi: 1593181590 at "19.05 16:37:40,818|"
+'2831' sent new Mi: 1449 at "19.05 16:37:42,849|"
+'2861' sent new Mi: 3185 at "19.05 16:37:42,849|"
+'2851' sent new Mi: 726726 at "19.05 16:37:42,849|"
+'2891' sent new Mi: 637 at "19.05 16:37:44,879|"
+'2841' sent new Mi: 504 at "19.05 16:37:44,880|"
+'2881' sent new Mi: 735 at "19.05 16:37:44,880|"
+'2871' sent new Mi: 33033 at "19.05 16:37:44,880|"
+'2821' sent new Mi: 7 at "19.05 16:37:44,880|"
+'2851' sent new Mi: 7 at "19.05 16:37:46,911|"
+'2831' sent new Mi: 441 at "19.05 16:37:46,911|"
+'2871' sent new Mi: 693 at "19.05 16:37:46,911|"
+'2861' sent new Mi: 245 at "19.05 16:37:46,911|"
+'2871' sent new Mi: 7 at "19.05 16:37:48,943|"
+'2891' sent new Mi: 147 at "19.05 16:37:48,943|"
+'2841' sent new Mi: 63 at "19.05 16:37:48,943|"
+'2881' sent new Mi: 42 at "19.05 16:37:48,943|"
+'2831' sent new Mi: 63 at "19.05 16:37:50,974|"
+'2861' sent new Mi: 35 at "19.05 16:37:50,974|"
+'2811' sent new Mi: 21 at "19.05 16:37:50,974|"
+'2881' sent new Mi: 7 at "19.05 16:37:50,974|"
+'2841' sent new Mi: 21 at "19.05 16:37:53,004|"
+'2891' sent new Mi: 7 at "19.05 16:37:53,005|"
+'2861' sent new Mi: 7 at "19.05 16:37:53,005|"
+'2831' sent new Mi: 21 at "19.05 16:37:55,036|"
+'2811' sent new Mi: 7 at "19.05 16:37:55,036|"
+'2841' sent new Mi: 7 at "19.05 16:37:57,068|"
+'2831' sent new Mi: 7 at "19.05 16:37:59,099|"
+bind Koordinator done.
+'2881' says hello.
+'2891' says hello.
+'2871' says hello.
+'2861' says hello.
+'2841' says hello.
+'2851' says hello.
+'2821' says hello.
+'2831' says hello.
+'2811' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2841' says hello.
+'2821' says hello.
+'2851' says hello.
+'2831' says hello.
+'2811' says hello.
+'2811' send neighbours: '2841' and '2851'
+'2851' send neighbours: '2811' and '2821'
+'2821' send neighbours: '2851' and '2831'
+'2831' send neighbours: '2821' and '2891'
+'2891' send neighbours: '2831' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2841'
+'2841' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2851' send initial Mi: 6479550
+'2821' send initial Mi: 143325
+'2831' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2841' send initial Mi: 17374697340
+'2821' send initial Y: 2772
+'2831' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2841' send initial Y: 3156303150
+'2821' sent new Mi: 1953 at "19.05 16:44:33,675|"
+'2891' sent new Mi: 16562 at "19.05 16:44:33,675|"
+'2841' sent new Mi: 1593181590 at "19.05 16:44:33,675|"
+'2871' sent new Mi: 759759 at "19.05 16:44:33,675|"
+'2851' sent new Mi: 1449 at "19.05 16:44:35,706|"
+'2861' sent new Mi: 3185 at "19.05 16:44:35,706|"
+'2841' sent new Mi: 726726 at "19.05 16:44:35,706|"
+'2891' sent new Mi: 637 at "19.05 16:44:37,737|"
+'2821' sent new Mi: 504 at "19.05 16:44:37,737|"
+'2881' sent new Mi: 735 at "19.05 16:44:37,737|"
+'2811' sent new Mi: 7 at "19.05 16:44:37,737|"
+'2871' sent new Mi: 33033 at "19.05 16:44:37,737|"
+'2861' sent new Mi: 245 at "19.05 16:44:39,769|"
+'2871' sent new Mi: 693 at "19.05 16:44:39,769|"
+'2841' sent new Mi: 7 at "19.05 16:44:39,769|"
+'2851' sent new Mi: 441 at "19.05 16:44:39,769|"
+'2881' sent new Mi: 42 at "19.05 16:44:41,800|"
+'2891' sent new Mi: 147 at "19.05 16:44:41,800|"
+'2821' sent new Mi: 63 at "19.05 16:44:41,800|"
+'2871' sent new Mi: 7 at "19.05 16:44:41,800|"
+'2851' sent new Mi: 63 at "19.05 16:44:43,831|"
+'2831' sent new Mi: 21 at "19.05 16:44:43,831|"
+'2861' sent new Mi: 35 at "19.05 16:44:43,831|"
+'2881' sent new Mi: 7 at "19.05 16:44:43,831|"
+'2891' sent new Mi: 7 at "19.05 16:44:45,862|"
+'2861' sent new Mi: 7 at "19.05 16:44:45,862|"
+'2831' sent new Mi: 7 at "19.05 16:44:47,894|"
+'2821' sent new Mi: 7 at "19.05 16:44:49,925|"
+'2851' sent new Mi: 7 at "19.05 16:44:51,956|"
+received something wrong: {<7260.48.0>,{vote,'2841'}}
+'2841' sent term Mi: 7 at "19.05 16:45:25,862|". It's lowest ggT yet!
+received something wrong: {<7260.51.0>,{vote,'2871'}}
+'2871' sent term Mi: 7 at "19.05 16:45:27,887|". There is a lower ggT: 7!
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2851' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2851' and '2841'
+'2841' send neighbours: '2811' and '2831'
+'2831' send neighbours: '2841' and '2821'
+'2821' send neighbours: '2831' and '2891'
+'2891' send neighbours: '2821' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2851'
+'2851' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2841' send initial Mi: 6479550
+'2831' send initial Mi: 143325
+'2821' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2851' send initial Mi: 17374697340
+'2831' send initial Y: 2772
+'2821' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2851' send initial Y: 3156303150
+'2831' sent new Mi: 1953 at "19.05 16:50:44,456|"
+'2891' sent new Mi: 16562 at "19.05 16:50:44,456|"
+'2851' sent new Mi: 1593181590 at "19.05 16:50:44,456|"
+'2871' sent new Mi: 759759 at "19.05 16:50:44,456|"
+'2841' sent new Mi: 1449 at "19.05 16:50:46,487|"
+'2861' sent new Mi: 3185 at "19.05 16:50:46,487|"
+'2851' sent new Mi: 726726 at "19.05 16:50:46,487|"
+'2871' sent new Mi: 33033 at "19.05 16:50:48,519|"
+'2891' sent new Mi: 637 at "19.05 16:50:48,519|"
+'2881' sent new Mi: 735 at "19.05 16:50:48,519|"
+'2831' sent new Mi: 504 at "19.05 16:50:48,519|"
+'2811' sent new Mi: 7 at "19.05 16:50:48,519|"
+'2861' sent new Mi: 245 at "19.05 16:50:50,550|"
+'2841' sent new Mi: 441 at "19.05 16:50:50,550|"
+'2851' sent new Mi: 7 at "19.05 16:50:50,550|"
+'2871' sent new Mi: 693 at "19.05 16:50:50,550|"
+'2891' sent new Mi: 147 at "19.05 16:50:52,581|"
+'2831' sent new Mi: 63 at "19.05 16:50:52,581|"
+'2881' sent new Mi: 42 at "19.05 16:50:52,581|"
+'2871' sent new Mi: 7 at "19.05 16:50:52,581|"
+'2841' sent new Mi: 63 at "19.05 16:50:54,612|"
+'2861' sent new Mi: 35 at "19.05 16:50:54,612|"
+'2821' sent new Mi: 21 at "19.05 16:50:54,612|"
+'2881' sent new Mi: 7 at "19.05 16:50:54,612|"
+'2831' sent new Mi: 21 at "19.05 16:50:56,644|"
+'2891' sent new Mi: 7 at "19.05 16:50:56,644|"
+'2861' sent new Mi: 7 at "19.05 16:50:56,644|"
+'2841' sent new Mi: 21 at "19.05 16:50:58,675|"
+'2821' sent new Mi: 7 at "19.05 16:50:58,675|"
+'2831' sent new Mi: 7 at "19.05 16:51:00,706|"
+'2841' sent new Mi: 7 at "19.05 16:51:02,737|"
+received something wrong: {<10165.49.0>,{vote,'2851'}}
+'2851' sent term Mi: 7 at "19.05 16:51:36,644|". It's lowest ggT yet!
+received something wrong: {<10165.51.0>,{vote,'2871'}}
+'2871' sent term Mi: 7 at "19.05 16:51:38,668|". There is a lower ggT: 7!
+received something wrong: {<10165.52.0>,{vote,'2881'}}
+received something wrong: {<10165.50.0>,{vote,'2861'}}
+'2881' sent term Mi: 7 at "19.05 16:51:40,705|". There is a lower ggT: 7!
+'2861' sent term Mi: 7 at "19.05 16:51:40,705|". There is a lower ggT: 7!
+received something wrong: {<10165.53.0>,{vote,'2891'}}
+'2891' sent term Mi: 7 at "19.05 16:51:42,731|". There is a lower ggT: 7!
+received something wrong: {<10165.46.0>,{vote,'2821'}}
+received something wrong: {<10165.48.0>,{vote,'2841'}}
+'2821' sent term Mi: 7 at "19.05 16:51:44,762|". There is a lower ggT: 7!
+'2841' sent term Mi: 7 at "19.05 16:51:44,762|". There is a lower ggT: 7!
+received something wrong: {<10165.45.0>,{vote,'2811'}}
+received something wrong: {<10165.47.0>,{vote,'2831'}}
+'2811' sent term Mi: 7 at "19.05 16:51:46,799|". There is a lower ggT: 7!
+'2831' sent term Mi: 7 at "19.05 16:51:46,799|". There is a lower ggT: 7!
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2851' says hello.
+'2841' says hello.
+'2821' says hello.
+'2831' says hello.
+'2811' says hello.
+'2811' send neighbours: '2851' and '2821'
+'2821' send neighbours: '2811' and '2841'
+'2841' send neighbours: '2821' and '2831'
+'2831' send neighbours: '2841' and '2891'
+'2891' send neighbours: '2831' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2851'
+'2851' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2821' send initial Mi: 6479550
+'2841' send initial Mi: 143325
+'2831' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2851' send initial Mi: 17374697340
+'2841' send initial Y: 2772
+'2831' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2851' send initial Y: 3156303150
+'2851' sent new Mi: 1593181590 at "19.05 17:07:12,225|"
+'2841' sent new Mi: 1953 at "19.05 17:07:12,225|"
+'2891' sent new Mi: 16562 at "19.05 17:07:12,225|"
+'2871' sent new Mi: 759759 at "19.05 17:07:12,225|"
+'2821' sent new Mi: 1449 at "19.05 17:07:14,256|"
+'2861' sent new Mi: 3185 at "19.05 17:07:14,256|"
+'2851' sent new Mi: 726726 at "19.05 17:07:14,256|"
+'2891' sent new Mi: 637 at "19.05 17:07:16,287|"
+'2871' sent new Mi: 33033 at "19.05 17:07:16,287|"
+'2841' sent new Mi: 504 at "19.05 17:07:16,287|"
+'2881' sent new Mi: 735 at "19.05 17:07:16,287|"
+'2821' sent new Mi: 441 at "19.05 17:07:18,319|"
+'2861' sent new Mi: 245 at "19.05 17:07:18,319|"
+'2851' sent new Mi: 33033 at "19.05 17:07:18,319|"
+'2871' sent new Mi: 693 at "19.05 17:07:18,319|"
+'2891' sent new Mi: 147 at "19.05 17:07:20,350|"
+'2841' sent new Mi: 63 at "19.05 17:07:20,350|"
+'2881' sent new Mi: 42 at "19.05 17:07:20,350|"
+'2851' sent new Mi: 462 at "19.05 17:07:20,350|"
+'2821' sent new Mi: 63 at "19.05 17:07:22,381|"
+'2861' sent new Mi: 35 at "19.05 17:07:22,381|"
+'2831' sent new Mi: 21 at "19.05 17:07:22,381|"
+'2871' sent new Mi: 231 at "19.05 17:07:22,381|"
+'2841' sent new Mi: 21 at "19.05 17:07:24,412|"
+'2891' sent new Mi: 7 at "19.05 17:07:24,412|"
+'2851' sent new Mi: 231 at "19.05 17:07:24,412|"
+'2821' sent new Mi: 21 at "19.05 17:07:26,444|"
+'2831' sent new Mi: 7 at "19.05 17:07:26,444|"
+'2861' sent new Mi: 7 at "19.05 17:07:26,444|"
+'2841' sent new Mi: 7 at "19.05 17:07:28,475|"
+'2881' sent new Mi: 7 at "19.05 17:07:28,475|"
+'2821' sent new Mi: 7 at "19.05 17:07:30,506|"
+'2871' sent new Mi: 7 at "19.05 17:07:30,506|"
+'2851' sent new Mi: 7 at "19.05 17:07:32,537|"
+received something wrong: {<10165.53.0>,{vote,'2891'}}
+'2891' sent term Mi: 7 at "19.05 17:08:10,506|". It's lowest ggT yet!
+received something wrong: {<10165.50.0>,{vote,'2861'}}
+received something wrong: {<10165.47.0>,{vote,'2831'}}
+received something wrong: {<10165.46.0>,{vote,'2821'}}
+'2861' sent term Mi: 7 at "19.05 17:08:12,537|". It's lowest ggT yet!
+'2821' sent term Mi: 7 at "19.05 17:08:12,537|". It's lowest ggT yet!
+'2831' sent term Mi: 7 at "19.05 17:08:12,537|". It's lowest ggT yet!
+received something wrong: {<10165.52.0>,{vote,'2881'}}
+received something wrong: {<10165.48.0>,{vote,'2841'}}
+received something wrong: {<10165.49.0>,{vote,'2851'}}
+'2881' sent term Mi: 7 at "19.05 17:08:14,569|". It's lowest ggT yet!
+'2841' sent term Mi: 7 at "19.05 17:08:14,569|". It's lowest ggT yet!
+'2851' sent term Mi: 7 at "19.05 17:08:14,569|". It's lowest ggT yet!
+received something wrong: {<10165.51.0>,{vote,'2871'}}
+'2871' sent term Mi: 7 at "19.05 17:08:16,600|". It's lowest ggT yet!
+'2811' send kill command.
+'2821' send kill command.
+'2841' send kill command.
+'2831' send kill command.
+'2891' send kill command.
+'2861' send kill command.
+'2881' send kill command.
+'2871' send kill command.
+'2851' send kill command.
+Killed all known ggT-Processes
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2841' says hello.
+'2851' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2841' and '2831'
+'2831' send neighbours: '2811' and '2851'
+'2851' send neighbours: '2831' and '2821'
+'2821' send neighbours: '2851' and '2891'
+'2891' send neighbours: '2821' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2841'
+'2841' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2831' send initial Mi: 6479550
+'2851' send initial Mi: 143325
+'2821' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2841' send initial Mi: 17374697340
+'2851' send initial Y: 2772
+'2821' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2841' send initial Y: 3156303150
+'2851' sent new Mi: 1953 at "19.05 17:16:55,394|"
+'2891' sent new Mi: 16562 at "19.05 17:16:55,394|"
+'2871' sent new Mi: 759759 at "19.05 17:16:55,394|"
+'2841' sent new Mi: 1593181590 at "19.05 17:16:55,394|"
+'2831' sent new Mi: 1449 at "19.05 17:16:57,425|"
+'2861' sent new Mi: 3185 at "19.05 17:16:57,425|"
+'2841' sent new Mi: 726726 at "19.05 17:16:57,425|"
+'2891' sent new Mi: 637 at "19.05 17:16:59,456|"
+'2811' sent new Mi: 7 at "19.05 17:16:59,456|"
+'2881' sent new Mi: 735 at "19.05 17:16:59,456|"
+'2851' sent new Mi: 504 at "19.05 17:16:59,456|"
+'2871' sent new Mi: 33033 at "19.05 17:16:59,456|"
+'2861' sent new Mi: 245 at "19.05 17:17:01,487|"
+'2841' sent new Mi: 7 at "19.05 17:17:01,487|"
+'2831' sent new Mi: 441 at "19.05 17:17:01,487|"
+'2871' sent new Mi: 693 at "19.05 17:17:01,487|"
+'2851' sent new Mi: 63 at "19.05 17:17:03,519|"
+'2881' sent new Mi: 42 at "19.05 17:17:03,519|"
+'2871' sent new Mi: 7 at "19.05 17:17:03,519|"
+'2891' sent new Mi: 147 at "19.05 17:17:03,519|"
+'2861' sent new Mi: 35 at "19.05 17:17:05,550|"
+'2831' sent new Mi: 63 at "19.05 17:17:05,550|"
+'2881' sent new Mi: 7 at "19.05 17:17:05,550|"
+'2891' sent new Mi: 7 at "19.05 17:17:07,581|"
+'2861' sent new Mi: 7 at "19.05 17:17:07,581|"
+received something wrong: {<10165.48.0>,{vote,'2841'}}
+received something wrong: {<10165.47.0>,{vote,'2831'}}
+'2841' sent term Mi: 7 at "19.05 17:17:47,581|". It's lowest ggT yet!
+'2831' sent term Mi: 63 at "19.05 17:17:47,581|". There is a lower ggT: 7!
+Send lower ggT to Process '2831'
+received something wrong: {<10165.45.0>,{vote,'2811'}}
+received something wrong: {<10165.49.0>,{vote,'2851'}}
+received something wrong: {<10165.51.0>,{vote,'2871'}}
+'2851' sent term Mi: 63 at "19.05 17:17:49,606|". It's lowest ggT yet!
+'2831' sent new Mi: 7 at "19.05 17:17:49,606|"
+'2871' sent term Mi: 7 at "19.05 17:17:49,606|". It's lowest ggT yet!
+'2851' sent new Mi: 7 at "19.05 17:17:51,627|"
+received something wrong: {<10165.53.0>,{vote,'2891'}}
+received something wrong: {<10165.50.0>,{vote,'2861'}}
+received something wrong: {<10165.52.0>,{vote,'2881'}}
+'2891' sent term Mi: 7 at "19.05 17:17:51,643|". It's lowest ggT yet!
+'2861' sent term Mi: 7 at "19.05 17:17:51,643|". It's lowest ggT yet!
+'2881' sent term Mi: 7 at "19.05 17:17:51,643|". It's lowest ggT yet!
+received something wrong: {<10165.49.0>,{vote,'2851'}}
+received something wrong: {<10165.45.0>,{vote,'2811'}}
+'2851' sent term Mi: 7 at "19.05 17:18:33,658|". It's lowest ggT yet!
+'2811' sent term Mi: 7 at "19.05 17:18:33,658|". It's lowest ggT yet!
+received something wrong: {<10165.47.0>,{vote,'2831'}}
+'2831' sent term Mi: 7 at "19.05 17:18:35,690|". It's lowest ggT yet!
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2851' says hello.
+'2841' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2851' and '2831'
+'2831' send neighbours: '2811' and '2841'
+'2841' send neighbours: '2831' and '2821'
+'2821' send neighbours: '2841' and '2891'
+'2891' send neighbours: '2821' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2851'
+'2851' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2831' send initial Mi: 6479550
+'2841' send initial Mi: 143325
+'2821' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2861' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2851' send initial Mi: 17374697340
+'2841' send initial Y: 2772
+'2821' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2861' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2851' send initial Y: 3156303150
+'2841' sent new Mi: 1953 at "19.05 17:22:08,519|"
+'2891' sent new Mi: 16562 at "19.05 17:22:08,519|"
+'2871' sent new Mi: 759759 at "19.05 17:22:08,519|"
+'2851' sent new Mi: 1593181590 at "19.05 17:22:08,519|"
+'2831' sent new Mi: 1449 at "19.05 17:22:10,550|"
+'2861' sent new Mi: 3185 at "19.05 17:22:10,550|"
+'2851' sent new Mi: 726726 at "19.05 17:22:10,550|"
+'2891' sent new Mi: 637 at "19.05 17:22:12,581|"
+'2871' sent new Mi: 33033 at "19.05 17:22:12,581|"
+'2841' sent new Mi: 504 at "19.05 17:22:12,581|"
+'2881' sent new Mi: 735 at "19.05 17:22:12,581|"
+'2811' sent new Mi: 7 at "19.05 17:22:12,581|"
+'2861' sent new Mi: 245 at "19.05 17:22:14,612|"
+'2851' sent new Mi: 7 at "19.05 17:22:14,612|"
+'2871' sent new Mi: 693 at "19.05 17:22:14,612|"
+'2831' sent new Mi: 441 at "19.05 17:22:14,612|"
+'2891' sent new Mi: 147 at "19.05 17:22:16,644|"
+'2881' sent new Mi: 42 at "19.05 17:22:16,644|"
+'2841' sent new Mi: 63 at "19.05 17:22:16,644|"
+'2871' sent new Mi: 7 at "19.05 17:22:16,644|"
+'2831' sent new Mi: 63 at "19.05 17:22:18,675|"
+'2861' sent new Mi: 35 at "19.05 17:22:18,675|"
+'2821' sent new Mi: 21 at "19.05 17:22:18,675|"
+'2881' sent new Mi: 7 at "19.05 17:22:18,675|"
+'2841' sent new Mi: 21 at "19.05 17:22:20,706|"
+'2891' sent new Mi: 7 at "19.05 17:22:20,706|"
+'2861' sent new Mi: 7 at "19.05 17:22:20,706|"
+'2831' sent new Mi: 21 at "19.05 17:22:22,737|"
+'2821' sent new Mi: 7 at "19.05 17:22:22,737|"
+'2841' sent new Mi: 7 at "19.05 17:22:24,769|"
+'2831' sent new Mi: 7 at "19.05 17:22:26,800|"
+received something wrong: {<10165.49.0>,{vote,'2851'}}
+'2851' sent term Mi: 7 at "19.05 17:23:00,706|". It's lowest ggT yet!
+received something wrong: {<10165.51.0>,{vote,'2871'}}
+'2871' sent term Mi: 7 at "19.05 17:23:02,737|". It's lowest ggT yet!
+received something wrong: {<10165.52.0>,{vote,'2881'}}
+received something wrong: {<10165.50.0>,{vote,'2861'}}
+'2881' sent term Mi: 7 at "19.05 17:23:04,768|". It's lowest ggT yet!
+'2861' sent term Mi: 7 at "19.05 17:23:04,768|". It's lowest ggT yet!
+received something wrong: {<10165.53.0>,{vote,'2891'}}
+'2891' sent term Mi: 7 at "19.05 17:23:06,799|". It's lowest ggT yet!
+received something wrong: {<10165.46.0>,{vote,'2821'}}
+received something wrong: {<10165.47.0>,{vote,'2831'}}
+'2821' sent term Mi: 7 at "19.05 17:23:08,825|". It's lowest ggT yet!
+'2831' sent term Mi: 7 at "19.05 17:23:08,825|". It's lowest ggT yet!
+received something wrong: {<10165.45.0>,{vote,'2811'}}
+received something wrong: {<10165.48.0>,{vote,'2841'}}
+'2811' sent term Mi: 7 at "19.05 17:23:10,861|". It's lowest ggT yet!
+'2841' sent term Mi: 7 at "19.05 17:23:10,861|". It's lowest ggT yet!
+'2811' send kill command.
+'2831' send kill command.
+'2841' send kill command.
+'2821' send kill command.
+'2891' send kill command.
+'2861' send kill command.
+'2881' send kill command.
+'2871' send kill command.
+'2851' send kill command.
+Killed all known ggT-Processes
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2861' and '2841'
+'2841' send neighbours: '2811' and '2831'
+'2831' send neighbours: '2841' and '2821'
+'2821' send neighbours: '2831' and '2891'
+'2891' send neighbours: '2821' and '2851'
+'2851' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2851' and '2871'
+'2871' send neighbours: '2881' and '2861'
+'2861' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 311542
+'2841' send initial Mi: 6479550
+'2831' send initial Mi: 143325
+'2821' send initial Mi: 315
+'2891' send initial Mi: 126252126
+'2851' send initial Mi: 1576575
+'2881' send initial Mi: 124950
+'2871' send initial Mi: 7651644
+'2861' send initial Mi: 17374697340
+'2831' send initial Y: 2772
+'2821' send initial Y: 63763700
+'2891' send initial Y: 33124
+'2851' send initial Y: 21538881
+'2881' send initial Y: 26036010
+'2871' send initial Y: 765765
+'2861' send initial Y: 3156303150
+'2831' sent new Mi: 1953 at "19.05 17:26:39,411|"
+'2891' sent new Mi: 16562 at "19.05 17:26:39,411|"
+'2871' sent new Mi: 759759 at "19.05 17:26:39,411|"
+'2861' sent new Mi: 1593181590 at "19.05 17:26:39,411|"
+'2841' sent new Mi: 1449 at "19.05 17:26:41,443|"
+'2851' sent new Mi: 3185 at "19.05 17:26:41,443|"
+'2861' sent new Mi: 726726 at "19.05 17:26:41,443|"
+'2891' sent new Mi: 637 at "19.05 17:26:43,474|"
+'2871' sent new Mi: 33033 at "19.05 17:26:43,474|"
+'2831' sent new Mi: 504 at "19.05 17:26:43,474|"
+'2881' sent new Mi: 735 at "19.05 17:26:43,474|"
+'2811' sent new Mi: 7 at "19.05 17:26:43,474|"
+'2851' sent new Mi: 245 at "19.05 17:26:45,505|"
+'2861' sent new Mi: 7 at "19.05 17:26:45,505|"
+'2841' sent new Mi: 441 at "19.05 17:26:45,505|"
+'2871' sent new Mi: 693 at "19.05 17:26:45,505|"
+'2891' sent new Mi: 147 at "19.05 17:26:47,536|"
+'2881' sent new Mi: 42 at "19.05 17:26:47,536|"
+'2831' sent new Mi: 63 at "19.05 17:26:47,536|"
+'2871' sent new Mi: 7 at "19.05 17:26:47,536|"
+'2841' sent new Mi: 63 at "19.05 17:26:49,568|"
+'2851' sent new Mi: 35 at "19.05 17:26:49,568|"
+'2821' sent new Mi: 21 at "19.05 17:26:49,568|"
+'2881' sent new Mi: 7 at "19.05 17:26:49,568|"
+'2831' sent new Mi: 21 at "19.05 17:26:51,599|"
+'2851' sent new Mi: 7 at "19.05 17:26:51,599|"
+'2891' sent new Mi: 7 at "19.05 17:26:51,599|"
+'2821' sent new Mi: 7 at "19.05 17:26:53,646|"
+'2841' sent new Mi: 21 at "19.05 17:26:53,646|"
+'2831' sent new Mi: 7 at "19.05 17:26:55,661|"
+'2841' sent new Mi: 7 at "19.05 17:26:57,693|"
+received something wrong: {<7260.50.0>,{vote,'2861'}}
+'2861' sent term Mi: 7 at "19.05 17:27:31,599|". It's lowest ggT yet!
+received something wrong: {<7260.51.0>,{vote,'2871'}}
+'2871' sent term Mi: 7 at "19.05 17:27:33,630|". It's lowest ggT yet!
+received something wrong: {<7260.52.0>,{vote,'2881'}}
+received something wrong: {<7260.49.0>,{vote,'2851'}}
+'2881' sent term Mi: 7 at "19.05 17:27:35,661|". It's lowest ggT yet!
+'2851' sent term Mi: 7 at "19.05 17:27:35,661|". It's lowest ggT yet!
+received something wrong: {<7260.53.0>,{vote,'2891'}}
+'2891' sent term Mi: 7 at "19.05 17:27:37,708|". It's lowest ggT yet!
+received something wrong: {<7260.46.0>,{vote,'2821'}}
+received something wrong: {<7260.48.0>,{vote,'2841'}}
+'2821' sent term Mi: 7 at "19.05 17:27:39,718|". It's lowest ggT yet!
+'2841' sent term Mi: 7 at "19.05 17:27:39,718|". It's lowest ggT yet!
+received something wrong: {<7260.47.0>,{vote,'2831'}}
+received something wrong: {<7260.45.0>,{vote,'2811'}}
+'2831' sent term Mi: 7 at "19.05 17:27:41,749|". It's lowest ggT yet!
+'2811' sent term Mi: 7 at "19.05 17:27:41,749|". It's lowest ggT yet!
+received something wrong: step
+'2811' send initial Mi: 374374
+'2841' send initial Mi: 90180090
+'2831' send initial Mi: 7147140
+'2821' send initial Mi: 338130
+'2891' send initial Mi: 825825
+'2851' send initial Mi: 9572836
+'2881' send initial Mi: 18301010
+'2871' send initial Mi: 422331
+'2861' send initial Mi: 780780
+'2831' send initial Y: 225420
+'2821' send initial Y: 4400085690
+'2891' send initial Y: 3318315
+'2851' send initial Y: 7438860
+'2881' send initial Y: 2774772
+'2871' send initial Y: 9680188518
+'2861' send initial Y: 1840410
+'2881' sent new Mi: 1652378 at "19.05 17:28:44,130|"
+'2831' sent new Mi: 159120 at "19.05 17:28:44,130|"
+'2851' sent new Mi: 2133976 at "19.05 17:28:44,130|"
+'2821' sent new Mi: 19890 at "19.05 17:28:46,161|"
+'2841' sent new Mi: 118170 at "19.05 17:28:46,161|"
+'2851' sent new Mi: 481598 at "19.05 17:28:46,161|"
+'2891' sent new Mi: 344227 at "19.05 17:28:48,193|"
+'2811' sent new Mi: 19864 at "19.05 17:28:48,193|"
+'2831' sent new Mi: 19890 at "19.05 17:28:48,193|"
+'2881' sent new Mi: 207584 at "19.05 17:28:48,193|"
+'2861' sent new Mi: 6084 at "19.05 17:28:50,224|"
+'2841' sent new Mi: 18720 at "19.05 17:28:50,224|"
+'2851' sent new Mi: 66430 at "19.05 17:28:50,224|"
+'2871' sent new Mi: 7163 at "19.05 17:28:50,224|"
+'2891' sent new Mi: 12077 at "19.05 17:28:52,255|"
+'2811' sent new Mi: 1144 at "19.05 17:28:52,255|"
+'2881' sent new Mi: 7020 at "19.05 17:28:52,255|"
+'2831' sent new Mi: 1170 at "19.05 17:28:52,255|"
+'2871' sent new Mi: 1079 at "19.05 17:28:52,255|"
+'2881' sent new Mi: 546 at "19.05 17:28:54,286|"
+'2841' sent new Mi: 1170 at "19.05 17:28:54,286|"
+'2851' sent new Mi: 3250 at "19.05 17:28:54,286|"
+'2821' sent new Mi: 7813 at "19.05 17:28:54,286|"
+'2861' sent new Mi: 364 at "19.05 17:28:54,286|"
+'2871' sent new Mi: 533 at "19.05 17:28:56,318|"
+'2851' sent new Mi: 520 at "19.05 17:28:56,318|"
+'2891' sent new Mi: 2327 at "19.05 17:28:56,318|"
+'2821' sent new Mi: 832 at "19.05 17:28:58,349|"
+'2881' sent new Mi: 13 at "19.05 17:28:58,349|"
+'2891' sent new Mi: 247 at "19.05 17:28:58,349|"
+'2831' sent new Mi: 338 at "19.05 17:29:00,380|"
+'2871' sent new Mi: 13 at "19.05 17:29:00,380|"
+'2821' sent new Mi: 91 at "19.05 17:29:00,380|"
+'2851' sent new Mi: 13 at "19.05 17:29:00,380|"
+'2861' sent new Mi: 13 at "19.05 17:29:02,411|"
+'2841' sent new Mi: 156 at "19.05 17:29:02,411|"
+'2831' sent new Mi: 65 at "19.05 17:29:02,411|"
+'2891' sent new Mi: 13 at "19.05 17:29:02,411|"
+'2811' sent new Mi: 52 at "19.05 17:29:04,443|"
+'2821' sent new Mi: 13 at "19.05 17:29:04,443|"
+'2841' sent new Mi: 26 at "19.05 17:29:04,443|"
+'2831' sent new Mi: 13 at "19.05 17:29:06,474|"
+'2811' sent new Mi: 26 at "19.05 17:29:06,474|"
+'2841' sent new Mi: 13 at "19.05 17:29:08,505|"
+'2811' sent new Mi: 13 at "19.05 17:29:10,536|"
+received something wrong: {<7260.52.0>,{vote,'2881'}}
+'2881' sent term Mi: 13 at "19.05 17:29:44,443|". There is a lower ggT: 7!
+Send lower ggT to Process '2881'
+received something wrong: {<7260.51.0>,{vote,'2871'}}
+received something wrong: {<7260.49.0>,{vote,'2851'}}
+'2871' sent term Mi: 13 at "19.05 17:29:46,474|". It's lowest ggT yet!
+'2881' sent new Mi: 6 at "19.05 17:29:46,474|"
+received something wrong: {<7260.53.0>,{vote,'2891'}}
+'2851' sent new Mi: 1 at "19.05 17:29:48,505|"
+'2871' sent new Mi: 1 at "19.05 17:29:48,505|"
+received something wrong: {<7260.46.0>,{vote,'2821'}}
+'2881' sent new Mi: 1 at "19.05 17:29:50,536|"
+'2891' sent new Mi: 1 at "19.05 17:29:50,536|"
+'2861' sent new Mi: 1 at "19.05 17:29:50,536|"
+received something wrong: {<7260.47.0>,{vote,'2831'}}
+'2811' sent new Mi: 1 at "19.05 17:29:52,568|"
+'2821' sent new Mi: 1 at "19.05 17:29:52,568|"
+'2831' sent new Mi: 1 at "19.05 17:29:54,599|"
+'2841' sent new Mi: 1 at "19.05 17:29:54,599|"
+received something wrong: {<7260.52.0>,{vote,'2881'}}
+'2881' sent term Mi: 1 at "19.05 17:30:32,568|". It's lowest ggT yet!
+received something wrong: {<7260.49.0>,{vote,'2851'}}
+received something wrong: {<7260.51.0>,{vote,'2871'}}
+'2851' sent term Mi: 1 at "19.05 17:30:34,599|". It's lowest ggT yet!
+'2871' sent term Mi: 1 at "19.05 17:30:34,599|". It's lowest ggT yet!
+received something wrong: {<7260.53.0>,{vote,'2891'}}
+received something wrong: {<7260.50.0>,{vote,'2861'}}
+'2891' sent term Mi: 1 at "19.05 17:30:36,630|". It's lowest ggT yet!
+'2861' sent term Mi: 1 at "19.05 17:30:36,630|". It's lowest ggT yet!
+received something wrong: {<7260.48.0>,{vote,'2841'}}
+received something wrong: {<7260.47.0>,{vote,'2831'}}
+received something wrong: {<7260.45.0>,{vote,'2811'}}
+received something wrong: {<7260.46.0>,{vote,'2821'}}
+'2841' sent term Mi: 1 at "19.05 17:30:38,661|". It's lowest ggT yet!
+'2831' sent term Mi: 1 at "19.05 17:30:38,661|". It's lowest ggT yet!
+'2821' sent term Mi: 1 at "19.05 17:30:38,661|". It's lowest ggT yet!
+'2811' sent term Mi: 1 at "19.05 17:30:38,661|". It's lowest ggT yet!
+'2811' send initial Mi: 4633252624
+'2841' send initial Mi: 205920
+'2831' send initial Mi: 36960
+'2821' send initial Mi: 712808096
+'2891' send initial Mi: 8274240
+'2851' send initial Mi: 1914567200
+'2881' send initial Mi: 58893120
+'2871' send initial Mi: 69696
+'2861' send initial Mi: 8624
+'2831' send initial Y: 16126880
+'2821' send initial Y: 2265760
+'2891' send initial Y: 14960
+'2851' send initial Y: 14400
+'2881' send initial Y: 1985679696
+'2871' send initial Y: 56784
+'2861' send initial Y: 125888400
+'2821' sent new Mi: 1359456 at "19.05 17:35:38,911|"
+'2891' sent new Mi: 1360 at "19.05 17:35:38,911|"
+'2851' sent new Mi: 800 at "19.05 17:35:38,911|"
+'2871' sent new Mi: 12912 at "19.05 17:35:38,911|"
+'2881' sent new Mi: 1488 at "19.05 17:35:40,943|"
+'2821' sent new Mi: 816 at "19.05 17:35:40,943|"
+'2891' sent new Mi: 560 at "19.05 17:35:40,943|"
+'2831' sent new Mi: 240 at "19.05 17:35:42,974|"
+'2871' sent new Mi: 1008 at "19.05 17:35:42,974|"
+'2821' sent new Mi: 256 at "19.05 17:35:42,974|"
+'2841' sent new Mi: 240 at "19.05 17:35:45,005|"
+'2881' sent new Mi: 480 at "19.05 17:35:45,005|"
+'2861' sent new Mi: 560 at "19.05 17:35:45,005|"
+'2891' sent new Mi: 48 at "19.05 17:35:45,005|"
+'2821' sent new Mi: 16 at "19.05 17:35:45,005|"
+'2831' sent new Mi: 16 at "19.05 17:35:47,036|"
+'2871' sent new Mi: 448 at "19.05 17:35:47,036|"
+'2811' sent new Mi: 64 at "19.05 17:35:47,036|"
+'2851' sent new Mi: 320 at "19.05 17:35:47,036|"
+'2891' sent new Mi: 16 at "19.05 17:35:47,036|"
+'2861' sent new Mi: 48 at "19.05 17:35:49,068|"
+'2841' sent new Mi: 16 at "19.05 17:35:49,068|"
+'2881' sent new Mi: 32 at "19.05 17:35:49,068|"
+'2851' sent new Mi: 16 at "19.05 17:35:49,068|"
+'2811' sent new Mi: 16 at "19.05 17:35:51,099|"
+'2871' sent new Mi: 16 at "19.05 17:35:51,099|"
+'2881' sent new Mi: 16 at "19.05 17:35:51,099|"
+'2861' sent new Mi: 16 at "19.05 17:35:53,130|"
+received something wrong: {<7260.46.0>,{vote,'2821'}}
+'2821' sent term Mi: 16 at "19.05 17:36:31,099|". There is a lower ggT: 1!
+Send lower ggT to Process '2821'
+received something wrong: {<7260.53.0>,{vote,'2891'}}
+received something wrong: {<7260.47.0>,{vote,'2831'}}
+'2891' sent term Mi: 16 at "19.05 17:36:33,130|". It's lowest ggT yet!
+'2821' sent new Mi: 1 at "19.05 17:36:33,130|"
+received something wrong: {<7260.49.0>,{vote,'2851'}}
+received something wrong: {<7260.48.0>,{vote,'2841'}}
+received something wrong: {<7260.52.0>,{vote,'2881'}}
+received something wrong: {<7260.50.0>,{vote,'2861'}}
+'2851' sent term Mi: 16 at "19.05 17:36:35,161|". It's lowest ggT yet!
+'2881' sent term Mi: 16 at "19.05 17:36:35,161|". It's lowest ggT yet!
+'2891' sent new Mi: 1 at "19.05 17:36:35,161|"
+'2831' sent new Mi: 1 at "19.05 17:36:35,161|"
+'2861' sent term Mi: 16 at "19.05 17:36:35,161|". It's lowest ggT yet!
+received something wrong: {<7260.51.0>,{vote,'2871'}}
+received something wrong: {<7260.45.0>,{vote,'2811'}}
+'2871' sent term Mi: 16 at "19.05 17:36:37,193|". It's lowest ggT yet!
+'2841' sent new Mi: 1 at "19.05 17:36:37,193|"
+'2851' sent new Mi: 1 at "19.05 17:36:37,193|"
+'2881' sent new Mi: 1 at "19.05 17:36:39,224|"
+'2811' sent new Mi: 1 at "19.05 17:36:39,224|"
+'2861' sent new Mi: 1 at "19.05 17:36:41,255|"
+'2871' sent new Mi: 1 at "19.05 17:36:41,255|"
+received something wrong: {<7260.46.0>,{vote,'2821'}}
+'2821' sent term Mi: 1 at "19.05 17:37:19,224|". It's lowest ggT yet!
+received something wrong: {<7260.53.0>,{vote,'2891'}}
+received something wrong: {<7260.47.0>,{vote,'2831'}}
+'2891' sent term Mi: 1 at "19.05 17:37:21,255|". It's lowest ggT yet!
+'2831' sent term Mi: 1 at "19.05 17:37:21,255|". It's lowest ggT yet!
+received something wrong: {<7260.49.0>,{vote,'2851'}}
+received something wrong: {<7260.48.0>,{vote,'2841'}}
+'2851' sent term Mi: 1 at "19.05 17:37:23,286|". It's lowest ggT yet!
+'2841' sent term Mi: 1 at "19.05 17:37:23,286|". It's lowest ggT yet!
+received something wrong: {<7260.52.0>,{vote,'2881'}}
+received something wrong: {<7260.45.0>,{vote,'2811'}}
+received something wrong: {<7260.50.0>,{vote,'2861'}}
+received something wrong: {<7260.51.0>,{vote,'2871'}}
+'2881' sent term Mi: 1 at "19.05 17:37:25,318|". It's lowest ggT yet!
+'2811' sent term Mi: 1 at "19.05 17:37:25,318|". It's lowest ggT yet!
+'2861' sent term Mi: 1 at "19.05 17:37:25,318|". It's lowest ggT yet!
+'2871' sent term Mi: 1 at "19.05 17:37:25,318|". It's lowest ggT yet!
+bind Koordinator done.
+'2881' says hello.
+'2891' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2861' and '2841'
+'2841' send neighbours: '2811' and '2831'
+'2831' send neighbours: '2841' and '2821'
+'2821' send neighbours: '2831' and '2881'
+'2881' send neighbours: '2821' and '2851'
+'2851' send neighbours: '2881' and '2891'
+'2891' send neighbours: '2851' and '2871'
+'2871' send neighbours: '2891' and '2861'
+'2861' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 712096
+'2841' send initial Mi: 14810400
+'2831' send initial Mi: 327600
+'2821' send initial Mi: 720
+'2881' send initial Mi: 288576288
+'2851' send initial Mi: 3603600
+'2891' send initial Mi: 285600
+'2871' send initial Mi: 17489472
+'2861' send initial Mi: 39713593920
+'2831' send initial Y: 6336
+'2821' send initial Y: 145745600
+'2881' send initial Y: 75712
+'2851' send initial Y: 49231728
+'2891' send initial Y: 59510880
+'2871' send initial Y: 1750320
+'2861' send initial Y: 7214407200
+received something wrong: {<10165.53.0>,{vote,'2891'}}
+received something wrong: {<10165.51.0>,{vote,'2871'}}
+received something wrong: {<10165.49.0>,{vote,'2851'}}
+received something wrong: {<10165.47.0>,{vote,'2831'}}
+received something wrong: {<10165.50.0>,{vote,'2861'}}
+received something wrong: {<10165.45.0>,{vote,'2811'}}
+received something wrong: {<10165.48.0>,{vote,'2841'}}
+received something wrong: {<10165.46.0>,{vote,'2821'}}
+received something wrong: {<10165.52.0>,{vote,'2881'}}
+'2871' sent term Mi: 17489472 at "19.05 17:41:50,024|". It's lowest ggT yet!
+'2891' sent term Mi: 285600 at "19.05 17:41:50,024|". It's lowest ggT yet!
+'2851' sent term Mi: 3603600 at "19.05 17:41:50,024|". There is a lower ggT: 285600!
+Send lower ggT to Process '2851'
+'2831' sent term Mi: 327600 at "19.05 17:41:50,024|". It's lowest ggT yet!
+'2861' sent term Mi: 39713593920 at "19.05 17:41:50,024|". There is a lower ggT: 327600!
+Send lower ggT to Process '2861'
+'2811' sent term Mi: 712096 at "19.05 17:41:50,024|". It's lowest ggT yet!
+'2841' sent term Mi: 14810400 at "19.05 17:41:50,024|". There is a lower ggT: 712096!
+Send lower ggT to Process '2841'
+'2821' sent term Mi: 720 at "19.05 17:41:50,024|". It's lowest ggT yet!
+'2881' sent term Mi: 288576288 at "19.05 17:41:50,024|". There is a lower ggT: 720!
+Send lower ggT to Process '2881'
+'2881' sent new Mi: 288 at "19.05 17:41:52,039|"
+'2861' sent new Mi: 283920 at "19.05 17:41:52,039|"
+'2851' sent new Mi: 176400 at "19.05 17:41:52,055|"
+'2841' sent new Mi: 568480 at "19.05 17:41:52,055|"
+'2811' sent new Mi: 143616 at "19.05 17:41:54,055|"
+'2891' sent new Mi: 109200 at "19.05 17:41:54,055|"
+'2821' sent new Mi: 144 at "19.05 17:41:54,055|"
+'2871' sent new Mi: 170352 at "19.05 17:41:54,055|"
+'2851' sent new Mi: 144 at "19.05 17:41:54,071|"
+'2871' sent new Mi: 61152 at "19.05 17:41:56,071|"
+'2881' sent new Mi: 144 at "19.05 17:41:56,071|"
+'2841' sent new Mi: 137632 at "19.05 17:41:56,071|"
+'2831' sent new Mi: 144 at "19.05 17:41:56,071|"
+'2861' sent new Mi: 140304 at "19.05 17:41:56,071|"
+'2841' sent new Mi: 112 at "19.05 17:41:58,086|"
+'2811' sent new Mi: 5984 at "19.05 17:41:58,086|"
+'2891' sent new Mi: 48 at "19.05 17:41:58,086|"
+'2871' sent new Mi: 48 at "19.05 17:42:00,102|"
+'2831' sent new Mi: 32 at "19.05 17:42:00,102|"
+'2861' sent new Mi: 18000 at "19.05 17:42:00,102|"
+'2851' sent new Mi: 48 at "19.05 17:42:00,117|"
+'2861' sent new Mi: 48 at "19.05 17:42:02,117|"
+'2821' sent new Mi: 16 at "19.05 17:42:02,117|"
+'2841' sent new Mi: 16 at "19.05 17:42:02,117|"
+'2811' sent new Mi: 48 at "19.05 17:42:02,117|"
+'2881' sent new Mi: 48 at "19.05 17:42:02,133|"
+'2831' sent new Mi: 16 at "19.05 17:42:04,133|"
+'2881' sent new Mi: 16 at "19.05 17:42:04,149|"
+'2811' sent new Mi: 16 at "19.05 17:42:06,149|"
+'2851' sent new Mi: 16 at "19.05 17:42:06,164|"
+'2861' sent new Mi: 16 at "19.05 17:42:08,164|"
+'2891' sent new Mi: 16 at "19.05 17:42:08,180|"
+'2871' sent new Mi: 16 at "19.05 17:42:10,180|"
+received something wrong: promt
+'2811' doesn't answer to tellmi!
+'2841' doesn't answer to tellmi!
+'2831' doesn't answer to tellmi!
+'2821' doesn't answer to tellmi!
+'2881' doesn't answer to tellmi!
+'2851' doesn't answer to tellmi!
+'2891' doesn't answer to tellmi!
+'2871' doesn't answer to tellmi!
+'2861' doesn't answer to tellmi!
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2861' says hello.
+'2841' says hello.
+'2851' says hello.
+'2831' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2841' and '2831'
+'2831' send neighbours: '2811' and '2851'
+'2851' send neighbours: '2831' and '2821'
+'2821' send neighbours: '2851' and '2891'
+'2891' send neighbours: '2821' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2871'
+'2871' send neighbours: '2881' and '2841'
+'2841' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 1023638
+'2831' send initial Mi: 21289950
+'2851' send initial Mi: 470925
+'2821' send initial Mi: 1035
+'2891' send initial Mi: 414828414
+'2861' send initial Mi: 5180175
+'2881' send initial Mi: 410550
+'2871' send initial Mi: 25141116
+'2841' send initial Mi: 57088291260
+'2851' send initial Y: 9108
+'2821' send initial Y: 209509300
+'2891' send initial Y: 108836
+'2861' send initial Y: 70770609
+'2881' send initial Y: 85546890
+'2871' send initial Y: 2516085
+'2841' send initial Y: 10370710350
+received something wrong: {<7256.53.0>,{vote,'2841'}}
+received something wrong: {<7256.56.0>,{vote,'2871'}}
+received something wrong: {<7256.57.0>,{vote,'2881'}}
+received something wrong: {<7256.55.0>,{vote,'2861'}}
+received something wrong: {<7256.58.0>,{vote,'2891'}}
+received something wrong: {<7256.51.0>,{vote,'2821'}}
+received something wrong: {<7256.54.0>,{vote,'2851'}}
+received something wrong: {<7256.52.0>,{vote,'2831'}}
+received something wrong: {<7256.50.0>,{vote,'2811'}}
+'2881' sent term Mi: 410550 at "20.05 11:23:14,322|". It's lowest ggT yet!
+'2891' sent term Mi: 414828414 at "20.05 11:23:14,322|". There is a lower ggT: 410550!
+Send lower ggT to Process '2891'
+'2821' sent term Mi: 1035 at "20.05 11:23:14,322|". It's lowest ggT yet!
+'2831' sent term Mi: 21289950 at "20.05 11:23:14,322|". There is a lower ggT: 1035!
+Send lower ggT to Process '2831'
+'2841' sent term Mi: 57088291260 at "20.05 11:23:14,322|". There is a lower ggT: 21289950!
+Send lower ggT to Process '2841'
+'2861' sent term Mi: 5180175 at "20.05 11:23:14,322|". It's lowest ggT yet!
+'2871' sent term Mi: 25141116 at "20.05 11:23:14,322|". There is a lower ggT: 5180175!
+Send lower ggT to Process '2871'
+'2851' sent term Mi: 470925 at "20.05 11:23:14,322|". It's lowest ggT yet!
+'2811' sent term Mi: 1023638 at "20.05 11:23:14,322|". There is a lower ggT: 470925!
+Send lower ggT to Process '2811'
+'2871' sent new Mi: 4420416 at "20.05 11:23:16,337|"
+'2811' sent new Mi: 81788 at "20.05 11:23:16,337|"
+'2891' sent new Mi: 172914 at "20.05 11:23:16,337|"
+'2841' sent new Mi: 9935310 at "20.05 11:23:16,337|"
+'2831' sent new Mi: 1035 at "20.05 11:23:16,337|"
+'2851' sent new Mi: 1035 at "20.05 11:23:18,368|"
+'2841' sent new Mi: 38962 at "20.05 11:23:18,368|"
+'2811' sent new Mi: 23 at "20.05 11:23:18,368|"
+'2861' sent new Mi: 165669 at "20.05 11:23:18,368|"
+'2891' sent new Mi: 7245 at "20.05 11:23:20,368|"
+'2871' sent new Mi: 17710 at "20.05 11:23:20,368|"
+'2881' sent new Mi: 79212 at "20.05 11:23:20,400|"
+'2861' sent new Mi: 6279 at "20.05 11:23:22,384|"
+'2831' sent new Mi: 23 at "20.05 11:23:22,384|"
+'2841' sent new Mi: 23 at "20.05 11:23:22,400|"
+'2881' sent new Mi: 8372 at "20.05 11:23:22,415|"
+'2851' sent new Mi: 23 at "20.05 11:23:24,415|"
+'2891' sent new Mi: 966 at "20.05 11:23:24,415|"
+'2881' sent new Mi: 2093 at "20.05 11:23:24,431|"
+'2871' sent new Mi: 23 at "20.05 11:23:24,431|"
+'2821' sent new Mi: 69 at "20.05 11:23:26,415|"
+'2881' sent new Mi: 23 at "20.05 11:23:26,447|"
+'2821' sent new Mi: 23 at "20.05 11:23:28,431|"
+'2891' sent new Mi: 69 at "20.05 11:23:28,447|"
+'2861' sent new Mi: 483 at "20.05 11:23:28,447|"
+'2891' sent new Mi: 23 at "20.05 11:23:30,462|"
+'2861' sent new Mi: 23 at "20.05 11:23:32,478|"
+received something wrong: {<7256.52.0>,{vote,'2831'}}
+'2831' sent term Mi: 23 at "20.05 11:24:08,447|". It's lowest ggT yet!
+received something wrong: {<7256.50.0>,{vote,'2811'}}
+'2811' sent term Mi: 23 at "20.05 11:24:08,462|". It's lowest ggT yet!
+received something wrong: {<7256.53.0>,{vote,'2841'}}
+'2841' sent term Mi: 23 at "20.05 11:24:08,478|". It's lowest ggT yet!
+received something wrong: {<7256.54.0>,{vote,'2851'}}
+'2851' sent term Mi: 23 at "20.05 11:24:12,478|". It's lowest ggT yet!
+received something wrong: {<7256.56.0>,{vote,'2871'}}
+'2871' sent term Mi: 23 at "20.05 11:24:12,509|". It's lowest ggT yet!
+received something wrong: {<7256.51.0>,{vote,'2821'}}
+'2821' sent term Mi: 23 at "20.05 11:24:14,509|". It's lowest ggT yet!
+received something wrong: {<7256.58.0>,{vote,'2891'}}
+received something wrong: {<7256.57.0>,{vote,'2881'}}
+'2891' sent term Mi: 23 at "20.05 11:24:16,525|". It's lowest ggT yet!
+'2881' sent term Mi: 23 at "20.05 11:24:16,525|". It's lowest ggT yet!
+received something wrong: {<7256.55.0>,{vote,'2861'}}
+'2861' sent term Mi: 23 at "20.05 11:24:18,540|". It's lowest ggT yet!
+'2811' send initial Mi: 201586
+'2831' send initial Mi: 48558510
+'2851' send initial Mi: 3848460
+'2821' send initial Mi: 182070
+'2891' send initial Mi: 444675
+'2861' send initial Mi: 5154604
+'2881' send initial Mi: 9854390
+'2871' send initial Mi: 227409
+'2841' send initial Mi: 420420
+'2851' send initial Y: 121380
+'2821' send initial Y: 2369276910
+'2891' send initial Y: 1786785
+'2861' send initial Y: 4005540
+'2881' send initial Y: 1494108
+'2871' send initial Y: 5212409202
+'2841' send initial Y: 990990
+received something wrong: {<7256.50.0>,{vote,'2811'}}
+'2811' sent term Mi: 201586 at "20.05 11:25:42,884|". There is a lower ggT: 23!
+Send lower ggT to Process '2811'
+received something wrong: {<7256.54.0>,{vote,'2851'}}
+received something wrong: {<7256.53.0>,{vote,'2841'}}
+received something wrong: {<7256.57.0>,{vote,'2881'}}
+received something wrong: {<7256.51.0>,{vote,'2821'}}
+received something wrong: {<7256.58.0>,{vote,'2891'}}
+received something wrong: {<7256.56.0>,{vote,'2871'}}
+received something wrong: {<7256.52.0>,{vote,'2831'}}
+received something wrong: {<7256.55.0>,{vote,'2861'}}
+'2851' sent term Mi: 3848460 at "20.05 11:25:42,931|". There is a lower ggT: 201586!
+Send lower ggT to Process '2851'
+'2891' sent term Mi: 444675 at "20.05 11:25:42,947|". It's lowest ggT yet!
+'2821' sent term Mi: 182070 at "20.05 11:25:42,947|". It's lowest ggT yet!
+'2881' sent term Mi: 9854390 at "20.05 11:25:42,947|". There is a lower ggT: 182070!
+Send lower ggT to Process '2881'
+'2831' sent term Mi: 48558510 at "20.05 11:25:42,947|". There is a lower ggT: 9854390!
+Send lower ggT to Process '2831'
+'2841' sent term Mi: 420420 at "20.05 11:25:42,947|". It's lowest ggT yet!
+'2871' sent term Mi: 227409 at "20.05 11:25:42,947|". It's lowest ggT yet!
+'2861' sent term Mi: 5154604 at "20.05 11:25:42,947|". There is a lower ggT: 227409!
+Send lower ggT to Process '2861'
+'2811' sent new Mi: 14 at "20.05 11:25:44,915|"
+'2861' sent new Mi: 151606 at "20.05 11:25:44,962|"
+'2851' sent new Mi: 18326 at "20.05 11:25:44,962|"
+'2881' sent new Mi: 22610 at "20.05 11:25:44,962|"
+'2831' sent new Mi: 9140950 at "20.05 11:25:44,962|"
+'2841' sent new Mi: 14 at "20.05 11:25:46,915|"
+'2891' sent new Mi: 141463 at "20.05 11:25:46,978|"
+'2821' sent new Mi: 17136 at "20.05 11:25:46,978|"
+'2861' sent new Mi: 15946 at "20.05 11:25:46,978|"
+'2871' sent new Mi: 1309 at "20.05 11:25:46,978|"
+'2831' sent new Mi: 14 at "20.05 11:25:47,009|"
+'2871' sent new Mi: 7 at "20.05 11:25:49,009|"
+'2881' sent new Mi: 357 at "20.05 11:25:49,009|"
+'2891' sent new Mi: 13895 at "20.05 11:25:49,009|"
+'2851' sent new Mi: 1190 at "20.05 11:25:49,009|"
+'2861' sent new Mi: 238 at "20.05 11:25:51,009|"
+'2821' sent new Mi: 3241 at "20.05 11:25:51,009|"
+'2851' sent new Mi: 14 at "20.05 11:25:51,025|"
+'2841' sent new Mi: 7 at "20.05 11:25:51,040|"
+'2821' sent new Mi: 861 at "20.05 11:25:53,025|"
+'2881' sent new Mi: 7 at "20.05 11:25:53,040|"
+'2891' sent new Mi: 91 at "20.05 11:25:53,040|"
+'2811' sent new Mi: 7 at "20.05 11:25:53,056|"
+'2821' sent new Mi: 7 at "20.05 11:25:55,040|"
+'2861' sent new Mi: 7 at "20.05 11:25:55,056|"
+'2831' sent new Mi: 7 at "20.05 11:25:55,072|"
+'2851' sent new Mi: 7 at "20.05 11:25:57,072|"
+'2891' sent new Mi: 7 at "20.05 11:25:59,087|"
+received something wrong: {<7256.56.0>,{vote,'2871'}}
+received something wrong: {<7256.53.0>,{vote,'2841'}}
+'2871' sent term Mi: 7 at "20.05 11:26:37,103|". It's lowest ggT yet!
+'2841' sent term Mi: 7 at "20.05 11:26:37,103|". It's lowest ggT yet!
+received something wrong: {<7256.57.0>,{vote,'2881'}}
+'2881' sent term Mi: 7 at "20.05 11:26:39,103|". It's lowest ggT yet!
+received something wrong: {<7256.50.0>,{vote,'2811'}}
+'2811' sent term Mi: 7 at "20.05 11:26:39,118|". It's lowest ggT yet!
+received something wrong: {<7256.54.0>,{vote,'2851'}}
+received something wrong: {<7256.52.0>,{vote,'2831'}}
+'2851' sent term Mi: 7 at "20.05 11:26:41,118|". It's lowest ggT yet!
+'2831' sent term Mi: 7 at "20.05 11:26:41,118|". It's lowest ggT yet!
+received something wrong: {<7256.58.0>,{vote,'2891'}}
+received something wrong: {<7256.55.0>,{vote,'2861'}}
+received something wrong: {<7256.51.0>,{vote,'2821'}}
+'2891' sent term Mi: 7 at "20.05 11:26:43,150|". It's lowest ggT yet!
+'2861' sent term Mi: 7 at "20.05 11:26:43,150|". It's lowest ggT yet!
+'2821' sent term Mi: 7 at "20.05 11:26:43,150|". It's lowest ggT yet!
+'2811' send kill command.
+'2831' send kill command.
+'2851' send kill command.
+'2821' send kill command.
+'2891' send kill command.
+'2861' send kill command.
+'2881' send kill command.
+'2871' send kill command.
+'2841' send kill command.
+Killed all known ggT-Processes
+bind Koordinator done.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2871' says hello.
+'2851' says hello.
+'2861' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2861' and '2841'
+'2841' send neighbours: '2811' and '2831'
+'2831' send neighbours: '2841' and '2821'
+'2821' send neighbours: '2831' and '2891'
+'2891' send neighbours: '2821' and '2851'
+'2851' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2851' and '2871'
+'2871' send neighbours: '2881' and '2861'
+'2861' send neighbours: '2871' and '2811'
+'2811' send initial Mi: 1112650
+'2841' send initial Mi: 23141250
+'2831' send initial Mi: 511875
+'2821' send initial Mi: 1125
+'2891' send initial Mi: 450900450
+'2851' send initial Mi: 5630625
+'2881' send initial Mi: 446250
+'2871' send initial Mi: 27327300
+'2861' send initial Mi: 62052490500
+'2891' send initial Y: 6872250
+'2881' send initial Y: 916300
+received something wrong: {<10129.71.0>,{vote,'2891'}}
+received something wrong: {<10129.68.0>,{vote,'2861'}}
+received something wrong: {<10129.69.0>,{vote,'2871'}}
+received something wrong: {<10129.67.0>,{vote,'2851'}}
+received something wrong: {<10129.64.0>,{vote,'2821'}}
+received something wrong: {<10129.65.0>,{vote,'2831'}}
+received something wrong: {<10129.66.0>,{vote,'2841'}}
+received something wrong: {<10129.63.0>,{vote,'2811'}}
+'2861' sent term Mi: 62052490500 at "20.05 11:38:40,616|". It's lowest ggT yet!
+'2891' sent term Mi: 450900450 at "20.05 11:38:40,616|". It's lowest ggT yet!
+'2851' sent term Mi: 5630625 at "20.05 11:38:40,616|". It's lowest ggT yet!
+'2821' sent term Mi: 1125 at "20.05 11:38:40,616|". It's lowest ggT yet!
+'2871' sent term Mi: 27327300 at "20.05 11:38:40,616|". There is a lower ggT: 1125!
+Send lower ggT to Process '2871'
+'2831' sent term Mi: 511875 at "20.05 11:38:40,616|". It's lowest ggT yet!
+'2811' sent term Mi: 1112650 at "20.05 11:38:40,616|". There is a lower ggT: 511875!
+Send lower ggT to Process '2811'
+'2841' sent term Mi: 23141250 at "20.05 11:38:40,616|". There is a lower ggT: 1112650!
+Send lower ggT to Process '2841'
+received something wrong: {<10129.70.0>,{vote,'2881'}}
+'2881' sent term Mi: 446250 at "20.05 11:38:42,632|". It's lowest ggT yet!
+'2811' sent new Mi: 88900 at "20.05 11:38:42,632|"
+'2871' sent new Mi: 1050 at "20.05 11:38:42,632|"
+'2841' sent new Mi: 888250 at "20.05 11:38:42,648|"
+'2881' sent new Mi: 1050 at "20.05 11:38:44,648|"
+'2861' sent new Mi: 23800 at "20.05 11:38:44,648|"
+'2841' sent new Mi: 88150 at "20.05 11:38:44,663|"
+'2861' sent new Mi: 700 at "20.05 11:38:46,663|"
+'2851' sent new Mi: 525 at "20.05 11:38:46,663|"
+'2811' sent new Mi: 17500 at "20.05 11:38:46,679|"
+'2831' sent new Mi: 71125 at "20.05 11:38:46,679|"
+'2881' sent new Mi: 525 at "20.05 11:38:48,679|"
+'2891' sent new Mi: 525 at "20.05 11:38:48,679|"
+'2841' sent new Mi: 17025 at "20.05 11:38:48,694|"
+'2871' sent new Mi: 350 at "20.05 11:38:50,694|"
+'2821' sent new Mi: 75 at "20.05 11:38:50,726|"
+'2831' sent new Mi: 3025 at "20.05 11:38:50,726|"
+'2811' sent new Mi: 700 at "20.05 11:38:50,726|"
+'2881' sent new Mi: 175 at "20.05 11:38:52,710|"
+'2861' sent new Mi: 350 at "20.05 11:38:52,710|"
+'2841' sent new Mi: 1900 at "20.05 11:38:52,726|"
+'2891' sent new Mi: 75 at "20.05 11:38:52,757|"
+'2831' sent new Mi: 25 at "20.05 11:38:52,757|"
+'2851' sent new Mi: 175 at "20.05 11:38:54,726|"
+'2841' sent new Mi: 500 at "20.05 11:38:54,741|"
+'2811' sent new Mi: 350 at "20.05 11:38:54,757|"
+'2851' sent new Mi: 25 at "20.05 11:38:56,741|"
+'2871' sent new Mi: 175 at "20.05 11:38:56,741|"
+'2841' sent new Mi: 25 at "20.05 11:38:56,757|"
+'2821' sent new Mi: 25 at "20.05 11:38:56,788|"
+'2891' sent new Mi: 25 at "20.05 11:38:58,773|"
+'2861' sent new Mi: 175 at "20.05 11:38:58,788|"
+'2881' sent new Mi: 25 at "20.05 11:39:00,773|"
+'2811' sent new Mi: 25 at "20.05 11:39:00,819|"
+'2871' sent new Mi: 25 at "20.05 11:39:02,819|"
+'2861' sent new Mi: 25 at "20.05 11:39:02,835|"
+received something wrong: {<10129.64.0>,{vote,'2821'}}
+'2821' sent term Mi: 25 at "20.05 11:39:42,804|". It's lowest ggT yet!
+received something wrong: {<10129.71.0>,{vote,'2891'}}
+'2891' sent term Mi: 25 at "20.05 11:39:42,819|". It's lowest ggT yet!
+received something wrong: {<10129.65.0>,{vote,'2831'}}
+'2831' sent term Mi: 25 at "20.05 11:39:42,851|". It's lowest ggT yet!
+received something wrong: {<10129.67.0>,{vote,'2851'}}
+'2851' sent term Mi: 25 at "20.05 11:39:44,835|". It's lowest ggT yet!
+received something wrong: {<10129.66.0>,{vote,'2841'}}
+'2841' sent term Mi: 25 at "20.05 11:39:44,866|". It's lowest ggT yet!
+received something wrong: {<10129.70.0>,{vote,'2881'}}
+'2881' sent term Mi: 25 at "20.05 11:39:46,866|". It's lowest ggT yet!
+received something wrong: {<10129.68.0>,{vote,'2861'}}
+received something wrong: {<10129.69.0>,{vote,'2871'}}
+received something wrong: {<10129.63.0>,{vote,'2811'}}
+'2861' sent term Mi: 25 at "20.05 11:39:46,882|". It's lowest ggT yet!
+'2871' sent term Mi: 25 at "20.05 11:39:46,882|". It's lowest ggT yet!
+'2811' sent term Mi: 25 at "20.05 11:39:46,882|". It's lowest ggT yet!
+'2811' send initial Mi: 744629886
+'2841' send initial Mi: 659100
+'2831' send initial Mi: 725010
+'2821' send initial Mi: 30758
+'2891' send initial Mi: 5530525
+'2851' send initial Mi: 1082900
+'2881' send initial Mi: 451922900
+'2871' send initial Mi: 152100
+'2861' send initial Mi: 149058
+'2821' send initial Y: 4745190450
+'2861' send initial Y: 25765740
+received something wrong: {<10129.65.0>,{vote,'2831'}}
+received something wrong: {<10129.66.0>,{vote,'2841'}}
+received something wrong: {<10129.63.0>,{vote,'2811'}}
+received something wrong: {<10129.68.0>,{vote,'2861'}}
+received something wrong: {<10129.69.0>,{vote,'2871'}}
+received something wrong: {<10129.70.0>,{vote,'2881'}}
+received something wrong: {<10129.67.0>,{vote,'2851'}}
+received something wrong: {<10129.64.0>,{vote,'2821'}}
+received something wrong: {<10129.71.0>,{vote,'2891'}}
+'2811' sent term Mi: 744629886 at "20.05 11:41:05,101|". It's lowest ggT yet!
+'2831' sent term Mi: 725010 at "20.05 11:41:05,101|". It's lowest ggT yet!
+'2841' sent term Mi: 659100 at "20.05 11:41:05,101|". It's lowest ggT yet!
+'2891' sent term Mi: 5530525 at "20.05 11:41:05,101|". There is a lower ggT: 659100!
+'2851' sent term Mi: 1082900 at "20.05 11:41:05,101|". It's lowest ggT yet!
+'2861' sent term Mi: 149058 at "20.05 11:41:05,101|". It's lowest ggT yet!
+'2871' sent term Mi: 152100 at "20.05 11:41:05,101|". There is a lower ggT: 149058!
+'2881' sent term Mi: 451922900 at "20.05 11:41:05,101|". There is a lower ggT: 152100!
+'2821' sent term Mi: 30758 at "20.05 11:41:05,101|". It's lowest ggT yet!
+'2811' send kill command.
+'2841' send kill command.
+'2831' send kill command.
+'2821' send kill command.
+'2891' send kill command.
+'2851' send kill command.
+'2881' send kill command.
+'2871' send kill command.
+'2861' send kill command.
+Killed all known ggT-Processes
+bind Koordinator done.
+bind Koordinator done.
+'2891' says hello.
+'2881' says hello.
+'2851' says hello.
+'2861' says hello.
+'2871' says hello.
+'2831' says hello.
+'2841' says hello.
+'2821' says hello.
+'2811' says hello.
+'2811' send neighbours: '2871' and '2841'
+'2841' send neighbours: '2811' and '2831'
+'2831' send neighbours: '2841' and '2821'
+'2821' send neighbours: '2831' and '2891'
+'2891' send neighbours: '2821' and '2861'
+'2861' send neighbours: '2891' and '2881'
+'2881' send neighbours: '2861' and '2851'
+'2851' send neighbours: '2881' and '2871'
+'2871' send neighbours: '2851' and '2811'
+'2811' send initial Mi: 578578
+'2841' send initial Mi: 12033450
+'2831' send initial Mi: 266175
+'2821' send initial Mi: 585
+'2891' send initial Mi: 234468234
+'2861' send initial Mi: 2927925
+'2881' send initial Mi: 232050
+'2851' send initial Mi: 14210196
+'2871' send initial Mi: 32267295060
+'2891' send initial Y: 3573570
+'2881' send initial Y: 476476
+'2891' sent new Mi: 2186184 at "20.05 11:48:00,617|"
+'2861' sent new Mi: 741741 at "20.05 11:48:02,633|"
+'2891' sent new Mi: 702702 at "20.05 11:48:04,649|"
+'2861' sent new Mi: 39039 at "20.05 11:48:06,665|"
+'2881' sent new Mi: 36855 at "20.05 11:48:08,681|"
+'2891' sent new Mi: 39039 at "20.05 11:48:08,681|"
+'2851' sent new Mi: 21021 at "20.05 11:48:10,697|"
+'2861' sent new Mi: 2184 at "20.05 11:48:10,697|"
+'2871' sent new Mi: 18018 at "20.05 11:48:12,712|"
+'2881' sent new Mi: 15834 at "20.05 11:48:12,712|"
+'2891' sent new Mi: 1911 at "20.05 11:48:12,712|"
+'2881' sent new Mi: 546 at "20.05 11:48:14,728|"
+'2811' sent new Mi: 2002 at "20.05 11:48:14,728|"
+'2851' sent new Mi: 3003 at "20.05 11:48:14,728|"
+'2841' sent new Mi: 1430 at "20.05 11:48:16,742|"
+'2871' sent new Mi: 2002 at "20.05 11:48:16,743|"
+'2861' sent new Mi: 273 at "20.05 11:48:16,743|"
+'2881' sent new Mi: 273 at "20.05 11:48:18,758|"
+'2831' sent new Mi: 195 at "20.05 11:48:18,759|"
+'2891' sent new Mi: 273 at "20.05 11:48:18,759|"
+'2811' sent new Mi: 572 at "20.05 11:48:18,759|"
+'2851' sent new Mi: 273 at "20.05 11:48:18,774|"
+'2841' sent new Mi: 65 at "20.05 11:48:20,774|"
+'2871' sent new Mi: 286 at "20.05 11:48:20,775|"
+'2821' sent new Mi: 39 at "20.05 11:48:20,775|"
+'2891' sent new Mi: 39 at "20.05 11:48:22,790|"
+'2871' sent new Mi: 13 at "20.05 11:48:22,790|"
+'2811' sent new Mi: 52 at "20.05 11:48:22,790|"
+'2831' sent new Mi: 65 at "20.05 11:48:22,790|"
+'2831' sent new Mi: 26 at "20.05 11:48:24,806|"
+'2861' sent new Mi: 39 at "20.05 11:48:24,806|"
+'2841' sent new Mi: 13 at "20.05 11:48:26,822|"
+'2881' sent new Mi: 39 at "20.05 11:48:26,822|"
+'2811' sent new Mi: 13 at "20.05 11:48:26,822|"
+'2851' sent new Mi: 13 at "20.05 11:48:26,837|"
+'2831' sent new Mi: 13 at "20.05 11:48:28,837|"
+'2821' sent new Mi: 13 at "20.05 11:48:28,837|"
+'2881' sent new Mi: 13 at "20.05 11:48:28,853|"
+'2891' sent new Mi: 13 at "20.05 11:48:30,853|"
+'2861' sent new Mi: 13 at "20.05 11:48:30,867|"
+received something wrong: {<7256.63.0>,{vote,'2811'}}
+'2811' sent term Mi: 13 at "20.05 11:49:10,867|". It's lowest ggT yet!
+received something wrong: {<7256.65.0>,{vote,'2831'}}
+received something wrong: {<7256.69.0>,{vote,'2871'}}
+'2831' sent term Mi: 13 at "20.05 11:49:12,883|". It's lowest ggT yet!
+'2871' sent term Mi: 13 at "20.05 11:49:12,884|". It's lowest ggT yet!
+received something wrong: {<7256.67.0>,{vote,'2851'}}
+'2851' sent term Mi: 13 at "20.05 11:49:12,899|". It's lowest ggT yet!
+received something wrong: {<7256.64.0>,{vote,'2821'}}
+received something wrong: {<7256.66.0>,{vote,'2841'}}
+'2821' sent term Mi: 13 at "20.05 11:49:14,899|". It's lowest ggT yet!
+'2841' sent term Mi: 13 at "20.05 11:49:14,900|". It's lowest ggT yet!
+received something wrong: {<7256.71.0>,{vote,'2891'}}
+received something wrong: {<7256.70.0>,{vote,'2881'}}
+received something wrong: {<7256.68.0>,{vote,'2861'}}
+'2891' sent term Mi: 13 at "20.05 11:49:14,915|". It's lowest ggT yet!
+'2881' sent term Mi: 13 at "20.05 11:49:14,915|". It's lowest ggT yet!
+'2861' sent term Mi: 13 at "20.05 11:49:14,915|". It's lowest ggT yet!
+'2811' send initial Mi: 572792220
+'2841' send initial Mi: 507000
+'2831' send initial Mi: 557700
+'2821' send initial Mi: 23660
+'2891' send initial Mi: 4254250
+'2861' send initial Mi: 833000
+'2881' send initial Mi: 347633000
+'2851' send initial Mi: 117000
+'2871' send initial Mi: 114660
+'2821' send initial Y: 3650146500
+'2871' send initial Y: 19819800
+received something wrong: {<7256.63.0>,{vote,'2811'}}
+received something wrong: {<7256.66.0>,{vote,'2841'}}
+received something wrong: {<7256.65.0>,{vote,'2831'}}
+received something wrong: {<7256.71.0>,{vote,'2891'}}
+received something wrong: {<7256.68.0>,{vote,'2861'}}
+received something wrong: {<7256.70.0>,{vote,'2881'}}
+received something wrong: {<7256.67.0>,{vote,'2851'}}
+'2831' sent term Mi: 557700 at "20.05 11:50:10,572|". It's lowest ggT yet!
+'2811' sent term Mi: 572792220 at "20.05 11:50:10,572|". There is a lower ggT: 557700!
+'2861' sent term Mi: 833000 at "20.05 11:50:10,572|". It's lowest ggT yet!
+'2891' sent term Mi: 4254250 at "20.05 11:50:10,572|". There is a lower ggT: 833000!
+'2841' sent term Mi: 507000 at "20.05 11:50:10,572|". It's lowest ggT yet!
+'2851' sent term Mi: 117000 at "20.05 11:50:10,587|". It's lowest ggT yet!
+'2881' sent term Mi: 347633000 at "20.05 11:50:10,587|". There is a lower ggT: 117000!
+received something wrong: {<7256.64.0>,{vote,'2821'}}
+received something wrong: {<7256.69.0>,{vote,'2871'}}
+'2821' sent term Mi: 23660 at "20.05 11:50:12,603|". It's lowest ggT yet!
+'2871' sent term Mi: 114660 at "20.05 11:50:12,603|". There is a lower ggT: 23660!
+'2811' send initial Mi: 72250
+'2841' send initial Mi: 31531500
+'2831' send initial Mi: 56156100
+'2821' send initial Mi: 1215500
+'2891' send initial Mi: 3083080
+'2861' send initial Mi: 15421329000
+'2881' send initial Mi: 1727880
+'2851' send initial Mi: 660660
+'2871' send initial Mi: 55770
+'2891' send initial Y: 4089800
+'2851' send initial Y: 38942750
+received something wrong: {<7256.63.0>,{vote,'2811'}}
+received something wrong: {<7256.66.0>,{vote,'2841'}}
+received something wrong: {<7256.65.0>,{vote,'2831'}}
+received something wrong: {<7256.64.0>,{vote,'2821'}}
+'2841' sent term Mi: 31531500 at "20.05 11:51:53,758|". It's lowest ggT yet!
+'2821' sent term Mi: 1215500 at "20.05 11:51:53,759|". It's lowest ggT yet!
+'2811' sent term Mi: 72250 at "20.05 11:51:53,759|". It's lowest ggT yet!
+'2831' sent term Mi: 56156100 at "20.05 11:51:53,759|". There is a lower ggT: 72250!
+Send lower ggT to Process '2831'
+received something wrong: {<7256.68.0>,{vote,'2861'}}
+received something wrong: {<7256.70.0>,{vote,'2881'}}
+received something wrong: {<7256.69.0>,{vote,'2871'}}
+'2861' sent term Mi: 15421329000 at "20.05 11:51:53,774|". There is a lower ggT: 56156100!
+Send lower ggT to Process '2861'
+'2871' sent term Mi: 55770 at "20.05 11:51:53,775|". It's lowest ggT yet!
+'2881' sent term Mi: 1727880 at "20.05 11:51:53,775|". There is a lower ggT: 55770!
+Send lower ggT to Process '2881'
+'2831' sent new Mi: 17850 at "20.05 11:51:55,774|"
+received something wrong: {<7256.67.0>,{vote,'2851'}}
+received something wrong: {<7256.71.0>,{vote,'2891'}}
+'2851' sent term Mi: 660660 at "20.05 11:51:55,790|". It's lowest ggT yet!
+'2881' sent new Mi: 54780 at "20.05 11:51:55,790|"
+'2861' sent new Mi: 34557600 at "20.05 11:51:55,790|"
+'2821' sent new Mi: 1700 at "20.05 11:51:57,790|"
+'2841' sent new Mi: 8400 at "20.05 11:51:57,790|"
+'2861' sent new Mi: 46200 at "20.05 11:51:57,806|"
+'2851' sent new Mi: 3300 at "20.05 11:51:57,806|"
+'2811' sent new Mi: 5050 at "20.05 11:51:59,806|"
+'2831' sent new Mi: 850 at "20.05 11:51:59,806|"
+'2871' sent new Mi: 2970 at "20.05 11:51:59,822|"
+'2881' sent new Mi: 1980 at "20.05 11:51:59,822|"
+'2891' sent new Mi: 980 at "20.05 11:51:59,822|"
+'2821' sent new Mi: 850 at "20.05 11:52:01,837|"
+'2841' sent new Mi: 750 at "20.05 11:52:01,837|"
+'2811' sent new Mi: 2080 at "20.05 11:52:01,837|"
+'2861' sent new Mi: 660 at "20.05 11:52:01,853|"
+'2851' sent new Mi: 330 at "20.05 11:52:01,853|"
+'2811' sent new Mi: 580 at "20.05 11:52:03,853|"
+'2881' sent new Mi: 330 at "20.05 11:52:03,853|"
+'2871' sent new Mi: 890 at "20.05 11:52:03,853|"
+'2891' sent new Mi: 130 at "20.05 11:52:03,853|"
+'2831' sent new Mi: 100 at "20.05 11:52:05,853|"
+'2871' sent new Mi: 230 at "20.05 11:52:05,867|"
+'2821' sent new Mi: 70 at "20.05 11:52:05,868|"
+'2861' sent new Mi: 330 at "20.05 11:52:05,883|"
+'2891' sent new Mi: 60 at "20.05 11:52:07,883|"
+'2811' sent new Mi: 120 at "20.05 11:52:07,884|"
+'2841' sent new Mi: 170 at "20.05 11:52:07,884|"
+'2831' sent new Mi: 30 at "20.05 11:52:07,884|"
+'2861' sent new Mi: 70 at "20.05 11:52:07,915|"
+'2841' sent new Mi: 70 at "20.05 11:52:09,899|"
+'2821' sent new Mi: 10 at "20.05 11:52:09,900|"
+'2871' sent new Mi: 110 at "20.05 11:52:09,900|"
+'2851' sent new Mi: 100 at "20.05 11:52:09,915|"
+'2861' sent new Mi: 10 at "20.05 11:52:09,931|"
+'2881' sent new Mi: 50 at "20.05 11:52:09,931|"
+'2841' sent new Mi: 10 at "20.05 11:52:11,915|"
+'2831' sent new Mi: 10 at "20.05 11:52:11,915|"
+'2811' sent new Mi: 50 at "20.05 11:52:11,931|"
+'2871' sent new Mi: 10 at "20.05 11:52:11,947|"
+'2891' sent new Mi: 10 at "20.05 11:52:13,931|"
+'2851' sent new Mi: 50 at "20.05 11:52:13,947|"
+'2881' sent new Mi: 10 at "20.05 11:52:13,962|"
+'2851' sent new Mi: 10 at "20.05 11:52:15,962|"
+'2811' sent new Mi: 10 at "20.05 11:52:15,962|"
+received something wrong: {<7256.71.0>,{vote,'2891'}}
+received something wrong: {<7256.64.0>,{vote,'2821'}}
+received something wrong: {<7256.65.0>,{vote,'2831'}}
+'2821' sent term Mi: 10 at "20.05 11:52:57,978|". It's lowest ggT yet!
+'2891' sent term Mi: 10 at "20.05 11:52:57,978|". It's lowest ggT yet!
+'2831' sent term Mi: 10 at "20.05 11:52:57,978|". It's lowest ggT yet!
+received something wrong: {<7256.68.0>,{vote,'2861'}}
+'2861' sent term Mi: 10 at "20.05 11:52:59,992|". It's lowest ggT yet!
+received something wrong: {<7256.63.0>,{vote,'2811'}}
+received something wrong: {<7256.67.0>,{vote,'2851'}}
+'2811' sent term Mi: 10 at "20.05 11:53:00,008|". It's lowest ggT yet!
+'2851' sent term Mi: 10 at "20.05 11:53:00,009|". It's lowest ggT yet!
+received something wrong: {<7256.70.0>,{vote,'2881'}}
+'2881' sent term Mi: 10 at "20.05 11:53:00,024|". It's lowest ggT yet!
+received something wrong: {<7256.66.0>,{vote,'2841'}}
+'2841' sent term Mi: 10 at "20.05 11:53:02,008|". It's lowest ggT yet!
+received something wrong: {<7256.69.0>,{vote,'2871'}}
+'2871' sent term Mi: 10 at "20.05 11:53:02,040|". It's lowest ggT yet!
+received something wrong: promtp
+'2811' has current Mi: 10
+'2841' has current Mi: 10
+'2831' has current Mi: 10
+'2821' has current Mi: 10
+'2891' has current Mi: 10
+'2861' has current Mi: 10
+'2881' has current Mi: 10
+'2851' has current Mi: 10
+'2871' has current Mi: 10
+'2811' send initial Mi: 13029589592469450
+'2841' send initial Mi: 64992850
+'2831' send initial Mi: 573236937
+'2821' send initial Mi: 1230657812748
+'2891' send initial Mi: 9767125498
+'2861' send initial Mi: 4580996035
+'2881' send initial Mi: 153136153170
+'2851' send initial Mi: 293013764940
+'2871' send initial Mi: 48504663900
+'2851' send initial Y: 3664796828
+'2871' send initial Y: 392656803
+'2871' sent new Mi: 207877131 at "20.05 11:56:02,492|"
+'2851' sent new Mi: 3494815528 at "20.05 11:56:02,493|"
+'2851' sent new Mi: 168781432 at "20.05 11:56:04,508|"
+'2811' sent new Mi: 69292377 at "20.05 11:56:04,509|"
+'2881' sent new Mi: 2859085466 at "20.05 11:56:04,524|"
+'2861' sent new Mi: 1721910569 at "20.05 11:56:06,524|"
+'2871' sent new Mi: 69292377 at "20.05 11:56:06,525|"
+'2881' sent new Mi: 158582554 at "20.05 11:56:06,540|"
+'2851' sent new Mi: 30196678 at "20.05 11:56:08,540|"
+'2891' sent new Mi: 1157572653 at "20.05 11:56:08,540|"
+'2861' sent new Mi: 136085029 at "20.05 11:56:08,556|"
+'2871' sent new Mi: 8899021 at "20.05 11:56:10,556|"
+'2821' sent new Mi: 158082609 at "20.05 11:56:10,556|"
+'2891' sent new Mi: 68892421 at "20.05 11:56:10,572|"
+'2881' sent new Mi: 7599164 at "20.05 11:56:10,572|"
+'2811' sent new Mi: 6999230 at "20.05 11:56:12,572|"
+'2831' sent new Mi: 98989110 at "20.05 11:56:12,572|"
+'2851' sent new Mi: 3499615 at "20.05 11:56:12,572|"
+'2861' sent new Mi: 6899241 at "20.05 11:56:12,587|"
+'2821' sent new Mi: 20297767 at "20.05 11:56:12,587|"
+'2871' sent new Mi: 1899791 at "20.05 11:56:14,587|"
+'2831' sent new Mi: 17798042 at "20.05 11:56:14,603|"
+'2891' sent new Mi: 6799252 at "20.05 11:56:14,603|"
+'2881' sent new Mi: 599934 at "20.05 11:56:14,603|"
+'2811' sent new Mi: 1299857 at "20.05 11:56:16,603|"
+'2851' sent new Mi: 1599824 at "20.05 11:56:16,603|"
+'2841' sent new Mi: 1999780 at "20.05 11:56:16,603|"
+'2861' sent new Mi: 299967 at "20.05 11:56:16,617|"
+'2821' sent new Mi: 6699263 at "20.05 11:56:16,618|"
+'2831' sent new Mi: 1799802 at "20.05 11:56:18,617|"
+'2851' sent new Mi: 399956 at "20.05 11:56:18,618|"
+'2871' sent new Mi: 599934 at "20.05 11:56:18,618|"
+'2891' sent new Mi: 199978 at "20.05 11:56:18,633|"
+'2811' sent new Mi: 99989 at "20.05 11:56:20,633|"
+'2841' sent new Mi: 699923 at "20.05 11:56:20,634|"
+'2861' sent new Mi: 99989 at "20.05 11:56:20,649|"
+'2881' sent new Mi: 299967 at "20.05 11:56:20,650|"
+'2821' sent new Mi: 1299857 at "20.05 11:56:20,650|"
+'2831' sent new Mi: 399956 at "20.05 11:56:22,649|"
+'2871' sent new Mi: 199978 at "20.05 11:56:22,650|"
+'2821' sent new Mi: 99989 at "20.05 11:56:22,665|"
+'2851' sent new Mi: 99989 at "20.05 11:56:22,665|"
+'2891' sent new Mi: 99989 at "20.05 11:56:22,665|"
+'2841' sent new Mi: 99989 at "20.05 11:56:24,665|"
+'2871' sent new Mi: 99989 at "20.05 11:56:24,665|"
+'2881' sent new Mi: 99989 at "20.05 11:56:24,681|"
+'2831' sent new Mi: 99989 at "20.05 11:56:26,681|"
+'2811' has current Mi: 99989
+'2841' has current Mi: 99989
+'2831' has current Mi: 99989
+'2821' has current Mi: 99989
+'2891' has current Mi: 99989
+'2861' has current Mi: 99989
+'2881' has current Mi: 99989
+'2851' has current Mi: 99989
+'2871' has current Mi: 99989
+'2811' send kill command.
+'2841' send kill command.
+'2831' send kill command.
+'2821' send kill command.
+'2891' send kill command.
+'2861' send kill command.
+'2881' send kill command.
+'2851' send kill command.
+'2871' send kill command.
+Killed all known ggT-Processes
+bind Koordinator done.
+'2892' says hello.
+'2882' says hello.
+'2852' says hello.
+'2872' says hello.
+'2832' says hello.
+'2862' says hello.
+'2822' says hello.
+'2842' says hello.
+'2812' says hello.
+'2812' send kill command.
+'2842' send kill command.
+'2822' send kill command.
+'2862' send kill command.
+'2832' send kill command.
+'2872' send kill command.
+'2852' send kill command.
+'2882' send kill command.
+'2892' send kill command.
+Killed all known ggT-Processes

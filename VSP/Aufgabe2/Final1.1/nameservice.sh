@@ -1,0 +1,1 @@
+erl -name nsNode -setcookie vsp -run nameservice start

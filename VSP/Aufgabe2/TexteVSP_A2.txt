@@ -1,0 +1,34 @@
+Zusammenfassung:
+
+Es sollen mehrere Programme entwickelt werden um die verteilte Berechnung eines Algorithmus zu veranschaulichen.
+
+Die Aufgabe besteht aus folgenden Teilen:
+
+Koordinator: Organisiert die Berechnung des ggT mithilfe mehrerer ggT-Prozesse
+Starter: Initialisiert ggT Prozesse.
+ggT: Sucht nach dem ggT zweier Zahlen. Über Kommunikation mit anderen ggT Prozessen wird so der ggT von mehreren Zahlen verteilt ermittelt.
+
+Namensdienst: Liegt bereits als "nameservice.beam"-Datei vor.
+
+--------
+
+Beendigungsphase:
+
+Starter:
+Beendet sich selbstständig nachdem er in der Anlaufphase alle ggT Prozesse initialisiert hat.
+
+Koordinator:
+Kann über ein Kommando in eine Beendigungsphase versetzt werden.
+In der Beendigungsphase:
+1. Sendet er an alle ggT Prozesse ein kill-Kommando.
+2. Meldet sich mit "unbind" vom Namensdienst ab.
+3. Terminiert
+
+ggT Prozesse:
+Laufen bis sie in irgendeiner Phase ein kill-Kommando erhalten.
+Bei eintreffen eines kill-Kommandos:
+1. Melden sie sich mit "unbind" vom Namensdienst ab.
+2. Terminieren
+
+----
+
