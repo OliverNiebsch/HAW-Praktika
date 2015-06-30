@@ -30,7 +30,7 @@ collisionTimerEvent(Sender, Hbq, Clock) ->
   Data = datenquelle:getNextData(),
 
   Message = message:newMessage(Data),
-  message:setNextSlot(Message, FreeSlot), % fehlt noch im Diagramm!
+  
 
   setSendTimer(clock:getTimespanToSlot(Clock, FreeSlot)),
   true. % return updated sender

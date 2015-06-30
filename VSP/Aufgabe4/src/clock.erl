@@ -28,3 +28,20 @@ getCurSlot(clock) ->
 % Senden - 1.6: liefert die aktuelle Zeit, wenn der angegebene Slot noch aktiv ist
 getCurrentTimeInSlot(clock, slotNumber) ->
   true.
+  
+  
+resetTimer(TimerPID) ->
+  TimerPID ! resettimer.
+
+setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
+  receive
+    resettimer ->
+      setTimer(Pid, TimeMS, TimeoutReplyMsg);
+    kill ->
+      true
+  after
+    TimeMS ->
+      Pid ! TimeoutReplyMsg
+  end,
+  %notimeout / timeout
+  %setTimer(Pid, TimeMS, TimeoutReplyMsg). %Restart timer
