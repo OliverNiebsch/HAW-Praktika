@@ -22,8 +22,9 @@ gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlä
 % Empfang - 1: HauptReceiveBlock für die Anwendung
 waitForMessage(Logfile) ->
   receive
-	{udp, _ReceiveSocket, _IP, _InPortNo, _Packet} ->
-		{StationTyp,Nutzdaten,Slot,Timestamp} = werkzeug:message_to_string(Packet);
+	{udp, _ReceiveSocket, _IP, _InPortNo, Packet} ->
+		%{StationTyp,Nutzdaten,Slot,Timestamp} = werkzeug:message_to_string(Packet);
+		Message = message:packetToMessageObj(Packet),
 		%TODO, irgendwas mit der empfangenen Nachricht anfangen
   
     Any ->
