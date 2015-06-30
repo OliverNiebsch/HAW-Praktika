@@ -4,6 +4,5 @@ package lpon.mps.neo4j.dto;
 public interface ProductKaufteAuchProductData {
 
 	String getProduktName();
-	Iterable<String> getReferencedProducts();
-//	String getReferencedProducts();
+	Iterable<String> getZusammenGekaufteProdukte();	
 }

@@ -66,8 +66,9 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 
 	public KundeNode findByDbid(Long id);
 
-	@Query("MATCH (k:KundeNode)-[rel]->(p:ProduktNode), (k:KundeNode)-[rel2]->(p2:ProduktNode) WHERE k = k RETURN p.produktName, collect(p2.produktName) ORDER BY p.produktName;")
-	Iterable<ProductKaufteAuchProductData> showProduktKauftenAuchProdukt();
+//	@Query("MATCH (k:KundeNode)-[rel]->(p:ProduktNode), (k:KundeNode)-[rel2]->(p2:ProduktNode) WHERE k = k RETURN p.produktName, collect(p2.produktName) ORDER BY p.produktName;")
+	@Query("MATCH (k:KundeNode)-[rel]->(p:ProduktNode), (k:KundeNode)-[rel2]->(p2:ProduktNode) WHERE k = k RETURN p.produktName, collect(p2.produktName);")
+	Iterable<ProductKaufteAuchProductDataImpl> showProduktKauftenAuchProdukt();
 	
 	@QueryResult
 	public class ProductKaufteAuchProductDataImpl implements ProductKaufteAuchProductData{
@@ -76,7 +77,7 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 		private String produktName;
 		
 		@ResultColumn("collect(p2.produktName)")
-		private Iterable<String> referencedProducts;
+		private Iterable<String> zusammenGekaufteProdukte;
 		
 //		@ResultColumn("collect(p2.produktName)")
 //		private String referencedProducts;
@@ -86,8 +87,8 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 			return produktName;
 		}
 
-		public void setReferencedProducts(Iterable<String> referencedProducts) {
-			this.referencedProducts = referencedProducts;
+		public void setZusammenGekaufteProdukte(Iterable<String> referencedProducts) {
+			this.zusammenGekaufteProdukte = referencedProducts;
 		}
 
 		public void setProduktName(String produktName) {
@@ -95,13 +96,13 @@ public interface KundeGraphRepository extends GraphRepository<KundeNode> {
 		}
 
 		@Override
-		public Iterable<String> getReferencedProducts() {
-			return referencedProducts;
+		public Iterable<String> getZusammenGekaufteProdukte() {
+			return zusammenGekaufteProdukte;
 		}
 		
 		@Override
 		public String toString() {
-			return "ProductKaufteAuchProductDataImpl [produkt=" + getProduktName() + ", getAuchGekaufteProdukte=" + getReferencedProducts() + "]";
+			return "ProductKaufteAuchProductDataImpl [produkt=" + getProduktName() + ", getAuchGekaufteProdukte=" + getZusammenGekaufteProdukte() + "]";
 		}		
 	}
 	

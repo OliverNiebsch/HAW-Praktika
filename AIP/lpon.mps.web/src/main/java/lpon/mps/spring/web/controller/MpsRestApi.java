@@ -104,20 +104,15 @@ public class MpsRestApi {
 	}
 	
 	@RequestMapping(value = "/dashboard/produkt_kombi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public String getProdukteZusammenGekauft() {
+	public List<ProductKaufteAuchProductData> getProdukteZusammenGekauft() {
 		Iterable<? extends ProductKaufteAuchProductData> data = auswertungsService.showProductKaufteAuchProduct();
-		String res = "";
+		List<ProductKaufteAuchProductData> result = new ArrayList<ProductKaufteAuchProductData>();
 		
-		Iterator<? extends ProductKaufteAuchProductData> it = data.iterator();
-		
-		while (it.hasNext()) {
-//		for (ProductKaufteAuchProductData pkp : data) {
-			ProductKaufteAuchProductData pkp = it.next();
-			res += String.format(",{'ProduktName':%s, 'Auch gekauft':[%s]}", pkp.getProduktName(), join(pkp.getReferencedProducts()));
-//			res += String.format(",{'ProduktName':%s, 'Auch gekauft':%s}", pkp.getProduktName(), pkp.getReferencedProducts());
+		for (ProductKaufteAuchProductData pkp : data) {
+			result.add(pkp);
 		}
 		
-		return "[" + res.substring(1) + "]";
+		return result;
 	}
 	
 	private String join(Iterable<String> list) {
