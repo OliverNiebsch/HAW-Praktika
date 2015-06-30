@@ -8,12 +8,24 @@
 
 %% MAIN
 % startet und initialisiert das ReceiveModul und alle benötigten anderen Module
+
 start() ->
+
+Socket = openRec(MultiCast, Addr, Port) ->
+gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenläufigenprozess gestartet) bekannt geben mit
+
+%TODO CLOSE SOCKET
+%gen_udp:close(Socket).
+
   true.
 
 % Empfang - 1: HauptReceiveBlock für die Anwendung
 waitForMessage(Logfile) ->
   receive
+	{udp, _ReceiveSocket, _IP, _InPortNo, _Packet} ->
+		{StationTyp,Nutzdaten,Slot,Timestamp} = werkzeug:message_to_string(Packet);
+		%TODO, irgendwas mit der empfangenen Nachricht anfangen
+  
     Any ->
       logging(Logfile, "received something wrong: " ++ to_String(Any) ++ "\n"),
       waitForMessage()
