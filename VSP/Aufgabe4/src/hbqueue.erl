@@ -13,18 +13,18 @@ initHBQueue() ->
 
 
 %% Getter
-% Senden - 1.1: liefert einen zufälligen, noch freien Slot des nächsten Frames
+% Senden - 1.1: liefert einen zufaelligen, noch freien Slot des naechsten Frames
 getNextFreeSlot({_Frame, _MyStation, Received}) ->
   FreeSlotList = collectFreeSlots(Received),
   lists:nth(random:uniform(length(FreeSlotList)), FreeSlotList).
 
-% Senden - 1.4: gibt true zurück, wenn im angegebenen Slot noch keine Nachricht ankam
+% Senden - 1.4: gibt true zurueck, wenn im angegebenen Slot noch keine Nachricht ankam
 isSlotFree({_Frame, _MyStation, Received}, Slot) ->
   element(Slot, Received) =:= null.
 
 
 %% Inhaltserzeuger
-% fügt die Nachricht zur Queue hinzu
+% fuegt die Nachricht zur Queue hinzu
 push({MyFrame, MyStation, Received}, Msg) ->
   MsgTime = message:getTime(Msg),
   Frame = clock:getFrameByTime(MsgTime),
@@ -40,20 +40,20 @@ push({MyFrame, MyStation, Received}, Msg) ->
     true -> {false, {MyFrame, Received}}
   end.
 
-% Empfang - 6: Resettet die HBQ für einen neuen Frame
+% Empfang - 6: Resettet die HBQ fuer einen neuen Frame
 resetHBQForNewFrame(NewFrame, {_OldFrame, Messages}) ->
   datensenke:printAllMessages(Messages),
   {NewFrame, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
 
 
 %% interne Hilfsmethoden
-% Empfang - alt: prüft, ob eine Nachricht eine Kollision verursacht
+% Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
 checkCollision(Slot, Messages, MyStation) when (length(element(Slot, Messages)) > 1) ->
   msgOfMyStation(Messages, MyStation) =:= true;
 
 checkCollision(_Slot, _Messages, _MyStation) -> false.
 
-% Empfang - 3, 8: fügt die Nachricht zur internen Received-Queue hinzu
+% Empfang - 3, 8: fuegt die Nachricht zur internen Received-Queue hinzu
 addMessageToReceived(Slot, Received, Msg) ->
   OldMessages = element(Slot, Received),
   setelement(Slot, Received, OldMessages ++ [Msg]).
@@ -71,14 +71,15 @@ collectFreeSlots(Received, Nr) when (length(element(Nr, Received)) == 0) ->
 collectFreeSlots(Received, Nr) ->
   collectFreeSlots(Received, Nr + 1).
 
-% prüft, ob die MyStation die Station einer Nachricht in der Liste ist
-msgOfMyStation([], MyStation) ->
+% prueft, ob die MyStation die Station einer Nachricht in der Liste ist
+msgOfMyStation([], _MyStation) ->
   false;
 
 msgOfMyStation([Msg, Messages], MyStation) ->
+  Station = message:getStation(Msg),
   if
-    message:getStation(Msg) =:= MyStation ->
+     Station =:= MyStation ->
       true;
     true ->
-      msgOfMyStation(Messages)
+      msgOfMyStation(Messages, MyStation)
   end.

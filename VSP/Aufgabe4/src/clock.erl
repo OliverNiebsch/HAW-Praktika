@@ -2,7 +2,7 @@
 -import(werkzeug, [get_config_value/2,logging/2,logstop/0,openSe/2,openSeA/2,openRec/3,openRecA/3,createBinaryS/1,createBinaryD/1,createBinaryT/1,createBinaryNS/1,concatBinary/4,message_to_string/1,shuffle/1,timeMilliSecond/0,reset_timer/3,compareNow/2,getUTC/0,compareUTC/2,now2UTC/1,type_is/1,to_String/1,bestimme_mis/2,testeMI/2]).
 
 %% API
--export([initClock/2, startSendTimer/3, startFrameTimer/1, getCurFrame/1, getCurSlot/1, getCurrentTimeInSlot/3]).
+-export([initClock/2, startSendTimer/3, startFrameTimer/1, getCurFrame/1, getCurSlot/1, getCurrentTimeInSlot/3, synchronize/2, setTimer/3]).
 
 %% Schnittstellen
 
@@ -15,7 +15,7 @@ initClock(Offset, PID_Receive) ->
   
   ClockNeu.
 
-startSendTimer(Clock, Slot, Frame) when (Slot > 0 and Slot < 26) ->
+startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
 	% TODO Alten Timer killen
 	{Offset, PID_Receive, FrameTimerPID, _} = Clock,
 	
@@ -38,7 +38,7 @@ setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
   receive
 	{sync, Timeout} when Timeout > 0 ->
 		setTimer(Pid, Timeout, TimeoutReplyMsg);
-	{sync, Timeout} ->
+	{sync, _Timeout} ->
 		Pid ! TimeoutReplyMsg;
     kill ->
       true
@@ -55,7 +55,7 @@ initTimer(Timeout, PID_Receive, Message) ->
 %% Getter
 % Senden(Kollision) - 1.6: liefert die Zeitspanne in Millisekunden bis zum angegebenen Slot
 getTimespanToSlot(Clock, FreeSlot, Frame) ->
-	(getCurrentTime(Clock) - calculateTimeBySlot(FreeSlot, Frame).
+	getCurrentTime(Clock) - calculateTimeBySlot(FreeSlot, Frame).
 
 %Liefert den Zeitpunkt andem ein bestimmter Slot beginnt als Timestamp in MS
 calculateTimeBySlot(Slot, Frame) ->
@@ -70,7 +70,7 @@ getCurSlot(Clock) ->
   getSlotByTime(getCurrentTime(Clock)).
 
 getCurrentTime(Clock) ->
-	{Offset,PID_Receive, _FrameTimerPID, _SendTimerPID} = Clock,
+	{Offset, _PID_Receive, _FrameTimerPID, _SendTimerPID} = Clock,
 	werkzeug:getUTC() + Offset.
   
 % Senden - 1.6: liefert die aktuelle Zeit, wenn der angegebene Slot noch aktiv ist
@@ -78,7 +78,7 @@ getCurrentTimeInSlot(Clock, SlotNumber, Frame) ->
   CurFrame = getCurFrame(Clock),
   CurSlot = getCurSlot(Clock),
   if
-    CurFrame == Frame and CurSlot == SlotNumber ->
+    (CurFrame =:= Frame) and (CurSlot =:= SlotNumber) ->
 		getCurrentTime(Clock);
 	true -> 
 	  null
