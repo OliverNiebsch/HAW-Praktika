@@ -56,17 +56,17 @@ frameStarts({Adapter, SendSlot, SendMsg}, _Hbq, Clock) ->
 % Senden - 1: Einstiegsmethode, wenn der SendTimer abgelaufen ist
 send({Adapter, MySlot, Message}, Hbq, Clock) ->
   FreeSlot = hbqueue:getNextFreeSlot(Hbq),
+  Frame = message:getFrame(Message),
   message:setNextSlot(Message, FreeSlot),
 
   SlotIsFree = hbqueue:isSlotFree(Hbq, MySlot),
-  CurrentTime = clock:getCurrentTimeInSlot(Clock, MySlot),
+  CurrentTime = clock:getCurrentTimeInSlot(Clock, MySlot, Frame),
 
   if
     SlotIsFree =:= true and CurrentTime =/= null ->
       message:setTime(Message, CurrentTime),
       sendMessage(Adapter, Message),
 
-      Frame = message:getFrame(Message),
       MessageNeu = message:newMessage(message:getStation(Message), null),
       {Adapter, FreeSlot, message:setFrame(MessageNeu, Frame + 1)};  % return updated sender
 
