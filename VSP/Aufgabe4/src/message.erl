@@ -1,7 +1,7 @@
 -module(message).
 
 %% API
--export([packetToMessageObj/1, newMessage/5, getFrame/1, getStation/1, getStationTyp/1, getTime/1,  setNextSlot/2, setTime/2]).
+-export([packetToMessageObj/1, newMessage/5, getFrame/1, getStation/1, getStationTyp/1, getTime/1,  setNextSlot/3, setTime/2, messageToBinary/1]).
 
 %% Schnittstellen
 
@@ -36,7 +36,7 @@ getStationTyp(Message) ->
 	StationTyp.
 	
 getTime(Message) ->
-	{TargetFrame, StationTyp,Nutzdaten,Slot,Timestamp},
+	{_TargetFrame, _StationTyp, _Nutzdaten, _Slot, Timestamp} = Message,
 	Timestamp.
 	
 %% Setter
