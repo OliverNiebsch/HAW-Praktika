@@ -1,7 +1,7 @@
 -module(message).
 
 %% API
--export([packetToMessageObj/1, newMessage/5, getFrame/1, getStation/1, getStationTyp/1, getTime/1,  setNextSlot/3, setTime/2, messageToBinary/1]).
+-export([packetToMessageObj/1, newMessage/2, getFrame/1, getStation/1, getStationTyp/1, getTime/1, setNextSlot/2, setTime/2, setFrame/2, setData/2, messageToBinary/1]).
 
 %% Schnittstellen
 
@@ -13,8 +13,8 @@ packetToMessageObj(Packet) ->
 
   
 % Senden(Kollision) - 1.5 | Senden - 4.1.1: erzeugt ein leeres Message-Objekt mit den angegebene Daten
-newMessage(TargetFrame, StationTyp, Nutzdaten, Slot, Timestamp) ->
-  {TargetFrame, StationTyp,Nutzdaten,Slot,Timestamp}.
+newMessage(StationTyp, Nutzdaten) ->
+  {null, StationTyp, Nutzdaten, null, null}.
   
 %% Getter
 % Empfang - 1.2.1: gibt den Frame, in der die Message gesendet werden soll bzw gesandt wurde an
@@ -41,14 +41,22 @@ getTime(Message) ->
 	
 %% Setter
 % Senden - 1.3: setzen des Slots, in dem die Station dieser Nachricht im nächsten Frame senden will
-setNextSlot(Message, Slot, TargetFrame) ->
-	{_, StationTyp, Nutzdaten, _, Timestamp} = Message,
+setNextSlot(Message, Slot) ->
+	{TargetFrame, StationTyp, Nutzdaten, _, Timestamp} = Message,
 	{TargetFrame, StationTyp, Nutzdaten,  Slot, Timestamp}.
 
 % Senden - 2: setzt die Sendezeit der Nachricht
 setTime(Message, Time) ->
 	{TargetFrame, StationTyp,Nutzdaten,Slot, _} = Message,
 	{TargetFrame, StationTyp, Nutzdaten, Slot, Time}.
+
+setFrame(Message, Frame) ->
+  {_, StationTyp, Nutzdaten, Slot, Timestamp} = Message,
+  {Frame, StationTyp, Nutzdaten,  Slot, Timestamp}.
+
+setData(Message, Data) ->
+  {TargetFrame, StationTyp, _, Slot, Timestamp} = Message,
+  {TargetFrame, StationTyp, Data, Slot, Timestamp}.
 	
 messageToBinary(Message) ->
 	{TargetFrame, StationTyp, Nutzdaten, Slot, Timestamp} = Message,

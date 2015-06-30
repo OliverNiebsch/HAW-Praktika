@@ -1,8 +1,8 @@
 -module(hbqueue).
--import(werkzeug, [get_config_value/2,logging/2,logstop/0,openSe/2,openSeA/2,openRec/3,openRecA/3,createBinaryS/1,createBinaryD/1,createBinaryT/1,createBinaryNS/1,concatBinary/4,message_to_string/1,shuffle/1,timeMilliSecond/0,reset_timer/3,compareNow/2,getUTC/0,compareUTC/2,now2UTC/1,type_is/1,to_String/1,bestimme_mis/2,testeMI/2]).
+-import(werkzeug, [get_config_value/2, logging/2, logstop/0, openSe/2, openSeA/2, openRec/3, openRecA/3, createBinaryS/1, createBinaryD/1, createBinaryT/1, createBinaryNS/1, concatBinary/4, message_to_string/1, shuffle/1, timeMilliSecond/0, reset_timer/3, compareNow/2, getUTC/0, compareUTC/2, now2UTC/1, type_is/1, to_String/1, bestimme_mis/2, testeMI/2]).
 
 %% API
--export([initHBQueue/0, push/2, getNextFreeSlot/1, isSlotFree/2]).
+-export([initHBQueue/0, push/2, resetHBQForNewFrame/2, getNextFreeSlot/1, isSlotFree/2]).
 
 %% Schnittstellen
 
@@ -31,36 +31,32 @@ push({MyFrame, MyStation, Received}, Msg) ->
 
   if
     Frame =:= MyFrame ->
-      Collision = checkCollision(Received, Msg),
-      case Collision of
-         true -> true
-      end,
+      Slot = clock:getSlotByTime(message:getTime(Msg)),
+      NewReceived = addMessageToReceived(Slot, Received, Msg),
 
-      NewReceived = addMessageToReceived(Received, Msg);
-    true -> NewReceived = Received
-  end,
+      Collision = checkCollision(Slot, Received, MyStation),
+      {Collision, {MyFrame, NewReceived}};
 
-  {MyFrame, NewReceived}.
+    true -> {false, {MyFrame, Received}}
+  end.
+
+% Empfang - 6: Resettet die HBQ für einen neuen Frame
+resetHBQForNewFrame(NewFrame, {_OldFrame, Messages}) ->
+  datensenke:printAllMessages(Messages),
+  {NewFrame, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
 
 
 %% interne Hilfsmethoden
 % Empfang - alt: prüft, ob eine Nachricht eine Kollision verursacht
-checkCollision(Hbq, Msg) ->
-  true.
+checkCollision(Slot, Messages, MyStation) when (length(element(Slot, Messages)) > 1) ->
+  msgOfMyStation(Messages, MyStation) =:= true;
+
+checkCollision(_Slot, _Messages, _MyStation) -> false.
 
 % Empfang - 3, 8: fügt die Nachricht zur internen Received-Queue hinzu
-addMessageToReceived(Received, Msg) ->
-  Slot =  clock:getSlotByTime(message:getTime(Msg)),
+addMessageToReceived(Slot, Received, Msg) ->
   OldMessages = element(Slot, Received),
   setelement(Slot, Received, OldMessages ++ [Msg]).
-
-% Empfang - 5: speichert die im kommenden Frame reservierten Slots
-updateReservedSlotsForComingFrame(Hbq) ->
-  true.
-
-% Empfang - 6: leert die Queue der empfangenen Nachrichten
-clearReceivedMessages(Hbq) ->
-  true.
 
 % erstellt eine Liste mit noch freien Slots
 collectFreeSlots(Received) ->
@@ -70,13 +66,19 @@ collectFreeSlots(_Received, 26) ->
   [];
 
 collectFreeSlots(Received, Nr) when (length(element(Nr, Received)) == 0) ->
-  collectFreeSlots(Received, Nr+1) ++ [Nr];
+  collectFreeSlots(Received, Nr + 1) ++ [Nr];
 
 collectFreeSlots(Received, Nr) ->
-  collectFreeSlots(Received, Nr+1).
+  collectFreeSlots(Received, Nr + 1).
 
-% Behandelt eine Kollision im angegebenen Slot, sofern eine Auftrat
-handleCollision(Slot, Messages) when (length(element(Slot, Messages)) > 1) ->
-  true.
+% prüft, ob die MyStation die Station einer Nachricht in der Liste ist
+msgOfMyStation([], MyStation) ->
+  false;
 
-handleCollision(Slot, Messages) -> true.
+msgOfMyStation([Msg, Messages], MyStation) ->
+  if
+    message:getStation(Msg) =:= MyStation ->
+      true;
+    true ->
+      msgOfMyStation(Messages)
+  end.

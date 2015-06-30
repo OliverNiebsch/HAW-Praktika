@@ -2,21 +2,30 @@
 -import(werkzeug, [get_config_value/2,logging/2,logstop/0,openSe/2,openSeA/2,openRec/3,openRecA/3,createBinaryS/1,createBinaryD/1,createBinaryT/1,createBinaryNS/1,concatBinary/4,message_to_string/1,shuffle/1,timeMilliSecond/0,reset_timer/3,compareNow/2,getUTC/0,compareUTC/2,now2UTC/1,type_is/1,to_String/1,bestimme_mis/2,testeMI/2]).
 
 %% API
--export([newSender/0, interruptSendTimer/1]).
+-export([newSender/1, resetSendSlot/1, frameStarts/3, send/3]).
 
 %% Schnittstellen
 
 %% Inialisierung
 % erzeugt ein neues SendeModul
-newSender() ->
-  true.
+newSender(StationTyp) ->
+  %openSe(IP,Port) -> Socket % diesen Prozess PidSend (als Nebenläufigenprozess gestartet) bekannt geben mit
+  Teamnummer =  8,
+  ZielAddr = {225,10,1,2},
+  LocalAdress = whatismyip,
+  Port = 15000 + Teamnummer,
+
+  Socket = openSe(LocalAdress, Port),
+  gen_udp:controlling_process(Socket, self()), %Anmelden als handler für Socket
+
+  % SendSlot, Message(StationTyp, Data)
+  {{Socket, ZielAddr, Port}, null, message:newMessage(StationTyp, null)}.
 
 
-%% Timer
-% Empfang - 2: Stoppt den SendTimer des SendeModuls und startet den CollsionTimer
-interruptSendTimer(Sender) ->
-  setCollisionTimerUntilFrameEnds(Sender),
-  true.
+%% Setter
+% setzt den Slot, in dem das SendeModul senden will, auf null (nach Kollision)
+resetSendSlot({Adapter, _Slot, Msg}) ->
+  {Adapter, null, Msg}.
 
 
 %% interne Hilfsmethoden
@@ -24,23 +33,28 @@ interruptSendTimer(Sender) ->
 setCollisionTimerUntilFrameEnds(Sender) ->
   true.
 
-% Senden(Kollision) - 1: Einstiegsmethode, wenn der CollisionTimer abgelaufen ist
-collisionTimerEvent(Sender, Hbq, Clock) ->
+% Senden(Kollision) - 1: Einstiegsmethode, wenn der FrameTimer abgelaufen ist
+frameStarts({Adapter, SendSlot, SendMsg}, Hbq, Clock) when (SendSlot =:= null) ->
+  % nach Kollision (bzw Anfang)
   FreeSlot = hbqueue:getNextFreeSlot(Hbq),
   Data = datenquelle:getNextData(),
 
-  Message = message:newMessage(Data),
-  
+  Message = message:setData(SendMsg, Data),
+  MessageNeu = message:setNextSlot(Message, FreeSlot),
 
-  setSendTimer(clock:getTimespanToSlot(Clock, FreeSlot)),
-  true. % return updated sender
+  % TODO: SendTimer starten
+  {Adapter, FreeSlot, MessageNeu}; % return updated sender
 
-% Senden(Kollision) - 1.8 | Senden - 4.1.4: startet den SendTimer für eine gegebene Zeitspanne
-setSendTimer(Timespan) ->
-  true.
+frameStarts({Adapter, SendSlot, SendMsg}, _Hbq, Clock) ->
+  % keine Kollision, nur Frame neu angefangen
+  Data = datenquelle:getNextData(),
+  MessageNeu = message:setData(SendMsg, Data),
+
+  % TODO: SendTimer starten
+  {Adapter, SendSlot, MessageNeu}.
 
 % Senden - 1: Einstiegsmethode, wenn der SendTimer abgelaufen ist
-sendTimerEvent(Sender, Hbq, Clock) ->
+send({Adapter, MySlot, Message}, Hbq, Clock) ->
   FreeSlot = hbqueue:getNextFreeSlot(Hbq),
   message:setNextSlot(Message, FreeSlot),
 
@@ -48,20 +62,19 @@ sendTimerEvent(Sender, Hbq, Clock) ->
   CurrentTime = clock:getCurrentTimeInSlot(Clock, MySlot),
 
   if
-    SlotIsFree =:= true, CurrentTime =/= null ->
+    SlotIsFree =:= true and CurrentTime =/= null ->
       message:setTime(Message, CurrentTime),
-      sendMessage(Message),
+      sendMessage(Adapter, Message),
 
-      Data = datenquelle:getNextData(),
-      Message = message:newMessage(Data),
-      setSendTimer(clock:getTimespanToSlot(Clock, FreeSlot)),
-      true;  % return updated sender
+      Frame = message:getFrame(Message),
+      MessageNeu = message:newMessage(message:getStation(Message), null),
+      {Adapter, FreeSlot, message:setFrame(MessageNeu, Frame + 1)};  % return updated sender
 
     true ->
-      setCollisionTimerUntilFrameEnds(Sender),
-      true  % return updated sender?
+      {Adapter, null, message:newMessage(message:getStation(Message), null)}  % return updated sender?
   end.
 
 % Senden - 3: schickt die Nachricht per Multicast raus
-sendMessage(Message) ->
-  true.
+sendMessage(SendAdapter, Message) ->
+  {Socket, ZielAddr, Port} = SendAdapter,
+  gen_udp:send(Socket, ZielAddr, Port, Message).
