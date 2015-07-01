@@ -4,6 +4,8 @@
 %% API
 -export([initHBQueue/1, push/2, resetHBQForNewFrame/2, getNextFreeSlot/1, isSlotFree/2]).
 
+-define(LOGFILE, "logfile.log").
+
 %% Schnittstellen
 
 %% Inialisierung
@@ -26,7 +28,7 @@ isSlotFree({_Frame, _MyStation, Received}, Slot) ->
 %% Inhaltserzeuger
 % fuegt die Nachricht zur Queue hinzu
 push({MyFrame, MyStation, Received}, Msg) ->
-  logging("hbq.log", "HBQ: Neue Nachricht erhalten.\n"),
+  logging(?LOGFILE, "HBQ: Neue Nachricht erhalten.\n"),
   MsgTime = message:getTime(Msg),
   Frame = clock:getFrameByTime(MsgTime),
 
@@ -39,7 +41,7 @@ push({MyFrame, MyStation, Received}, Msg) ->
       {Collision, {MyFrame, NewReceived}};
 
     true ->
-      logging("hbq.log", "HBQ: Nachricht ist aus falschem Frame.\n"),
+      logging(?LOGFILE, "HBQ: Nachricht ist aus falschem Frame.\n"),
       Collision = false,
       NewReceived = Received
   end,
@@ -69,7 +71,7 @@ getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 
 % Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
 checkCollision(Slot, MyStation, Messages) when (length(element(Slot, Messages)) > 1) ->
   % TODO: logging
-  logging("hbq.log", "HBQ: Collision festgestellt.\n"),
+  logging(?LOGFILE, "HBQ: Collision festgestellt.\n"),
   msgOfMyStation(Messages, MyStation) =:= true;
 
 checkCollision(_Slot, _Messages, _MyStation) -> false.
@@ -100,7 +102,7 @@ msgOfMyStation([Msg, Messages], MyStation) ->
   Station = message:getStation(Msg),
   if
      Station =:= MyStation ->
-       logging("hbq.log", "HBQ: Nachricht von eigener Station war in Kollision beteiligt.\n"),
+       logging(?LOGFILE, "HBQ: Nachricht von eigener Station war in Kollision beteiligt.\n"),
        true;
     true ->
       msgOfMyStation(Messages, MyStation)

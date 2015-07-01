@@ -4,6 +4,8 @@
 %% API
 -export([packetToMessageObj/1, newMessage/2, getFrame/1, getStation/1, getStationTyp/1, getTime/1, setNextSlot/2, setTime/2, setFrame/2, setData/2, messageToBinary/1]).
 
+-define(LOGFILE, "logfile.log").
+
 %% Schnittstellen
 
 %% Initialisierung
@@ -61,6 +63,6 @@ setData(Message, Data) ->
 	
 messageToBinary(Message) ->
 	{_TargetFrame, StationTyp, Nutzdaten, Slot, Timestamp} = Message,
-  logging("message.log", "Wandle Message in binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
+  logging(?LOGFILE, "Wandle Message in binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
   timer:sleep(2000), %DEBUG
   concatBinary(createBinaryS(StationTyp), createBinaryD(Nutzdaten), createBinaryNS(Slot), createBinaryT(Timestamp)).
