@@ -5,7 +5,8 @@
 
 %% Schnittstellen
 startDatenquelle() ->
-  LoopPID = spawn(datenquelle, loop, [null]),
+  InitData = io:get_chars('', 24),
+  LoopPID = spawn(datenquelle, loop, [InitData]),
   spawn(datenquelle, reader, [LoopPID]),  % TODO evtl ID speichern zum killen
   LoopPID.
 
