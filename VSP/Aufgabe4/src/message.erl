@@ -27,7 +27,7 @@ getFrame(Message) ->
 
 % Empfang - alt: gibt die Station an, von der die Message gesendet wurde/wird
 getStation(Message) ->
-  {_TargetFrame, _StationTyp,Nutzdaten,_Slot,_Timestamp} = Message,
+  {_TargetFrame, _StationTyp, Nutzdaten, _Slot, _Timestamp} = Message,
 	%Nutzdaten 1-10 = Name der Station
 	%{Stationsname, _} = lists:split(10, Nutzdaten), %Alternative Variante
 	Stationsname = lists:sublist(Nutzdaten, 10),
@@ -38,7 +38,7 @@ getData(Message) ->
   Nutzdaten.
 
 getStationTyp(Message) ->
-  {_TargetFrame, StationTyp,_Nutzdaten,_Slot,_Timestamp} = Message,
+  {_TargetFrame, StationTyp, _Nutzdaten, _Slot, _Timestamp} = Message,
 	StationTyp.
 	
 getTime(Message) ->
