@@ -21,7 +21,7 @@ startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
 	
 	Timeout = getTimespanToSlot(Clock, Slot, Frame),
 	SendTimerPID = initTimer(Timeout, PID_Receive, sendTimer),
-  logging("clock.log", "Clock: SendTimer fuer Slot " ++ to_String(Slot) ++ "gestartet.\n"),
+  logging("clock.log", "Clock: SendTimer fuer Slot " ++ to_String(Slot) ++ " gestartet.\n"),
 	
 	{Offset, PID_Receive, FrameTimerPID, {SendTimerPID, Slot, Frame}}.
   
@@ -65,7 +65,9 @@ getTimespanToSlot(Clock, FreeSlot, Frame) ->
 
 %Liefert den Zeitpunkt andem ein bestimmter Slot beginnt als Timestamp in MS
 calculateTimeBySlot(Slot, Frame) ->
-	((Slot-1) * 40) + Frame.
+	Time = ((Slot-1) * 40) + Frame,
+  logging("clock.log", "Clock: Slot " ++ to_String(Slot) ++ " in Frame " ++ to_String(Frame) ++ "faengt an um " ++ to_String(Time) ++ ".\n"),
+  Time.
   
 % liefert den aktuellen Frame
 getCurFrame(Clock) ->
@@ -77,7 +79,9 @@ getCurSlot(Clock) ->
 
 getCurrentTime(Clock) ->
 	{Offset, _PID_Receive, _FrameTimerPID, _SendTimerPID} = Clock,
-	werkzeug:getUTC() + Offset.
+	Time = werkzeug:getUTC() + Offset,
+  logging("clock.log", "Clock: Uhrzeit ist " ++ to_String(Time) ++ ".\n"),
+  Time.
   
 % Senden - 1.6: liefert die aktuelle Zeit, wenn der angegebene Slot noch aktiv ist
 getCurrentTimeInSlot(Clock, SlotNumber, Frame) ->
