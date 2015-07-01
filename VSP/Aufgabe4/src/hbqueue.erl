@@ -18,7 +18,7 @@ initHBQueue(StationNr) ->
 % Senden - 1.1: liefert einen zufaelligen, noch freien Slot des naechsten Frames
 getNextFreeSlot({_Frame, _MyStation, Received}) ->
   FreeSlotList = collectFreeSlots(Received),
-  lists:nth(random:uniform(length(FreeSlotList)), FreeSlotList).
+  lists:nth(crypto:rand_uniform(1, length(FreeSlotList)), FreeSlotList).
 
 % Senden - 1.4: gibt true zurueck, wenn im angegebenen Slot noch keine Nachricht ankam
 isSlotFree({_Frame, _MyStation, Received}, Slot) ->
