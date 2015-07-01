@@ -5,5 +5,5 @@
 
 %% Schnittstellen
 % Empfang - 4: schreibt alle Nachrichten raus
-printAllMessages(msgList) ->
+printAllMessages(MsgList) ->
   true.
