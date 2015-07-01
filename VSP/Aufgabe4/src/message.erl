@@ -11,13 +11,19 @@
 %% Initialisierung
 % Empfang - 1.1: erzeugt ein Message-Objekt aus binaeren Daten
 packetToMessageObj(Packet) ->
-  {StationTyp, Nutzdaten, [Slot], TimestampList} = werkzeug:message_to_string(Packet),
+  {StationTyp, Nutzdaten, Slot, Timestamp} = binary_to_message(Packet),
 
-  %Slot = binary_to_integer(list_to_binary((SlotList))),
-  Timestamp = binary_to_integer(list_to_binary((TimestampList))),
-
+  logging(?LOGFILE, "Erstelle Message aus Binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
   {-1, StationTyp, Nutzdaten, Slot, Timestamp}. %Frame nummer auf -1 weil bei empfangenen Messages irrelevant.
 
+% helper
+binary_to_message(Packet)	->
+%	Packet= <<BinStationTyp:8/binary,BinNutzdaten:192/binary,Slot:8/integer,Timestamp:64/integer>>
+  StationTyp = binary:bin_to_list(Packet,0,1),
+  Nutzdaten= binary:bin_to_list(Packet,1,24),
+  Slot = binary:decode_unsigned(binary:part(Packet,25,1)),
+  Timestamp = binary:decode_unsigned(binary:part(Packet,26,8)),
+  {StationTyp,Nutzdaten,Slot,Timestamp}.
 
 % Senden(Kollision) - 1.5 | Senden - 4.1.1: erzeugt ein leeres Message-Objekt mit den angegebene Daten
 newMessage(StationTyp, Nutzdaten) ->
