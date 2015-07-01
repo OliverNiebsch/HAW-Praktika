@@ -10,8 +10,8 @@
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
 
 start([WadisMeeepStr, PortStr, StationTyp, ClockOffsetStr]) ->
-  Port = string:to_integer(PortStr),
-  ClockOffset = string:to_integer(ClockOffsetStr),
+  {Port, _} = string:to_integer(PortStr),
+  {ClockOffset, _} = string:to_integer(ClockOffsetStr),
   WadisMeeep = {141,22,27,102},  %DEBUG
 
   Socket = openRec({225,10,1,2}, WadisMeeep, Port),
@@ -76,4 +76,10 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
 %% interne Hilfsmethoden
 % liefert die Addresse zum angegebenen Netzwerkinterface
 infToAddr(Interface) ->
+  true.
+
+findDevice(Search, [{Search, Infos} | _Devices]) ->
+  true;
+
+findDevice(Search, [First | _Devices]) ->
   true.
