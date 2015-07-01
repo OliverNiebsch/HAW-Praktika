@@ -68,6 +68,7 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
       waitForMessage(Logfile, SenderNeu, HBQNeu, ClockNeu, Socket);
 
     frameTimer ->
+      logging(Logfile, "FrameTimer hat Timeout gemeldet.\n"),
       % TODO: neuer Frame hat begonnen
       CurFrame = clock:getCurFrame(Clock),
       SenderNeu = sender:frameStarts(CurFrame, Sender, HBQ, Clock),
@@ -77,6 +78,7 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
       waitForMessage(Logfile, SenderNeu, HBQ, Clock, Socket);
 
     sendTimer ->
+      logging(Logfile, "SendTimer hat Timeout gemeldet.\n"),
       % TODO: Nachricht soll gesendet werden
       SenderNeu = sender:send(Sender, HBQ, Clock),
       waitForMessage(Logfile, SenderNeu, HBQ, Clock, Socket);
