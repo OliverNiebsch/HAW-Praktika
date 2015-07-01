@@ -95,12 +95,14 @@ waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket) ->
 %% interne Hilfsmethoden
 % liefert die Addresse zum angegebenen Netzwerkinterface
 infToAddr(Interface) ->
+  logging(?LOGFILE, "Suche nach Interface " ++ Interface ++ "\n"),
   {ok, Devices} = inet:getifaddrs(),
   findDevice(Interface, Devices).
 
 findDevice(_Search, []) -> null;
 
 findDevice(Search, [{Search, Infos} | _Devices]) ->
+  logging(?LOGFILE, "Interface in Device-Liste gefunden\n"),
   getAddrFromInfo(Infos);
 
 findDevice(Search, [_First | Devices]) ->
