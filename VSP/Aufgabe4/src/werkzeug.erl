@@ -227,10 +227,10 @@ concatBinary(BinStation,BinData,BinNextSlot,BinTime) ->
 
 message_to_string(Packet)	->
 %	Packet= <<BinStationTyp:8/binary,BinNutzdaten:192/binary,Slot:8/integer,Timestamp:64/integer>>
-	StationTyp = erlang:binary_to_list(Packet,0,0),
-    Nutzdaten= erlang:binary_to_list(Packet,1,24),
-	Slot = erlang:binary_to_list(Packet,25,25),
-	Timestamp = erlang:binary_to_list(Packet,26,33),
+	StationTyp = erlang:binary_to_list(Packet,1,1),
+    Nutzdaten= erlang:binary_to_list(Packet,2,25),
+	Slot = erlang:binary_to_list(Packet,26,26),
+	Timestamp = erlang:binary_to_list(Packet,27,34),
     {StationTyp,Nutzdaten,Slot,Timestamp}.
 	
 	
