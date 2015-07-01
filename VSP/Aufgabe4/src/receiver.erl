@@ -46,6 +46,7 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
   logging(Logfile, "Starte Receive Block\n"),
   receive
     {udp, _ReceiveSocket, _IP, _InPortNo, Packet} ->
+      logging(Logfile, "UDP Nachricht empfangen\n"),
       %{StationTyp,Nutzdaten,Slot,Timestamp} = werkzeug:message_to_string(Packet);
       Message = message:packetToMessageObj(Packet),
       %Sollte erledigt sein: TODO, irgendwas mit der empfangenen Nachricht anfangen
