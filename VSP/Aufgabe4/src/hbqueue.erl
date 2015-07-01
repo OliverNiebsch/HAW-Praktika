@@ -20,7 +20,7 @@ getNextFreeSlot({_Frame, _MyStation, Received}) ->
 
 % Senden - 1.4: gibt true zurueck, wenn im angegebenen Slot noch keine Nachricht ankam
 isSlotFree({_Frame, _MyStation, Received}, Slot) ->
-  element(Slot, Received) =:= null.
+  length(element(Slot, Received)) =:= 0.
 
 
 %% Inhaltserzeuger

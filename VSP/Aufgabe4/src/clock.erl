@@ -87,6 +87,9 @@ getCurrentTime(Clock) ->
 getCurrentTimeInSlot(Clock, SlotNumber, Frame) ->
   CurFrame = getCurFrame(Clock),
   CurSlot = getCurSlot(Clock),
+
+  logging("clock.log", "Clock: Anfrage nach Zeit in " ++ to_String(Frame) ++ "-" ++ to_String(SlotNumber) ++ ". Aktuell sind wir in " ++ to_String(Frame) ++ "-" ++ to_String(SlotNumber) ++ "\n"),
+
   if
     (CurFrame =:= Frame) and (CurSlot =:= SlotNumber) ->
 		getCurrentTime(Clock);
