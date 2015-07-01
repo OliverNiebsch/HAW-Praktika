@@ -19,7 +19,7 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
 
   logging(?LOGFILE, "Parameter eingelesen\n"),
 
-  Socket = openRec({225,10,1,2}, WadisMeeep, Port),
+  Socket = openRecA({225,10,1,2}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
   logging(?LOGFILE, "ReceiveSocket geoeffnet\n"),

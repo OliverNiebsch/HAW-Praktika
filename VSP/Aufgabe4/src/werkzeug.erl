@@ -191,7 +191,7 @@ openRec(MultiCast, Addr, Port) ->
 % senden  mit gen_udp:send(Socket, Addr, Port, <MESSAGE>)
 openSeA(Addr, Port) ->
   io:format("~nAddr: ~p~nPort: ~p~n", [Addr, Port]),
-  {ok, Socket} = gen_udp:open(Port, [binary, 	{active, true}, {ip, Addr}, inet, 
+  {ok, Socket} = gen_udp:open(Port, [binary, 	{active, true}, {reuseaddr, true}, {ip, Addr}, inet,
 												{multicast_loop, false}, {multicast_if, Addr}]),
   Socket.
  
@@ -201,7 +201,7 @@ openSeA(Addr, Port) ->
 % passives Empfangen mit   receive	{udp, ReceiveSocket, IP, InPortNo, Packet} -> ... end
 openRecA(MultiCast, Addr, Port) ->
   io:format("~nMultiCast: ~p~nAddr: ~p~nPort: ~p~n", [MultiCast, Addr, Port]),
-  {ok, Socket} = gen_udp:open(Port, [binary, 	{active, true}, {multicast_if, Addr}, inet, 
+  {ok, Socket} = gen_udp:open(Port, [binary, 	{active, true}, {reuseaddr, true}, {multicast_if, Addr}, inet,
 												{multicast_ttl, ?TTL}, {multicast_loop, false}, {add_membership, {MultiCast, Addr}}]),
   Socket.
 
