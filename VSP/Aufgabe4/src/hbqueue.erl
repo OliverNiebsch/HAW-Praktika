@@ -2,14 +2,14 @@
 -import(werkzeug, [get_config_value/2, logging/2, logstop/0, openSe/2, openSeA/2, openRec/3, openRecA/3, createBinaryS/1, createBinaryD/1, createBinaryT/1, createBinaryNS/1, concatBinary/4, message_to_string/1, shuffle/1, timeMilliSecond/0, reset_timer/3, compareNow/2, getUTC/0, compareUTC/2, now2UTC/1, type_is/1, to_String/1, bestimme_mis/2, testeMI/2]).
 
 %% API
--export([initHBQueue/0, push/2, resetHBQForNewFrame/2, getNextFreeSlot/1, isSlotFree/2]).
+-export([initHBQueue/1, push/2, resetHBQForNewFrame/2, getNextFreeSlot/1, isSlotFree/2]).
 
 %% Schnittstellen
 
 %% Inialisierung
 % erzeugt eine neue, leere HoldbackQueue
-initHBQueue() ->
-  {0, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
+initHBQueue(StationNr) ->
+  {0, StationNr, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
 
 
 %% Getter
@@ -45,10 +45,10 @@ push({MyFrame, MyStation, Received}, Msg) ->
   {Collision, {MyFrame, MyStation, NewReceived}}.
 
 % Empfang - 6: Resettet die HBQ fuer einen neuen Frame
-resetHBQForNewFrame({_OldFrame, Messages}, NewFrame) ->
+resetHBQForNewFrame({_OldFrame, MyStation, Messages}, NewFrame) ->
   MsgList = getCollisionFreeMessages(Messages),
   datensenke:printAllMessages(MsgList),
-  {NewFrame, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
+  {NewFrame, MyStation, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
 
 
 %% interne Hilfsmethoden
@@ -65,7 +65,7 @@ getCollisionFreeMessages(Messages, N) when (length(element(N, Messages)) == 1) -
 getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 1).
 
 % Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
-checkCollision(Slot, Messages, MyStation) when (length(element(Slot, Messages)) > 1) ->
+checkCollision(Slot, MyStation, Messages) when (length(element(Slot, Messages)) > 1) ->
   % TODO: logging
   msgOfMyStation(Messages, MyStation) =:= true;
 

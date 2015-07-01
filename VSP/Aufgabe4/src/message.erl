@@ -41,7 +41,7 @@ getTime(Message) ->
 	Timestamp.
 	
 %% Setter
-% Senden - 1.3: setzen des Slots, in dem die Station dieser Nachricht im nächsten Frame senden will
+% Senden - 1.3: setzen des Slots, in dem die Station dieser Nachricht im naechsten Frame senden will
 setNextSlot(Message, Slot) ->
 	{TargetFrame, StationTyp, Nutzdaten, _, Timestamp} = Message,
 	{TargetFrame, StationTyp, Nutzdaten,  Slot, Timestamp}.
@@ -60,5 +60,5 @@ setData(Message, Data) ->
   {TargetFrame, StationTyp, Data, Slot, Timestamp}.
 	
 messageToBinary(Message) ->
-	{TargetFrame, StationTyp, Nutzdaten, Slot, Timestamp} = Message,
+	{_TargetFrame, StationTyp, Nutzdaten, Slot, Timestamp} = Message,
 	concatBinary(createBinaryS(StationTyp), createBinaryD(Nutzdaten), createBinaryNS(Slot), createBinaryT(Timestamp)).

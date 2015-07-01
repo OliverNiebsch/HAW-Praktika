@@ -13,9 +13,12 @@ start(WadisMeeep, Port, StationTyp, ClockOffset) ->
   Socket = openRec({142,22,78,197}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
+  Data = datenquelle:getNextData(),
+  Msg = message:newMessage(null, Data),
+
   Logfile = "Logfile.log",
   Sender = sender:newSender(StationTyp, WadisMeeep),
-  HBQ = hbqueue:initHBQueue(),
+  HBQ = hbqueue:initHBQueue(message:getStation(Msg)),
   Clock = clock:initClock(ClockOffset, self()),
 
   % goto receive Schleife
