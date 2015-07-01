@@ -83,16 +83,17 @@ addMessageToReceived(Slot, Received, Msg) ->
 
 % erstellt eine Liste mit noch freien Slots
 collectFreeSlots(Received) ->
-  collectFreeSlots(Received, 1).
+  collectFreeSlots(Received, 1, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]).
 
-collectFreeSlots(_Received, 26) ->
-  [];
+collectFreeSlots(_Received, 26, FreeSlotList) ->
+  FreeSlotList;
 
-collectFreeSlots(Received, Nr) when (length(element(Nr, Received)) == 0) ->
-  collectFreeSlots(Received, Nr + 1) ++ [Nr];
+collectFreeSlots(Received, Nr, FreeSlotList) when (length(element(Nr, Received)) == 1) ->
+  [Msg] = element(Nr, Received),
+  collectFreeSlots(Received, Nr + 1) ++ [Nr, lists:delete(message:getReservedSlot(Msg), FreeSlotList)];
 
-collectFreeSlots(Received, Nr) ->
-  collectFreeSlots(Received, Nr + 1).
+collectFreeSlots(Received, Nr, FreeSlotList) ->
+  collectFreeSlots(Received, Nr + 1, FreeSlotList).
 
 % prueft, ob die MyStation die Station einer Nachricht in der Liste ist
 msgOfMyStation([], _MyStation) ->
