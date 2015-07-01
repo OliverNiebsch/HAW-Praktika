@@ -9,27 +9,41 @@
 %% MAIN
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
 
-start([WadisMeeepStr, PortStr, StationTyp, ClockOffsetStr]) ->
+start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
+  Logfile = "Logfile.log",
+
   {Port, _} = string:to_integer(PortStr),
   {ClockOffset, _} = string:to_integer(ClockOffsetStr),
   WadisMeeep = {141,22,27,102},  %DEBUG
+  %WadisMeeep = infToAddr(InterfaceStr),
+
+  logging(Logfile, "Parameter eingelesen\n"),
 
   Socket = openRec({225,10,1,2}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
+  logging(Logfile, "ReceiveSocket geoeffnet\n"),
+
   Data = datenquelle:getNextData(),
   Msg = message:newMessage(null, Data),
 
-  Logfile = "Logfile.log",
+  logging(Logfile, "StationNr von DummyMsg eingelesen\n"),
+
   Sender = sender:newSender(StationTyp, WadisMeeep),
+  logging(Logfile, "Sender gestartet\n"),
+
   HBQ = hbqueue:initHBQueue(message:getStation(Msg)),
+  logging(Logfile, "HBQ gestartet\n"),
+
   Clock = clock:initClock(ClockOffset, self()),
+  logging(Logfile, "Clock gestartet\n"),
 
   % goto receive Schleife
   waitForMessage(Logfile, Sender, HBQ, Clock, Socket).
 
 % Empfang - 1: HauptReceiveBlock fuer die Anwendung
 waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
+  logging(Logfile, "Starte Receive Block\n"),
   receive
     {udp, _ReceiveSocket, _IP, _InPortNo, Packet} ->
       %{StationTyp,Nutzdaten,Slot,Timestamp} = werkzeug:message_to_string(Packet);
@@ -76,10 +90,21 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
 %% interne Hilfsmethoden
 % liefert die Addresse zum angegebenen Netzwerkinterface
 infToAddr(Interface) ->
-  true.
+  {ok, Devices} = inet:getifaddrs(),
+  findDevice(Interface, Devices).
+
+findDevice(_Search, []) -> null;
 
 findDevice(Search, [{Search, Infos} | _Devices]) ->
-  true;
+  getAddrFromInfo(Infos);
 
-findDevice(Search, [First | _Devices]) ->
-  true.
+findDevice(Search, [_First | Devices]) ->
+  findDevice(Search, Devices).
+
+getAddrFromInfo([]) -> null;
+
+getAddrFromInfo([{addr, {One, Two, Three, Four}} | _]) ->
+  {One, Two, Three, Four};
+
+getAddrFromInfo([_ | Info]) ->
+  getAddrFromInfo(Info).
