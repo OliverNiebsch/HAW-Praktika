@@ -61,5 +61,6 @@ setData(Message, Data) ->
 	
 messageToBinary(Message) ->
 	{_TargetFrame, StationTyp, Nutzdaten, Slot, Timestamp} = Message,
-  logging("message.log", "Wandle Message in binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp)),
+  logging("message.log", "Wandle Message in binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
+  timer:sleep(2000), %DEBUG
   concatBinary(createBinaryS(StationTyp), createBinaryD(Nutzdaten), createBinaryNS(Slot), createBinaryT(Timestamp)).
