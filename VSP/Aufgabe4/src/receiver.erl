@@ -75,6 +75,8 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
 
       hbqueue:resetHBQForNewFrame(HBQ, CurFrame),
 
+      clock:startFrameTimer(Clock),
+
       waitForMessage(Logfile, SenderNeu, HBQ, Clock, Socket);
 
     sendTimer ->
