@@ -37,18 +37,36 @@ push({MyFrame, MyStation, Received}, Msg) ->
       Collision = checkCollision(Slot, Received, MyStation),
       {Collision, {MyFrame, NewReceived}};
 
-    true -> {false, {MyFrame, Received}}
-  end.
+    true ->
+      Collision = false,
+      NewReceived = Received
+  end,
+
+  {Collision, {MyFrame, MyStation, NewReceived}}.
 
 % Empfang - 6: Resettet die HBQ fuer einen neuen Frame
-resetHBQForNewFrame(NewFrame, {_OldFrame, Messages}) ->
-  datensenke:printAllMessages(Messages),
+resetHBQForNewFrame({_OldFrame, Messages}, NewFrame) ->
+  MsgList = getCollisionFreeMessages(Messages),
+  datensenke:printAllMessages(MsgList),
   {NewFrame, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
 
 
 %% interne Hilfsmethoden
+% liefert eine Liste mit allen Nachrichten, die nicht in Kollisionen verwickelt ware
+getCollisionFreeMessages(Messages) ->
+  getCollisionFreeMessages(Messages, 1).
+
+getCollisionFreeMessages(Messages, 26) -> [];
+
+getCollisionFreeMessages(Messages, N) when (length(element(N, Messages)) == 1) ->
+  Elem = element(N, Messages),
+  getCollisionFreeMessages(Messages, N + 1) ++ Elem;
+
+getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 1).
+
 % Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
 checkCollision(Slot, Messages, MyStation) when (length(element(Slot, Messages)) > 1) ->
+  % TODO: logging
   msgOfMyStation(Messages, MyStation) =:= true;
 
 checkCollision(_Slot, _Messages, _MyStation) -> false.

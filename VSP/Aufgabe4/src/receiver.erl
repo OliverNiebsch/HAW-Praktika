@@ -10,7 +10,7 @@
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
 
 start(WadisMeeep, Port, StationTyp, ClockOffset) ->
-  Socket = openRec({225, 10, 1, 2}, WadisMeeep, Port),
+  Socket = openRec({142,22,78,197}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
   Logfile = "Logfile.log",
@@ -47,7 +47,11 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
 
     frameTimer ->
       % TODO: neuer Frame hat begonnen
-      SenderNeu = sender:frameStarts(Sender, HBQ, Clock),
+      CurFrame = clock:getCurFrame(Clock),
+      SenderNeu = sender:frameStarts(CurFrame, Sender, HBQ, Clock),
+
+      hbqueue:resetHBQForNewFrame(HBQ, CurFrame),
+
       waitForMessage(Logfile, SenderNeu, HBQ, Clock, Socket);
 
     sendTimer ->

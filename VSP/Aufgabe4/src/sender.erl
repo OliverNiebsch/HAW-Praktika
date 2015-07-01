@@ -2,7 +2,7 @@
 -import(werkzeug, [get_config_value/2,logging/2,logstop/0,openSe/2,openSeA/2,openRec/3,openRecA/3,createBinaryS/1,createBinaryD/1,createBinaryT/1,createBinaryNS/1,concatBinary/4,message_to_string/1,shuffle/1,timeMilliSecond/0,reset_timer/3,compareNow/2,getUTC/0,compareUTC/2,now2UTC/1,type_is/1,to_String/1,bestimme_mis/2,testeMI/2]).
 
 %% API
--export([newSender/2, resetSendSlot/1, frameStarts/3, send/3]).
+-export([newSender/2, resetSendSlot/1, frameStarts/4, send/3]).
 
 %% Schnittstellen
 
@@ -11,7 +11,7 @@
 newSender(StationTyp, WadisMeeep) ->
   %openSe(IP,Port) -> Socket % diesen Prozess PidSend (als Nebenlaeufigenprozess gestartet) bekannt geben mit
   Teamnummer =  8,
-  ZielAddr = {225,10,1,2},
+  ZielAddr = {142,22,78,197}, %{225,10,1,2},
   LocalAdress = WadisMeeep,
   Port = 15000 + Teamnummer,
 
@@ -22,34 +22,21 @@ newSender(StationTyp, WadisMeeep) ->
   {{Socket, ZielAddr, Port}, null, message:newMessage(StationTyp, null)}.
 
 
-%% Setter
+%% Inhaltserzeugung
 % setzt den Slot, in dem das SendeModul senden will, auf null (nach Kollision)
 resetSendSlot({Adapter, _Slot, Msg}) ->
   {Adapter, null, Msg}.
 
+% FrameTimer - 1.3: Einstiegsmethode, wenn der FrameTimer abgelaufen ist
+frameStarts(Frame, Sender, Hbq, Clock) ->
+  {Adapter, FreeSlot, SendMsg} = checkSlot(Sender, Hbq, Frame),
 
-%% interne Hilfsmethoden
-% Senden(Kollision) - 1: Einstiegsmethode, wenn der FrameTimer abgelaufen ist
-frameStarts({Adapter, SendSlot, SendMsg}, Hbq, Clock) when (SendSlot =:= null) ->
-  % nach Kollision (bzw Anfang)
-  FreeSlot = hbqueue:getNextFreeSlot(Hbq),
   Data = datenquelle:getNextData(),
-
   Message = message:setData(SendMsg, Data),
-  MessageNeu = message:setNextSlot(Message, FreeSlot),
 
   % SendTimer starten
   clock:startSendTimer(Clock, FreeSlot, clock:getCurFrame(Clock)),
-  {Adapter, FreeSlot, MessageNeu}; % return updated sender
-
-frameStarts({Adapter, SendSlot, SendMsg}, _Hbq, Clock) ->
-  % keine Kollision, nur Frame neu angefangen
-  Data = datenquelle:getNextData(),
-  MessageNeu = message:setData(SendMsg, Data),
-
-  % SendTimer starten
-  clock:startSendTimer(Clock, SendSlot, clock:getCurFrame(Clock)),
-  {Adapter, SendSlot, MessageNeu}.
+  {Adapter, FreeSlot, Message}. % return updated sender
 
 % Senden - 1: Einstiegsmethode, wenn der SendTimer abgelaufen ist
 send({Adapter, MySlot, Message}, Hbq, Clock) ->
@@ -72,7 +59,15 @@ send({Adapter, MySlot, Message}, Hbq, Clock) ->
       {Adapter, null, message:newMessage(message:getStation(Message), null)}  % return updated sender?
   end.
 
+%% interne Hilfsmethoden
 % Senden - 3: schickt die Nachricht per Multicast raus
 sendMessage(SendAdapter, Message) ->
   {Socket, ZielAddr, Port} = SendAdapter,
   gen_udp:send(Socket, ZielAddr, Port, Message).
+
+checkSlot({Adapter, null, Msg}, Hbq, Frame) ->
+  NewMsg = message:setFrame(Msg, Frame),
+  NewSlot = hbqueue:getNextFreeSlot(Hbq),
+  {Adapter, NewSlot, NewMsg};
+
+checkSlot(Sender, _Hbq, _Frame) -> Sender.
