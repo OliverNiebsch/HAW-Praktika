@@ -24,7 +24,7 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
 
   logging(Logfile, "ReceiveSocket geoeffnet\n"),
 
-  Data = "team 08-01              ", %datenquelle:getNextData(),
+  Data = datenquelle:getNextData(),
   Msg = message:newMessage(null, Data),
 
   logging(Logfile, "StationNr von DummyMsg eingelesen\n"),
