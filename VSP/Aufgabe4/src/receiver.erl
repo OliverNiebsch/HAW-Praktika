@@ -9,7 +9,11 @@
 %% MAIN
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
 
-start([WadisMeeep, Port, StationTyp, ClockOffset]) ->
+start([WadisMeeepStr, PortStr, StationTyp, ClockOffsetStr]) ->
+  Port = string:to_integer(PortStr),
+  ClockOffset = string:to_integer(ClockOffsetStr),
+  WadisMeeep = {141,22,27,102},  %DEBUG
+
   Socket = openRec({225,10,1,2}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
@@ -40,7 +44,7 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
 
       StationTyp = message:getStationTyp(Message),
       case StationTyp of
-        'A' ->
+        "A" ->
           ClockNeu = clock:synchronize(Clock, message:getTime(Message));
         _ ->
           ClockNeu = Clock
