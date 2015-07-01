@@ -9,7 +9,7 @@
 %% MAIN
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
 
-start({WadisMeeep, Port, StationTyp, ClockOffset]) ->
+start([WadisMeeep, Port, StationTyp, ClockOffset]) ->
   Socket = openRec({142,22,78,197}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
