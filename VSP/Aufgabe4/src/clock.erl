@@ -110,6 +110,9 @@ synchronize(Clock, Timestamp) ->
 	{Offset, _PID_Receive, _FrameTimerPID, _SendTimerPID} = Clock,
 	
 	Differenz = Timestamp - (getCurrentTime(Clock)),
+
+  logging(?LOGFILE, "Clock: Synchronize mit Differenz von " ++ to_String(Differenz) ++ "\n"),
+
 	HalfDiff = (Differenz div 2),
 	NewOffset = Offset + HalfDiff, %Floor - dif = 1  === ?
 	setTimerSyncDrift(Clock, HalfDiff), % PUSH MSG TO TIMERS

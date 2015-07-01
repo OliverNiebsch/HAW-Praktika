@@ -46,7 +46,6 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
 
 % Empfang - 1: HauptReceiveBlock fuer die Anwendung
 waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket, Datenquelle) ->
-  logging(?LOGFILE, "Starte Receive Block\n"),
   receive
     {udp, _ReceiveSocket, _IP, _InPortNo, Packet} ->
       logging(?LOGFILE, "UDP Nachricht empfangen\n"),
