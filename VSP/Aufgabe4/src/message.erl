@@ -11,8 +11,12 @@
 %% Initialisierung
 % Empfang - 1.1: erzeugt ein Message-Objekt aus binaeren Daten
 packetToMessageObj(Packet) ->
-  {StationTyp, Nutzdaten, SlotStr, TimestampStr} = werkzeug:message_to_string(Packet),
-  {-1, StationTyp, Nutzdaten, list_to_integer(SlotStr), list_to_integer(TimestampStr)}. %Frame nummer auf -1 weil bei empfangenen Messages irrelevant.
+  {StationTyp, Nutzdaten, SlotList, TimestampList} = werkzeug:message_to_string(Packet),
+
+  Slot = binary_to_integer(list_to_binary((SlotList))),
+  Timestamp = binary_to_integer(list_to_binary((TimestampList))),
+
+  {-1, StationTyp, Nutzdaten, Slot, Timestamp}. %Frame nummer auf -1 weil bei empfangenen Messages irrelevant.
 
 
 % Senden(Kollision) - 1.5 | Senden - 4.1.1: erzeugt ein leeres Message-Objekt mit den angegebene Daten
