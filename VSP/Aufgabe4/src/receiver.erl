@@ -10,7 +10,7 @@
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
 
 start([WadisMeeep, Port, StationTyp, ClockOffset]) ->
-  Socket = openRec({142,22,78,197}, WadisMeeep, Port),
+  Socket = openRec({225,10,1,2}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
   Data = datenquelle:getNextData(),
@@ -67,4 +67,9 @@ waitForMessage(Logfile, Sender, HBQ, Clock, Socket) ->
       waitForMessage(Logfile, Sender, HBQ, Clock, Socket)
   end,
   gen_udp:close(Socket),
+  true.
+
+%% interne Hilfsmethoden
+% liefert die Addresse zum angegebenen Netzwerkinterface
+infToAddr(Interface) ->
   true.

@@ -11,7 +11,7 @@
 newSender(StationTyp, WadisMeeep) ->
   %openSe(IP,Port) -> Socket % diesen Prozess PidSend (als Nebenlaeufigenprozess gestartet) bekannt geben mit
   Teamnummer =  8,
-  ZielAddr = {142,22,78,197}, %{225,10,1,2},
+  ZielAddr = {225,10,1,2},
   LocalAdress = WadisMeeep,
   Port = 15000 + Teamnummer,
 
