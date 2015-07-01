@@ -45,7 +45,7 @@ send({Adapter, MySlot, Message}, Hbq, Clock) ->
   logging("sender.log", "Sender: Soll Nachricht senden.\n"),
   FreeSlot = hbqueue:getNextFreeSlot(Hbq),
   Frame = message:getFrame(Message),
-  message:setNextSlot(Message, FreeSlot),
+  Message2 = message:setNextSlot(Message, FreeSlot),
 
   SlotIsFree = hbqueue:isSlotFree(Hbq, MySlot),
   CurrentTime = clock:getCurrentTimeInSlot(Clock, MySlot, Frame),
@@ -53,15 +53,15 @@ send({Adapter, MySlot, Message}, Hbq, Clock) ->
   if
     (SlotIsFree =:= true) and (CurrentTime =/= null) ->
       logging("sender.log", "Sender: Alles gut, versuche Nachricht zu senden.\n"),
-      message:setTime(Message, CurrentTime),
-      sendMessage(Adapter, Message),
+      SendMessage = message:setTime(Message2, CurrentTime),
+      sendMessage(Adapter, SendMessage),
 
-      MessageNeu = message:newMessage(message:getStation(Message), null),
+      MessageNeu = message:newMessage(message:getStation(SendMessage), null),
       {Adapter, FreeSlot, message:setFrame(MessageNeu, Frame + 1)};  % return updated sender
 
     true ->
       logging("sender.log", "Sender: Nichts gut. SlotIsFree:" ++ to_String(SlotIsFree) ++ " - CurrentTime: " ++ to_String(CurrentTime) ++ "\n"),
-      {Adapter, null, message:newMessage(message:getStation(Message), null)}  % return updated sender?
+      {Adapter, null, message:newMessage(message:getStation(Message2), null)}
   end.
 
 %% interne Hilfsmethoden
