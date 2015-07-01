@@ -1,12 +1,38 @@
 -module(datenquelle).
 
 %% API
--export([getNextData/0]).
+-export([startDatenquelle/0, getNextData/1, loop/1, reader/1]).
 
 %% Schnittstellen
+startDatenquelle() ->
+  LoopPID = spawn(datenquelle, loop, [null]),
+  spawn(datenquelle, reader, [LoopPID]),  % TODO evtl ID speichern zum killen
+  LoopPID.
+
+%% Prozesse
+loop(Data) ->
+  receive
+    {put, NewData} -> loop(NewData);
+    {get, ReplyPID} ->
+      ReplyPID ! {data, Data},
+      loop(Data);
+    _ ->
+      throw("Datenquelle received wrong Message")
+  end.
+
+reader(LoopPID) ->
+  NewData = io:get_chars('', 24),
+  LoopPID ! {put, NewData},
+  reader(LoopPID).
 
 %% Getter
 % Senden(Kollision) - 1.3 | Senden - 4: liefert neue Daten
-getNextData() ->
-  "team 08-01              ". %DEBUG
-  %io:get_chars('', 24).
+getNextData(LoopPID) ->
+  LoopPID ! {get, self()},
+  receive
+    {data, Data} -> Data
+  after
+    10 ->
+      throw("Keine Daten erhalten"),
+      null
+  end.

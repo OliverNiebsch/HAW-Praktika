@@ -2,7 +2,7 @@
 -import(werkzeug, [get_config_value/2,logging/2,logstop/0,openSe/2,openSeA/2,openRec/3,openRecA/3,createBinaryS/1,createBinaryD/1,createBinaryT/1,createBinaryNS/1,concatBinary/4,message_to_string/1,shuffle/1,timeMilliSecond/0,reset_timer/3,compareNow/2,getUTC/0,compareUTC/2,now2UTC/1,type_is/1,to_String/1,bestimme_mis/2,testeMI/2]).
 
 %% API
--export([newSender/2, resetSendSlot/1, frameStarts/4, send/3]).
+-export([newSender/3, resetSendSlot/1, frameStarts/5, send/3]).
 
 -define(LOGFILE, "logfile.log").
 
@@ -10,12 +10,10 @@
 
 %% Inialisierung
 % erzeugt ein neues SendeModul
-newSender(StationTyp, WadisMeeep) ->
+newSender(StationTyp, WadisMeeep, Port) ->
   %openSe(IP,Port) -> Socket % diesen Prozess PidSend (als Nebenlaeufigenprozess gestartet) bekannt geben mit
-  Teamnummer =  8,
   ZielAddr = {225,10,1,2},
   LocalAdress = WadisMeeep,
-  Port = 15000 + Teamnummer,
 
   Socket = openSe(LocalAdress, Port),
   gen_udp:controlling_process(Socket, self()), %Anmelden als handler fuer Socket
@@ -30,11 +28,11 @@ resetSendSlot({Adapter, _Slot, Msg}) ->
   {Adapter, null, Msg}.
 
 % FrameTimer - 1.3: Einstiegsmethode, wenn der FrameTimer abgelaufen ist
-frameStarts(Frame, Sender, Hbq, Clock) ->
+frameStarts(Frame, Sender, Hbq, Clock, Datenquelle) ->
   logging(?LOGFILE, "Sender: Neuer Frame hat begonnen\n"),
   {Adapter, FreeSlot, SendMsg} = checkSlot(Sender, Hbq, Frame),
 
-  Data = datenquelle:getNextData(),
+  Data = datenquelle:getNextData(Datenquelle),
   Message = message:setData(SendMsg, Data),
   logging(?LOGFILE, "Sender: Nachricht mit Daten gefuellt \"" ++ to_String(Data) ++ "\"\n"),
 

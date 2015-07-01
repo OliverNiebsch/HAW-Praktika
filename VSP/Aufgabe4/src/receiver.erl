@@ -24,12 +24,15 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
 
   logging(?LOGFILE, "ReceiveSocket geoeffnet\n"),
 
-  Data = datenquelle:getNextData(),
+  Datenquelle = datenquelle:startDatenquelle(),
+  logging(?LOGFILE, "Datenquelle gestartet\n"),
+
+  Data = datenquelle:getNextData(Datenquelle),
   Msg = message:newMessage(null, Data),
 
   logging(?LOGFILE, "StationNr von DummyMsg eingelesen\n"),
 
-  Sender = sender:newSender(StationTyp, WadisMeeep),
+  Sender = sender:newSender(StationTyp, WadisMeeep, Port),
   logging(?LOGFILE, "Sender gestartet\n"),
 
   HBQ = hbqueue:initHBQueue(message:getStation(Msg)),
@@ -39,10 +42,10 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
   logging(?LOGFILE, "Clock gestartet\n"),
 
   % goto receive Schleife
-  waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket).
+  waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket, Datenquelle).
 
 % Empfang - 1: HauptReceiveBlock fuer die Anwendung
-waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket) ->
+waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket, Datenquelle) ->
   logging(?LOGFILE, "Starte Receive Block\n"),
   receive
     {udp, _ReceiveSocket, _IP, _InPortNo, Packet} ->
@@ -65,29 +68,29 @@ waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket) ->
           ClockNeu = Clock
       end,
 
-      waitForMessage(?LOGFILE, SenderNeu, HBQNeu, ClockNeu, Socket);
+      waitForMessage(?LOGFILE, SenderNeu, HBQNeu, ClockNeu, Socket, Datenquelle);
 
     frameTimer ->
       logging(?LOGFILE, "FrameTimer hat Timeout gemeldet.\n"),
       % TODO: neuer Frame hat begonnen
       CurFrame = clock:getCurFrame(Clock),
-      SenderNeu = sender:frameStarts(CurFrame, Sender, HBQ, Clock),
+      SenderNeu = sender:frameStarts(CurFrame, Sender, HBQ, Clock, Datenquelle),
 
       hbqueue:resetHBQForNewFrame(HBQ, CurFrame),
 
       clock:startFrameTimer(Clock),
 
-      waitForMessage(?LOGFILE, SenderNeu, HBQ, Clock, Socket);
+      waitForMessage(?LOGFILE, SenderNeu, HBQ, Clock, Socket, Datenquelle);
 
     sendTimer ->
       logging(?LOGFILE, "SendTimer hat Timeout gemeldet.\n"),
       % TODO: Nachricht soll gesendet werden
       SenderNeu = sender:send(Sender, HBQ, Clock),
-      waitForMessage(?LOGFILE, SenderNeu, HBQ, Clock, Socket);
+      waitForMessage(?LOGFILE, SenderNeu, HBQ, Clock, Socket, Datenquelle);
 
     Any ->
       logging(?LOGFILE, "received something wrong: " ++ to_String(Any) ++ "\n"),
-      waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket)
+      waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket, Datenquelle)
   end,
   gen_udp:close(Socket),
   true.

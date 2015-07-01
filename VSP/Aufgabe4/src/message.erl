@@ -2,7 +2,7 @@
 -import(werkzeug, [get_config_value/2,logging/2,logstop/0,openSe/2,openSeA/2,openRec/3,openRecA/3,createBinaryS/1,createBinaryD/1,createBinaryT/1,createBinaryNS/1,concatBinary/4,message_to_string/1,shuffle/1,timeMilliSecond/0,reset_timer/3,compareNow/2,getUTC/0,compareUTC/2,now2UTC/1,type_is/1,to_String/1,bestimme_mis/2,testeMI/2]).
 
 %% API
--export([packetToMessageObj/1, newMessage/2, getFrame/1, getStation/1, getStationTyp/1, getTime/1, setNextSlot/2, setTime/2, setFrame/2, setData/2, messageToBinary/1]).
+-export([packetToMessageObj/1, newMessage/2, getFrame/1, getStation/1, getData/1, getStationTyp/1, getTime/1, setNextSlot/2, setTime/2, setFrame/2, setData/2, messageToBinary/1]).
 
 -define(LOGFILE, "logfile.log").
 
@@ -33,6 +33,9 @@ getStation(Message) ->
 	Stationsname = lists:sublist(Nutzdaten, 10),
 	Stationsname.
 	
+getData(Message) ->
+  {_TargetFrame, _StationTyp, Nutzdaten, _Slot, _Timestamp} = Message,
+  Nutzdaten.
 
 getStationTyp(Message) ->
   {_TargetFrame, StationTyp,_Nutzdaten,_Slot,_Timestamp} = Message,
