@@ -2,7 +2,7 @@
 -import(werkzeug, [get_config_value/2,logging/2,logstop/0,openSe/2,openSeA/2,openRec/3,openRecA/3,createBinaryS/1,createBinaryD/1,createBinaryT/1,createBinaryNS/1,concatBinary/4,message_to_string/1,shuffle/1,timeMilliSecond/0,reset_timer/3,compareNow/2,getUTC/0,compareUTC/2,now2UTC/1,type_is/1,to_String/1,bestimme_mis/2,testeMI/2]).
 
 %% API
--export([initClock/2, startSendTimer/3, startFrameTimer/1, getFrameByTime/1, getCurFrame/1, getCurSlot/1, getCurrentTimeInSlot/3, synchronize/2, setTimer/3]).
+-export([initClock/2, startSendTimer/3, startFrameTimer/1, getFrameByTime/1, getCurFrame/1, getCurSlot/1, getCurrentTimeInSlot/3, synchronize/2, setTimer/3, resetSendTimer/1]).
 
 -define(LOGFILE, "logfile.log").
 
@@ -115,17 +115,27 @@ synchronize(Clock, Timestamp) ->
 	setTimerSyncDrift(Clock, HalfDiff), % PUSH MSG TO TIMERS
 	setOffset(Clock, NewOffset).
 	
-setTimerSyncDrift(Clock, OffsetDiff) ->
-	{_Offset, _PID_Receive, FrameTimerPID, {SendTimerPID, Slot, Frame}} = Clock,
+setTimerSyncDrift({_Offset, _PID_Receive, FrameTimerPID, nil}, OffsetDiff) ->
+	Clock = {_Offset, _PID_Receive, FrameTimerPID, nil},
 	CurrentTime = getCurrentTime(Clock),
 	
 	NewFrameTimeout = 1000-(CurrentTime rem 1000) - OffsetDiff, %WIRD NEGATIV; WENN FRAME GRENEZ DURCH ANPASSUNG ÜBERSPRUNGEN
-	FrameTimerPID ! {sync, NewFrameTimeout},
-	
-	NewSendTimeout = getTimespanToSlot(Clock, Slot, Frame) + 20,
-	SendTimerPID ! {sync, NewSendTimeout}.
-	
-	
+	FrameTimerPID ! {sync, NewFrameTimeout};
+
+setTimerSyncDrift(Clock, OffsetDiff) ->
+  %beide Timer syncen
+  {_Offset, _PID_Receive, FrameTimerPID, {SendTimerPID, Slot, Frame}} = Clock,
+  CurrentTime = getCurrentTime(Clock),
+
+  NewFrameTimeout = 1000-(CurrentTime rem 1000) - OffsetDiff, %WIRD NEGATIV; WENN FRAME GRENEZ DURCH ANPASSUNG ÜBERSPRUNGEN
+  FrameTimerPID ! {sync, NewFrameTimeout},
+
+  NewSendTimeout = getTimespanToSlot(Clock, Slot, Frame) + 20,
+  SendTimerPID ! {sync, NewSendTimeout}.
+
 setOffset(Clock, NewOffset) ->
 	{_Offset, PID_Receive, FrameTimerPID, SendTimer} = Clock,
 	{NewOffset, PID_Receive, FrameTimerPID, SendTimer}.
+
+resetSendTimer({Offset, PID_Receive, FrameTimerPID, _SendTimer}) ->
+  {Offset, PID_Receive, FrameTimerPID, nil}.

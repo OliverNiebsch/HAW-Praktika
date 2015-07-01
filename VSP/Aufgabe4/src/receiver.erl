@@ -85,8 +85,10 @@ waitForMessage(?LOGFILE, Sender, HBQ, Clock, Socket, Datenquelle) ->
     sendTimer ->
       logging(?LOGFILE, "SendTimer hat Timeout gemeldet.\n"),
       % TODO: Nachricht soll gesendet werden
-      SenderNeu = sender:send(Sender, HBQ, Clock),
-      waitForMessage(?LOGFILE, SenderNeu, HBQ, Clock, Socket, Datenquelle);
+      ClockNeu = clock:resetSendTimer(Clock),
+
+      SenderNeu = sender:send(Sender, HBQ, ClockNeu),
+      waitForMessage(?LOGFILE, SenderNeu, HBQ, ClockNeu, Socket, Datenquelle);
 
     Any ->
       logging(?LOGFILE, "received something wrong: " ++ to_String(Any) ++ "\n"),
