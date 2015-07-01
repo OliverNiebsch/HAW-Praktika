@@ -98,7 +98,7 @@ getCurrentTimeInSlot(Clock, SlotNumber, Frame) ->
   end.
   
 getSlotByTime(Timestamp) ->
-	Timestamp rem getFrameByTime(Timestamp) div 40.
+  ((Timestamp rem 1000) div 40) + 1.
 
 getFrameByTime(Timestamp) ->
 	Timestamp div 1000.
