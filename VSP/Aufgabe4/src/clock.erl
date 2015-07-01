@@ -35,7 +35,7 @@ startFrameTimer(Clock) ->
 	{Offset, PID_Receive, FrameTimerPID, SendTimer}.
   
 setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
-  logging("clock.log", "Timer gestartet:\n"),
+  logging("clock.log", "Timer gestartet mit Timeout: " ++ to_String(TimeMS) ++ "\n"),
   receive
 	{sync, Timeout} when Timeout > 0 ->
     logging("clock.log", "Timer received: sync Timeout >0 :\n"),
@@ -47,6 +47,7 @@ setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
       true
   after
     TimeMS ->
+      logging("clock.log", "Timer hat Timeout erreicht. Sende Nachricht: " ++ to_String(TimeoutReplyMsg) ++ "\n"),
       Pid ! TimeoutReplyMsg
   end.
   %notimeout / timeout
