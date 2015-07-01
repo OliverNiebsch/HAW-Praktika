@@ -65,7 +65,7 @@ getTimespanToSlot(Clock, FreeSlot, Frame) ->
 
 %Liefert den Zeitpunkt andem ein bestimmter Slot beginnt als Timestamp in MS
 calculateTimeBySlot(Slot, Frame) ->
-	Time = ((Slot-1) * 40) + Frame,
+	Time = ((Slot-1) * 40) + Frame * 1000,
   logging("clock.log", "Clock: Slot " ++ to_String(Slot) ++ " in Frame " ++ to_String(Frame) ++ "faengt an um " ++ to_String(Time) ++ ".\n"),
   Time.
   
