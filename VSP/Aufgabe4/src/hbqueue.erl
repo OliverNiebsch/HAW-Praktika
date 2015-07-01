@@ -63,7 +63,7 @@ getCollisionFreeMessages(Messages) ->
 getCollisionFreeMessages(_Messages, 26) -> [];
 
 getCollisionFreeMessages(Messages, N) when (length(element(N, Messages)) == 1) ->
-  Elem = element(N, Messages),
+  [Elem] = element(N, Messages),
   getCollisionFreeMessages(Messages, N + 1) ++ Elem;
 
 getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 1).
