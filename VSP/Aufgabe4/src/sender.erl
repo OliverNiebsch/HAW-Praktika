@@ -29,10 +29,12 @@ resetSendSlot({Adapter, _Slot, Msg}) ->
 
 % FrameTimer - 1.3: Einstiegsmethode, wenn der FrameTimer abgelaufen ist
 frameStarts(Frame, Sender, Hbq, Clock) ->
+  logging("sender.log", "Sender: Neuer Frame hat begonnen\n"),
   {Adapter, FreeSlot, SendMsg} = checkSlot(Sender, Hbq, Frame),
 
   Data = datenquelle:getNextData(),
   Message = message:setData(SendMsg, Data),
+  logging("sender.log", "Sender: Nachricht mit Daten gefuellt \"" ++ to_String(Data) ++ "\"\n"),
 
   % SendTimer starten
   clock:startSendTimer(Clock, FreeSlot, clock:getCurFrame(Clock)),
@@ -40,6 +42,7 @@ frameStarts(Frame, Sender, Hbq, Clock) ->
 
 % Senden - 1: Einstiegsmethode, wenn der SendTimer abgelaufen ist
 send({Adapter, MySlot, Message}, Hbq, Clock) ->
+  logging("sender.log", "Sender: Soll Nachricht senden.\n"),
   FreeSlot = hbqueue:getNextFreeSlot(Hbq),
   Frame = message:getFrame(Message),
   message:setNextSlot(Message, FreeSlot),
@@ -49,6 +52,7 @@ send({Adapter, MySlot, Message}, Hbq, Clock) ->
 
   if
     (SlotIsFree =:= true) and (CurrentTime =/= null) ->
+      logging("sender.log", "Sender: Alles gut, versuche Nachricht zu senden.\n"),
       message:setTime(Message, CurrentTime),
       sendMessage(Adapter, Message),
 
@@ -63,11 +67,14 @@ send({Adapter, MySlot, Message}, Hbq, Clock) ->
 % Senden - 3: schickt die Nachricht per Multicast raus
 sendMessage(SendAdapter, Message) ->
   {Socket, ZielAddr, Port} = SendAdapter,
-  gen_udp:send(Socket, ZielAddr, Port, Message).
+  gen_udp:send(Socket, ZielAddr, Port, Message),
+  logging("sender.log", "Sender: Nachricht gesendet\n").
 
 checkSlot({Adapter, null, Msg}, Hbq, Frame) ->
   NewMsg = message:setFrame(Msg, Frame),
   NewSlot = hbqueue:getNextFreeSlot(Hbq),
+
+  logging("sender.log", "Sender: Hatte noch keinen Slot. Slot " ++ to_String(NewSlot) ++ " erhalten\n"),
   {Adapter, NewSlot, NewMsg};
 
 checkSlot(Sender, _Hbq, _Frame) -> Sender.

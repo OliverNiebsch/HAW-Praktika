@@ -26,6 +26,7 @@ isSlotFree({_Frame, _MyStation, Received}, Slot) ->
 %% Inhaltserzeuger
 % fuegt die Nachricht zur Queue hinzu
 push({MyFrame, MyStation, Received}, Msg) ->
+  logging("hbq.log", "HBQ: Neue Nachricht erhalten.\n"),
   MsgTime = message:getTime(Msg),
   Frame = clock:getFrameByTime(MsgTime),
 
@@ -38,6 +39,7 @@ push({MyFrame, MyStation, Received}, Msg) ->
       {Collision, {MyFrame, NewReceived}};
 
     true ->
+      logging("hbq.log", "HBQ: Nachricht ist aus falschem Frame.\n"),
       Collision = false,
       NewReceived = Received
   end,
@@ -67,6 +69,7 @@ getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 
 % Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
 checkCollision(Slot, MyStation, Messages) when (length(element(Slot, Messages)) > 1) ->
   % TODO: logging
+  logging("hbq.log", "HBQ: Collision festgestellt.\n"),
   msgOfMyStation(Messages, MyStation) =:= true;
 
 checkCollision(_Slot, _Messages, _MyStation) -> false.
@@ -97,7 +100,8 @@ msgOfMyStation([Msg, Messages], MyStation) ->
   Station = message:getStation(Msg),
   if
      Station =:= MyStation ->
-      true;
+       logging("hbq.log", "HBQ: Nachricht von eigener Station war in Kollision beteiligt.\n"),
+       true;
     true ->
       msgOfMyStation(Messages, MyStation)
   end.

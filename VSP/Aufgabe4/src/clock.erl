@@ -21,6 +21,7 @@ startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
 	
 	Timeout = getTimespanToSlot(Clock, Slot, Frame),
 	SendTimerPID = initTimer(Timeout, PID_Receive, sendTimer),
+  logging("clock.log", "Clock: SendTimer fuer Slot " ++ to_String(Slot) ++ "gestartet.\n"),
 	
 	{Offset, PID_Receive, FrameTimerPID, {SendTimerPID, Slot, Frame}}.
   
@@ -30,24 +31,25 @@ startFrameTimer(Clock) ->
 	CurrentTime = getCurrentTime(Clock),
 	
 	Timeout = 1000-(CurrentTime rem 1000),
-	
 	FrameTimerPID = initTimer(Timeout + 10, PID_Receive, frameTimer),
+  logging("clock.log", "Clock: FrameTimer gestartet.\n"),
+
 	{Offset, PID_Receive, FrameTimerPID, SendTimer}.
   
 setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
-  logging("clock.log", "Timer gestartet mit Timeout: " ++ to_String(TimeMS) ++ "\n"),
+  logging("clock.log", "Clock: Timer gestartet mit Timeout: " ++ to_String(TimeMS) ++ "\n"),
   receive
 	{sync, Timeout} when Timeout > 0 ->
-    logging("clock.log", "Timer received: sync Timeout >0 :\n"),
+    logging("clock.log", "Clock: Timer received: sync Timeout >0 :\n"),
     setTimer(Pid, Timeout, TimeoutReplyMsg);
 	{sync, _Timeout} ->
-    logging("clock.log", "Timer received: sync Timeout >0 :\n"),
+    logging("clock.log", "Clock: Timer received: sync Timeout >0 :\n"),
     Pid ! TimeoutReplyMsg;
     kill ->
       true
   after
     TimeMS ->
-      logging("clock.log", "Timer hat Timeout erreicht. Sende Nachricht: " ++ to_String(TimeoutReplyMsg) ++ "\n"),
+      logging("clock.log", "Clock: Timer hat Timeout erreicht. Sende Nachricht: " ++ to_String(TimeoutReplyMsg) ++ "\n"),
       Pid ! TimeoutReplyMsg
   end.
   %notimeout / timeout
