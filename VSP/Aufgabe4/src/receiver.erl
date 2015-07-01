@@ -14,8 +14,8 @@
 start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
   {Port, _} = string:to_integer(PortStr),
   {ClockOffset, _} = string:to_integer(ClockOffsetStr),
-  WadisMeeep = {141,22,27,102},  %DEBUG
-  %WadisMeeep = infToAddr(InterfaceStr),
+  %WadisMeeep = {141,22,27,102},  %DEBUG
+  WadisMeeep = infToAddr(InterfaceStr),
 
   logging(?LOGFILE, "Parameter eingelesen\n"),
 
