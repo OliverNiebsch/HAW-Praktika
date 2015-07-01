@@ -68,7 +68,8 @@ send({Adapter, MySlot, Message}, Hbq, Clock) ->
 % Senden - 3: schickt die Nachricht per Multicast raus
 sendMessage(SendAdapter, Message) ->
   {Socket, ZielAddr, Port} = SendAdapter,
-  gen_udp:send(Socket, ZielAddr, Port, Message),
+  BinMsg = message:messageToBinary(Message),
+  gen_udp:send(Socket, ZielAddr, Port, BinMsg),
   logging("sender.log", "Sender: Nachricht gesendet\n").
 
 checkSlot({Adapter, null, Msg}, Hbq, Frame) ->
