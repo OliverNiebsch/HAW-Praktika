@@ -20,7 +20,7 @@ startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
 	{Offset, PID_Receive, FrameTimerPID, _} = Clock,
 	
 	Timeout = getTimespanToSlot(Clock, Slot, Frame),
-	SendTimerPID = initTimer(Timeout, PID_Receive, sendTimer),
+	SendTimerPID = initTimer(Timeout + 20, PID_Receive, sendTimer),
   logging("clock.log", "Clock: SendTimer fuer Slot " ++ to_String(Slot) ++ " gestartet.\n"),
 	
 	{Offset, PID_Receive, FrameTimerPID, {SendTimerPID, Slot, Frame}}.
@@ -117,7 +117,7 @@ setTimerSyncDrift(Clock, OffsetDiff) ->
 	NewFrameTimeout = 1000-(CurrentTime rem 1000) - OffsetDiff, %WIRD NEGATIV; WENN FRAME GRENEZ DURCH ANPASSUNG ÜBERSPRUNGEN
 	FrameTimerPID ! {sync, NewFrameTimeout},
 	
-	NewSendTimeout = getTimespanToSlot(Clock, Slot, Frame),
+	NewSendTimeout = getTimespanToSlot(Clock, Slot, Frame) + 20,
 	SendTimerPID ! {sync, NewSendTimeout}.
 	
 	
