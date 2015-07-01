@@ -56,7 +56,7 @@ resetHBQForNewFrame({_OldFrame, Messages}, NewFrame) ->
 getCollisionFreeMessages(Messages) ->
   getCollisionFreeMessages(Messages, 1).
 
-getCollisionFreeMessages(Messages, 26) -> [];
+getCollisionFreeMessages(_Messages, 26) -> [];
 
 getCollisionFreeMessages(Messages, N) when (length(element(N, Messages)) == 1) ->
   Elem = element(N, Messages),
