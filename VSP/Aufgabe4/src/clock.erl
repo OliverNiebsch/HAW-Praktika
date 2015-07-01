@@ -61,12 +61,12 @@ initTimer(Timeout, PID_Receive, Message) ->
 %% Getter
 % Senden(Kollision) - 1.6: liefert die Zeitspanne in Millisekunden bis zum angegebenen Slot
 getTimespanToSlot(Clock, FreeSlot, Frame) ->
-	getCurrentTime(Clock) - calculateTimeBySlot(FreeSlot, Frame).
+	calculateTimeBySlot(FreeSlot, Frame) - getCurrentTime(Clock).
 
 %Liefert den Zeitpunkt andem ein bestimmter Slot beginnt als Timestamp in MS
 calculateTimeBySlot(Slot, Frame) ->
 	Time = ((Slot-1) * 40) + Frame * 1000,
-  logging("clock.log", "Clock: Slot " ++ to_String(Slot) ++ " in Frame " ++ to_String(Frame) ++ "faengt an um " ++ to_String(Time) ++ ".\n"),
+  logging("clock.log", "Clock: Slot " ++ to_String(Slot) ++ " in Frame " ++ to_String(Frame) ++ " faengt an um " ++ to_String(Time) ++ ".\n"),
   Time.
   
 % liefert den aktuellen Frame
