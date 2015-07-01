@@ -90,7 +90,7 @@ collectFreeSlots(_Received, 26, FreeSlotList) ->
 
 collectFreeSlots(Received, Nr, FreeSlotList) when (length(element(Nr, Received)) == 1) ->
   [Msg] = element(Nr, Received),
-  collectFreeSlots(Received, Nr + 1) ++ [Nr, lists:delete(message:getReservedSlot(Msg), FreeSlotList)];
+  collectFreeSlots(Received, Nr + 1, lists:delete(message:getReservedSlot(Msg), FreeSlotList));
 
 collectFreeSlots(Received, Nr, FreeSlotList) ->
   collectFreeSlots(Received, Nr + 1, FreeSlotList).
