@@ -7,6 +7,7 @@
 % Empfang - 4: schreibt alle Nachrichten raus
 printAllMessages([]) -> true;
 
-printAllMessages([Msg | MsgList]) ->
-  werkzeug:logging("Datensenke.log", message:getData(Msg)),
-  printAllMessages(MsgList).
+printAllMessages([_Msg | _MsgList]) ->
+  %werkzeug:logging("Datensenke.log", message:getData(Msg)),
+  %printAllMessages(MsgList),
+  true.
