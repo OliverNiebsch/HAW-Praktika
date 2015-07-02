@@ -47,7 +47,7 @@ logstop( ) -> 	Known = erlang:whereis(logklc),
 				end.
 					
 logloop(Y) -> 	receive
-					{Datei,Inhalt} -> io:format(Inhalt),
+					{Datei,Inhalt} -> %io:format(Inhalt),
 									  file:write_file(Datei,Inhalt,[append]),
 									  logloop(Y+1);
 					kill -> true

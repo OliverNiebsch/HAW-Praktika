@@ -74,7 +74,7 @@ getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 
 
 % Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
 checkCollision(Slot, MyStation, Messages) when (length(element(Slot, Messages)) > 1) ->
-  %logging(?LOGFILE, "HBQ: Collision festgestellt.\n"),
+  logging(?LOGFILE, to_String(MyStation) ++ ": Kollision bei Slot " ++ to_String(Slot) ++ " festgestellt.\n"),
   msgOfMyStation(element(Slot, Messages), MyStation) =:= true;
 
 checkCollision(_Slot, _Messages, _MyStation) -> false.
@@ -106,7 +106,7 @@ msgOfMyStation([Msg | Messages], MyStation) ->
   Station = message:getStation(Msg),
   if
      Station =:= MyStation ->
-       %logging(?LOGFILE, "HBQ: Nachricht von eigener Station war in Kollision beteiligt.\n"),
+       logging(?LOGFILE, to_String(MyStation) ++ ": Message von eigener Station war in Kollision beteiligt.\n"),
        true;
     true ->
       msgOfMyStation(Messages, MyStation)

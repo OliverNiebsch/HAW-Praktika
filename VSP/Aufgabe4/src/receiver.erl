@@ -11,7 +11,7 @@
 %% MAIN
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
 start([InterfaceStr, PortStr, StationTyp]) ->
-  start([InterfaceStr, PortStr, StationTyp, 0]);
+  start([InterfaceStr, PortStr, StationTyp, "0"]);
 
 start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
   {Port, _} = string:to_integer(PortStr),
@@ -105,7 +105,7 @@ waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame) -
       SenderNeu = sender:send(Sender, HBQ, ClockNeu),
       waitForMessage(SenderNeu, HBQ, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
 
-    Any ->
+    _ ->
       %logging(?LOGFILE, "received something wrong: " ++ to_String(Any) ++ "\n"),
       waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame)
   end,
