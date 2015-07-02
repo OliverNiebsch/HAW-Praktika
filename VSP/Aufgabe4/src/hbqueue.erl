@@ -18,6 +18,7 @@ initHBQueue(StationNr) ->
 % Senden - 1.1: liefert einen zufaelligen, noch freien Slot des naechsten Frames
 getNextFreeSlot({_Frame, _MyStation, Received}) ->
   FreeSlotList = collectFreeSlots(Received),
+  logging(?LOGFILE, "HBQ: Noch freie Slots = " ++ to_String(FreeSlotList) ++ "\n"),
   lists:nth(crypto:rand_uniform(1, length(FreeSlotList)), FreeSlotList).
 
 % Senden - 1.4: gibt true zurueck, wenn im angegebenen Slot noch keine Nachricht ankam
@@ -50,6 +51,7 @@ push({MyFrame, MyStation, Received}, Msg) ->
 
 % Empfang - 6: Resettet die HBQ fuer einen neuen Frame
 resetHBQForNewFrame({_OldFrame, MyStation, Messages}, NewFrame) ->
+  logging(?LOGFILE, "HBQ wird geleert\n"),
   MsgList = getCollisionFreeMessages(Messages),
   datensenke:printAllMessages(MsgList),
   {NewFrame, MyStation, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
@@ -88,7 +90,7 @@ collectFreeSlots(Received) ->
 collectFreeSlots(_Received, 26, FreeSlotList) ->
   FreeSlotList;
 
-collectFreeSlots(Received, Nr, FreeSlotList) when (length(element(Nr, Received)) == 1) ->
+collectFreeSlots(Received, Nr, FreeSlotList) when (length(element(Nr, Received)) =:= 1) ->
   [Msg] = element(Nr, Received),
   collectFreeSlots(Received, Nr + 1, lists:delete(message:getReservedSlot(Msg), FreeSlotList));
 
