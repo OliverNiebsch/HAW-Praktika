@@ -8,5 +8,5 @@
 printAllMessages([]) -> true;
 
 printAllMessages([Msg | MsgList]) ->
-  werkzeug:logging("Datensenke.log", message:getData(Msg)),
+  %werkzeug:logging("Datensenke.log", message:getData(Msg)),
   printAllMessages(MsgList).

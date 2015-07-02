@@ -18,7 +18,7 @@ initHBQueue(StationNr) ->
 % Senden - 1.1: liefert einen zufaelligen, noch freien Slot des naechsten Frames
 getNextFreeSlot({_Frame, _MyStation, Received}) ->
   FreeSlotList = collectFreeSlots(Received),
-  logging(?LOGFILE, "HBQ: Noch freie Slots = " ++ to_String(FreeSlotList) ++ "\n"),
+  %logging(?LOGFILE, "HBQ: Noch freie Slots = " ++ to_String(FreeSlotList) ++ "\n"),
   lists:nth(crypto:rand_uniform(1, length(FreeSlotList)), FreeSlotList).
 
 % Senden - 1.4: gibt true zurueck, wenn im angegebenen Slot noch keine Nachricht ankam
@@ -29,7 +29,7 @@ isSlotFree({_Frame, _MyStation, Received}, Slot) ->
 %% Inhaltserzeuger
 % fuegt die Nachricht zur Queue hinzu
 push({MyFrame, MyStation, Received}, Msg) ->
-  logging(?LOGFILE, "HBQ: Neue Nachricht erhalten.\n"),
+  %logging(?LOGFILE, "HBQ: Neue Nachricht erhalten.\n"),
   MsgTime = message:getTime(Msg),
   Frame = clock:getFrameByTime(MsgTime),
 
@@ -42,7 +42,7 @@ push({MyFrame, MyStation, Received}, Msg) ->
       {Collision, {MyFrame, NewReceived}};
 
     true ->
-      logging(?LOGFILE, "HBQ: Nachricht ist aus falschem Frame.\n"),
+      %logging(?LOGFILE, "HBQ: Nachricht ist aus falschem Frame.\n"),
       Collision = false,
       NewReceived = Received
   end,
@@ -51,7 +51,7 @@ push({MyFrame, MyStation, Received}, Msg) ->
 
 % Empfang - 6: Resettet die HBQ fuer einen neuen Frame
 resetHBQForNewFrame({_OldFrame, MyStation, Messages}, NewFrame) ->
-  logging(?LOGFILE, "HBQ wird geleert\n"),
+  %logging(?LOGFILE, "HBQ wird geleert\n"),
   MsgList = getCollisionFreeMessages(Messages),
   datensenke:printAllMessages(MsgList),
   {NewFrame, MyStation, {[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []}}.
@@ -72,8 +72,8 @@ getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 
 
 % Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
 checkCollision(Slot, MyStation, Messages) when (length(element(Slot, Messages)) > 1) ->
-  % TODO: logging
-  logging(?LOGFILE, "HBQ: Collision festgestellt.\n"),
+  % TODO: %logging
+  %logging(?LOGFILE, "HBQ: Collision festgestellt.\n"),
   msgOfMyStation(Messages, MyStation) =:= true;
 
 checkCollision(_Slot, _Messages, _MyStation) -> false.
@@ -105,7 +105,7 @@ msgOfMyStation([Msg, Messages], MyStation) ->
   Station = message:getStation(Msg),
   if
      Station =:= MyStation ->
-       logging(?LOGFILE, "HBQ: Nachricht von eigener Station war in Kollision beteiligt.\n"),
+       %logging(?LOGFILE, "HBQ: Nachricht von eigener Station war in Kollision beteiligt.\n"),
        true;
     true ->
       msgOfMyStation(Messages, MyStation)

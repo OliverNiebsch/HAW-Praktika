@@ -13,7 +13,7 @@
 packetToMessageObj(Packet) ->
   {StationTyp, Nutzdaten, Slot, Timestamp} = binary_to_message(Packet),
 
-  logging(?LOGFILE, "Erstelle Message aus Binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
+  %logging(?LOGFILE, "Erstelle Message aus Binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
   {-1, StationTyp, Nutzdaten, Slot, Timestamp}. %Frame nummer auf -1 weil bei empfangenen Messages irrelevant.
 
 % helper
@@ -80,5 +80,5 @@ setData(Message, Data) ->
 
 messageToBinary(Message) ->
   {_TargetFrame, StationTyp, Nutzdaten, Slot, Timestamp} = Message,
-  logging(?LOGFILE, "Wandle Message in binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
+  %logging(?LOGFILE, "Wandle Message in binray um, mit Daten: " ++ to_String(StationTyp) ++ ", " ++ to_String(Nutzdaten) ++ ", " ++ to_String(Slot) ++ ", " ++ to_String(Timestamp) ++ "\n"),
   concatBinary(createBinaryS(StationTyp), createBinaryD(Nutzdaten), createBinaryNS(Slot), createBinaryT(Timestamp)).
