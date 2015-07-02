@@ -18,12 +18,13 @@ initClock(Offset, PID_Receive) ->
   ClockNeu.
 
 startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
-  {Offset, PID_Receive, FrameTimerPID, {SendTimerPidAlt, _, _}} = Clock,
+  {Offset, PID_Receive, FrameTimerPID, SendTimerAlt} = Clock,
 
   if
-    SendTimerPidAlt =:= nil ->
+    SendTimerAlt =:= nil ->
       true;
     true ->
+      {SendTimerPidAlt, _, _} = SendTimerAlt,
       SendTimerPidAlt ! kill
   end,
 
