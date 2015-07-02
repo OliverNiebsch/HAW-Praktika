@@ -37,7 +37,7 @@ frameStarts(Frame, Sender, Hbq, Clock, Datenquelle) ->
   %logging(?LOGFILE, "Sender: Nachricht mit Daten gefuellt \"" ++ to_String(Data) ++ "\"\n"),
 
   % SendTimer starten
-  ClockNeu = clock:startSendTimer(Clock, FreeSlot, clock:getCurFrame(Clock)),
+  ClockNeu = clock:startSendTimer(Clock, FreeSlot, Frame),
   {ClockNeu, {Adapter, FreeSlot, Message}}. % return updated sender
 
 % Senden - 1: Einstiegsmethode, wenn der SendTimer abgelaufen ist
