@@ -37,23 +37,23 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
   Sender = sender:newSender(StationTyp, WadisMeeep, Port),
   %logging(?LOGFILE, "Sender gestartet\n"),
 
-  HBQ = hbqueue:initHBQueue(message:getStation(Msg)),
+  MyStation = message:getStation(Msg),
+  HBQ = hbqueue:initHBQueue(MyStation),
   %logging(?LOGFILE, "HBQ gestartet\n"),
 
   Clock = clock:initClock(ClockOffset, self()),
   %logging(?LOGFILE, "Clock gestartet\n"),
 
   % goto receive Schleife
-  waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, true).
+  waitForMessage(0, 0, MyStation, Sender, HBQ, Clock, Socket, Datenquelle, true).
 
 % Empfang - 1: HauptReceiveBlock fuer die Anwendung
-waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame) ->
+waitForMessage(FrameCounter, SendFrameCounter, MyStation, Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame) ->
   receive
     {udp, _ReceiveSocket, _IP, _InPortNo, Packet} ->
       %logging(?LOGFILE, "UDP Nachricht empfangen\n"),
       %{StationTyp,Nutzdaten,Slot,Timestamp} = werkzeug:message_to_string(Packet);
       Message = message:packetToMessageObj(Packet),
-      %Sollte erledigt sein: TODO, irgendwas mit der empfangenen Nachricht anfangen
       {Collision, HBQNeu} = hbqueue:push(HBQ, Message),
       if
         Collision =:= true ->
@@ -69,7 +69,7 @@ waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame) -
           ClockNeu = Clock
       end,
 
-      waitForMessage(SenderNeu, HBQNeu, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
+      waitForMessage(FrameCounter, SendFrameCounter, MyStation, SenderNeu, HBQNeu, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
 
     frameTimer when (WaitForFirstFullFrame =:= true) ->
       % wir warten noch darauf, den ersten vollen Frame zuhoeren zu koennen
@@ -79,11 +79,10 @@ waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame) -
       HBQNeu = hbqueue:resetHBQForNewFrame(HBQ, CurFrame),
       ClockNeu = clock:startFrameTimer(Clock),
 
-      waitForMessage(Sender, HBQNeu, ClockNeu, Socket, Datenquelle, false);
+      waitForMessage(FrameCounter + 1, SendFrameCounter, MyStation, Sender, HBQNeu, ClockNeu, Socket, Datenquelle, false);
 
     frameTimer ->
-      %logging(?LOGFILE, "FrameTimer hat Timeout gemeldet.\n"),
-      % TODO: neuer Frame hat begonnen
+      logging(?LOGFILE, to_String(MyStation) ++ ": Bisher in " ++ to_String(SendFrameCounter) ++ " Frames gesendet und in " ++ to_String(FrameCounter - SendFrameCounter) ++ " nicht gesendet.\n"),
       CurFrame = clock:getCurFrame(Clock),
       {ClockNeu, SenderNeu} = sender:frameStarts(CurFrame, Sender, HBQ, Clock, Datenquelle),
 
@@ -91,23 +90,27 @@ waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame) -
 
       ClockNeu2 = clock:startFrameTimer(ClockNeu),
 
-      waitForMessage(SenderNeu, HBQNeu, ClockNeu2, Socket, Datenquelle, WaitForFirstFullFrame);
+      waitForMessage(FrameCounter + 1, SendFrameCounter, MyStation, SenderNeu, HBQNeu, ClockNeu2, Socket, Datenquelle, WaitForFirstFullFrame);
 
     sendTimer when (WaitForFirstFullFrame =:= true) ->
       % sollte eigentlich nie passieren, falls doch -> einfach ignorieren
-      waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame);
+      waitForMessage(FrameCounter, SendFrameCounter, MyStation, Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame);
 
     sendTimer ->
       %logging(?LOGFILE, "SendTimer hat Timeout gemeldet.\n"),
-      % TODO: Nachricht soll gesendet werden
       ClockNeu = clock:resetSendTimer(Clock),
 
-      SenderNeu = sender:send(Sender, HBQ, ClockNeu),
-      waitForMessage(SenderNeu, HBQ, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
+      {MsgSended, SenderNeu} = sender:send(Sender, HBQ, ClockNeu),
+
+      if
+        (MsgSended =:= true) -> NewSendFrameCounter = SendFrameCounter + 1;
+        true -> NewSendFrameCounter = SendFrameCounter
+      end,
+      waitForMessage(FrameCounter, NewSendFrameCounter, MyStation, SenderNeu, HBQ, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
 
     _ ->
       %logging(?LOGFILE, "received something wrong: " ++ to_String(Any) ++ "\n"),
-      waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame)
+      waitForMessage(FrameCounter, SendFrameCounter, MyStation, Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame)
   end,
   gen_udp:close(Socket),
   true.

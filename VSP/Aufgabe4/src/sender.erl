@@ -57,11 +57,11 @@ send({Adapter, MySlot, Message}, Hbq, Clock) ->
       sendMessage(Adapter, SendMessage),
 
       MessageNeu = message:newMessage(message:getStationTyp(SendMessage), null),
-      {Adapter, FreeSlot, message:setFrame(MessageNeu, Frame + 1)};  % return updated sender
+      {true, {Adapter, FreeSlot, message:setFrame(MessageNeu, Frame + 1)}};  % return updated sender
 
     true ->
       %logging(?LOGFILE, "Sender: Nichts gut. SlotIsFree:" ++ to_String(SlotIsFree) ++ " - CurrentTime: " ++ to_String(CurrentTime) ++ "\n"),
-      {Adapter, null, message:newMessage(message:getStationTyp(Message2), null)}
+      {false, {Adapter, null, message:newMessage(message:getStationTyp(Message2), null)}}
   end.
 
 %% interne Hilfsmethoden
