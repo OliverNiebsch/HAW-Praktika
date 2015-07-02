@@ -19,7 +19,7 @@ initHBQueue(StationNr) ->
 getNextFreeSlot({_Frame, _MyStation, Received}) ->
   FreeSlotList = collectFreeSlots(Received),
   %logging(?LOGFILE, "HBQ: Noch freie Slots = " ++ to_String(FreeSlotList) ++ "\n"),
-  lists:nth(crypto:rand_uniform(1, length(FreeSlotList)), FreeSlotList).
+  lists:nth(crypto:rand_uniform(0, length(FreeSlotList)) + 1, FreeSlotList).
 
 % Senden - 1.4: gibt true zurueck, wenn im angegebenen Slot noch keine Nachricht ankam
 isSlotFree({_Frame, _MyStation, Received}, Slot) ->
@@ -35,10 +35,10 @@ push({MyFrame, MyStation, Received}, Msg) ->
 
   if
     Frame =:= MyFrame ->
-      Slot = clock:getSlotByTime(message:getTime(Msg)),
+      Slot = clock:getSlotByTime(MsgTime),
       NewReceived = addMessageToReceived(Slot, Received, Msg),
 
-      Collision = checkCollision(Slot, Received, MyStation),
+      Collision = checkCollision(Slot, NewReceived, MyStation),
       {Collision, {MyFrame, NewReceived}};
 
     true ->
