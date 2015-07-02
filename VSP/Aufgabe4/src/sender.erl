@@ -70,7 +70,8 @@ sendMessage(SendAdapter, Message) ->
   {Socket, ZielAddr, Port} = SendAdapter,
   BinMsg = message:messageToBinary(Message),
   gen_udp:send(Socket, ZielAddr, Port, BinMsg),
-  %logging(?LOGFILE, "Sender: Nachricht gesendet\n").
+  %logging(?LOGFILE, "Sender: Nachricht gesendet\n"),
+  true.
 
 checkSlot({Adapter, null, Msg}, Hbq, Frame) ->
   NewMsg = message:setFrame(Msg, Frame),

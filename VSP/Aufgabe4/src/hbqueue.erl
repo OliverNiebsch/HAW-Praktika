@@ -72,7 +72,6 @@ getCollisionFreeMessages(Messages, N) -> getCollisionFreeMessages(Messages, N + 
 
 % Empfang - alt: prueft, ob eine Nachricht eine Kollision verursacht
 checkCollision(Slot, MyStation, Messages) when (length(element(Slot, Messages)) > 1) ->
-  % TODO: %logging
   %logging(?LOGFILE, "HBQ: Collision festgestellt.\n"),
   msgOfMyStation(Messages, MyStation) =:= true;
 
