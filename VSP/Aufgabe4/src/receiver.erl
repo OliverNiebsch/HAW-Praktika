@@ -54,12 +54,6 @@ waitForMessage(FrameCounter, SendFrameCounter, MyStation, Sender, HBQ, Clock, So
       %logging(?LOGFILE, "UDP Nachricht empfangen\n"),
       %{StationTyp,Nutzdaten,Slot,Timestamp} = werkzeug:message_to_string(Packet);
       Message = message:packetToMessageObj(Packet),
-      {Collision, HBQNeu} = hbqueue:push(HBQ, Message),
-      if
-        Collision =:= true ->
-          SenderNeu = sender:resetSendSlot(Sender);
-        true -> SenderNeu = Sender
-      end,
 
       StationTyp = message:getStationTyp(Message),
       case StationTyp of
@@ -67,6 +61,13 @@ waitForMessage(FrameCounter, SendFrameCounter, MyStation, Sender, HBQ, Clock, So
           ClockNeu = clock:synchronize(Clock, message:getTime(Message));
         _ ->
           ClockNeu = Clock
+      end,
+
+      {Collision, HBQNeu} = hbqueue:push(HBQ, Message),
+      if
+        Collision =:= true ->
+          SenderNeu = sender:resetSendSlot(Sender);
+        true -> SenderNeu = Sender
       end,
 
       waitForMessage(FrameCounter, SendFrameCounter, MyStation, SenderNeu, HBQNeu, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
