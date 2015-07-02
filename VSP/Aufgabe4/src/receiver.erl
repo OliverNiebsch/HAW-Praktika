@@ -10,6 +10,8 @@
 
 %% MAIN
 % startet und initialisiert das ReceiveModul und alle benoetigten anderen Module
+start([InterfaceStr, PortStr, StationTyp]) ->
+  start([InterfaceStr, PortStr, StationTyp, 0]);
 
 start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
   {Port, _} = string:to_integer(PortStr),
@@ -19,7 +21,7 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
 
   %logging(?LOGFILE, "Parameter eingelesen\n"),
 
-  Socket = openRecA({225,10,1,2}, WadisMeeep, Port),
+  Socket = openRecA({225, 10, 1, 2}, WadisMeeep, Port),
   gen_udp:controlling_process(Socket, self()),% diesen Prozess PidRec (als Nebenlaeufigenprozess gestartet) bekannt geben mit
 
   %logging(?LOGFILE, "ReceiveSocket geoeffnet\n"),
@@ -42,10 +44,10 @@ start([InterfaceStr, PortStr, StationTyp, ClockOffsetStr]) ->
   %logging(?LOGFILE, "Clock gestartet\n"),
 
   % goto receive Schleife
-  waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle).
+  waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, true).
 
 % Empfang - 1: HauptReceiveBlock fuer die Anwendung
-waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle) ->
+waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame) ->
   receive
     {udp, _ReceiveSocket, _IP, _InPortNo, Packet} ->
       %logging(?LOGFILE, "UDP Nachricht empfangen\n"),
@@ -67,7 +69,17 @@ waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle) ->
           ClockNeu = Clock
       end,
 
-      waitForMessage(SenderNeu, HBQNeu, ClockNeu, Socket, Datenquelle);
+      waitForMessage(SenderNeu, HBQNeu, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
+
+    frameTimer when (WaitForFirstFullFrame =:= true) ->
+      % wir warten noch darauf, den ersten vollen Frame zuhoeren zu koennen
+      % jetzt ist der erste Frame rum
+
+      CurFrame = clock:getCurFrame(Clock),
+      HBQNeu = hbqueue:resetHBQForNewFrame(HBQ, CurFrame),
+      ClockNeu = clock:startFrameTimer(Clock),
+
+      waitForMessage(Sender, HBQNeu, ClockNeu, Socket, Datenquelle, false);
 
     frameTimer ->
       %logging(?LOGFILE, "FrameTimer hat Timeout gemeldet.\n"),
@@ -79,7 +91,11 @@ waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle) ->
 
       ClockNeu2 = clock:startFrameTimer(ClockNeu),
 
-      waitForMessage(SenderNeu, HBQNeu, ClockNeu2, Socket, Datenquelle);
+      waitForMessage(SenderNeu, HBQNeu, ClockNeu2, Socket, Datenquelle, WaitForFirstFullFrame);
+
+    sendTimer when (WaitForFirstFullFrame =:= true) ->
+      % sollte eigentlich nie passieren, falls doch -> einfach ignorieren
+      waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame);
 
     sendTimer ->
       %logging(?LOGFILE, "SendTimer hat Timeout gemeldet.\n"),
@@ -87,11 +103,11 @@ waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle) ->
       ClockNeu = clock:resetSendTimer(Clock),
 
       SenderNeu = sender:send(Sender, HBQ, ClockNeu),
-      waitForMessage(SenderNeu, HBQ, ClockNeu, Socket, Datenquelle);
+      waitForMessage(SenderNeu, HBQ, ClockNeu, Socket, Datenquelle, WaitForFirstFullFrame);
 
     Any ->
       %logging(?LOGFILE, "received something wrong: " ++ to_String(Any) ++ "\n"),
-      waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle)
+      waitForMessage(Sender, HBQ, Clock, Socket, Datenquelle, WaitForFirstFullFrame)
   end,
   gen_udp:close(Socket),
   true.
