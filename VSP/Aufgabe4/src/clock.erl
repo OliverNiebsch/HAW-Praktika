@@ -18,22 +18,33 @@ initClock(Offset, PID_Receive) ->
   ClockNeu.
 
 startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
-  % TODO Alten Timer killen
-  {Offset, PID_Receive, FrameTimerPID, _} = Clock,
+  {Offset, PID_Receive, FrameTimerPID, {SendTimerPidAlt, _, _}} = Clock,
+  SendTimerPidAlt ! kill,
 
-  Timeout = getTimespanToSlot(Clock, Slot, Frame),
-  SendTimerPID = initTimer(Timeout + 19, PID_Receive, sendTimer),
+  Timeout = getTimespanToSlot(Clock, Slot, Frame) + 19,
+  if
+    (Timeout < 0) ->
+      SendTimer = nil;
+    true ->
+      SendTimer = {initTimer(Timeout, PID_Receive, sendTimer), Slot, Frame}
+  end,
+
   %logging(?LOGFILE, "Clock: SendTimer fuer Slot " ++ to_String(Slot) ++ " gestartet.\n"),
 
-  {Offset, PID_Receive, FrameTimerPID, {SendTimerPID, Slot, Frame}}.
+  {Offset, PID_Receive, FrameTimerPID, SendTimer}.
 
 startFrameTimer(Clock) ->
-  % TODO Alten Timer killen
-  {Offset, PID_Receive, _, SendTimer} = Clock,
+  {Offset, PID_Receive, FrameTimerPidAlt, SendTimer} = Clock,
+  FrameTimerPidAlt ! kill,
   CurrentTime = getCurrentTime(Clock),
 
   Timeout = 1000 - (CurrentTime rem 1000),
-  FrameTimerPID = initTimer(Timeout + 10, PID_Receive, frameTimer),
+  if
+    Timeout < 0 ->
+      FrameTimerPID = initTimer(0, PID_Receive, frameTimer);
+    true ->
+      FrameTimerPID = initTimer(Timeout + 10, PID_Receive, frameTimer)
+  end,
   %logging(?LOGFILE, "Clock: FrameTimer gestartet.\n"),
 
   {Offset, PID_Receive, FrameTimerPID, SendTimer}.
@@ -57,9 +68,9 @@ setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
 %notimeout / timeout
 %setTimer(Pid, TimeMS, TimeoutReplyMsg). %Restart timer
 
-initTimer(Timeout, _PID_Receive, _Message) when (is_integer(Timeout) =:= false) or (Timeout < 0) ->
-  logging(?LOGFILE, "Clock Timer: initTimer mit falschem Timeout: " ++ to_String(Timeout) ++ ". Timer Start wird ignoriert.\n"),
-  nil;
+%initTimer(Timeout, _PID_Receive, _Message) when (is_integer(Timeout) =:= false) or (Timeout < 0) ->
+%  logging(?LOGFILE, "Clock Timer: initTimer mit falschem Timeout: " ++ to_String(Timeout) ++ ". Timer Start wird ignoriert.\n"),
+%  nil;
 
 initTimer(Timeout, PID_Receive, Message) ->
   spawn(clock, setTimer, [PID_Receive, Timeout, Message]).
@@ -137,7 +148,7 @@ setTimerSyncDrift(Clock, OffsetDiff) ->
   NewFrameTimeout = 1000 - (CurrentTime rem 1000) - OffsetDiff, %WIRD NEGATIV; WENN FRAME GRENEZ DURCH ANPASSUNG ÜBERSPRUNGEN
   FrameTimerPID ! {sync, NewFrameTimeout},
 
-  NewSendTimeout = getTimespanToSlot(Clock, Slot, Frame) + 19,
+  NewSendTimeout = getTimespanToSlot(Clock, Slot, Frame) + 19 - OffsetDiff,
   SendTimerPID ! {sync, NewSendTimeout}.
 
 setOffset(Clock, NewOffset) ->

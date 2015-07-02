@@ -22,6 +22,8 @@ getNextFreeSlot({_Frame, _MyStation, Received}) ->
   lists:nth(crypto:rand_uniform(0, length(FreeSlotList)) + 1, FreeSlotList).
 
 % Senden - 1.4: gibt true zurueck, wenn im angegebenen Slot noch keine Nachricht ankam
+isSlotFree({_Frame, _MyStation, _Received}, null) ->
+  false;
 isSlotFree({_Frame, _MyStation, Received}, Slot) ->
   length(element(Slot, Received)) =:= 0.
 
