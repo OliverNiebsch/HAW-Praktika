@@ -19,7 +19,13 @@ initClock(Offset, PID_Receive) ->
 
 startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
   {Offset, PID_Receive, FrameTimerPID, {SendTimerPidAlt, _, _}} = Clock,
-  SendTimerPidAlt ! kill,
+
+  if
+    SendTimerPidAlt =:= nil ->
+      true;
+    true ->
+      SendTimerPidAlt ! kill
+  end,
 
   Timeout = getTimespanToSlot(Clock, Slot, Frame) + 19,
   if
@@ -35,7 +41,12 @@ startSendTimer(Clock, Slot, Frame) when (Slot > 0) and (Slot < 26) ->
 
 startFrameTimer(Clock) ->
   {Offset, PID_Receive, FrameTimerPidAlt, SendTimer} = Clock,
-  FrameTimerPidAlt ! kill,
+  if
+    FrameTimerPidAlt =:= nil ->
+      true;
+    true ->
+      FrameTimerPidAlt ! kill
+  end,
   CurrentTime = getCurrentTime(Clock),
 
   Timeout = 1000 - (CurrentTime rem 1000),
