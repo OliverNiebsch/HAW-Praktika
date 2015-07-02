@@ -38,7 +38,7 @@ push({MyFrame, MyStation, Received}, Msg) ->
       Slot = clock:getSlotByTime(MsgTime),
       NewReceived = addMessageToReceived(Slot, Received, Msg),
 
-      Collision = checkCollision(Slot, NewReceived, MyStation),
+      Collision = checkCollision(Slot, MyStation, NewReceived),
       {Collision, {MyFrame, NewReceived}};
 
     true ->
@@ -100,7 +100,7 @@ collectFreeSlots(Received, Nr, FreeSlotList) ->
 msgOfMyStation([], _MyStation) ->
   false;
 
-msgOfMyStation([Msg, Messages], MyStation) ->
+msgOfMyStation([Msg | Messages], MyStation) ->
   Station = message:getStation(Msg),
   if
      Station =:= MyStation ->
