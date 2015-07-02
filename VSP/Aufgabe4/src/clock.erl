@@ -38,10 +38,6 @@ startFrameTimer(Clock) ->
 
   {Offset, PID_Receive, FrameTimerPID, SendTimer}.
 
-setTimer(Pid, TimeMS, TimeoutReplyMsg) when (is_integer(TimeMS) =:= false) or (TimeMS < 0) ->
-  logging(?LOGFILE, "Clock Timer: setTimer mit falschem Timeout: " ++ to_String(TimeMS) ++ ". Restart mit 0.\n"),
-  setTimer(Pid, 0, TimeoutReplyMsg);
-
 setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
   %logging(?LOGFILE, "Clock: Timer gestartet mit Timeout: " ++ to_String(TimeMS) ++ "\n"),
   receive
@@ -60,6 +56,10 @@ setTimer(Pid, TimeMS, TimeoutReplyMsg) ->
   end.
 %notimeout / timeout
 %setTimer(Pid, TimeMS, TimeoutReplyMsg). %Restart timer
+
+initTimer(Timeout, _PID_Receive, _Message) when (is_integer(Timeout) =:= false) or (Timeout < 0) ->
+  logging(?LOGFILE, "Clock Timer: initTimer mit falschem Timeout: " ++ to_String(Timeout) ++ ". Timer Start wird ignoriert.\n"),
+  nil;
 
 initTimer(Timeout, PID_Receive, Message) ->
   spawn(clock, setTimer, [PID_Receive, Timeout, Message]).
